@@ -9,6 +9,7 @@ export function Ingredient({data, ...rest}){
                     <div>
                         {
                             data.ingredients.map(ingredient =>{
+                                return 
                                 <span key={ingredient.id}>
                                     {
                                         ingredient.name

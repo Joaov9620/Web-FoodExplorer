@@ -9,7 +9,7 @@ export const Container =  styled.div`
     border: 1px solid #000204;
     border-radius: 8px;
     text-align: right;
-    cursor: pointer;
+    cursor: pointer;    
     margin-right: 27px;
     margin-top: 24px;
 
@@ -45,15 +45,14 @@ export const CardImg = styled.div`
     gap: 15px;
 
     >img{
-        /* height: clamp(88px, 100%, 176px);
-        width: clamp(88px, 100%, 176px); */
         height: 176px;
         width: 176px;
         object-fit: cover;
-        @media(max-width: 768px){
+
+        /* @media(max-width: 768px){
             width: 88px;
             height: 88px;
-        }
+        } */
     }
 
     >h1{
