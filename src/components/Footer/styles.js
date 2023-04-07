@@ -3,9 +3,7 @@ import styled from "styled-components";
 export const FooterBody = styled.footer`
     width: 100%;
     background: #00111A;    
-    /* padding: 2.4rem 12.3rem; */
-    /* padding: 0 28px; */
-
+    
     >div{
         display: flex;
         justify-content: space-between;

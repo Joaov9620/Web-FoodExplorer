@@ -5,14 +5,14 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyle from './styles/global';
 import theme from './styles/theme';
 
-import {EditDish} from './pages/Admin/EditDish';
+import {Details} from './pages/Admin/Details';
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
         <GlobalStyle/>
-        <EditDish/>
+        <Details/>
     </ThemeProvider>
   </React.StrictMode>
 )

@@ -1,10 +1,11 @@
 import { ContentCard, Content} from './styles';
 import { Container } from '../../../styles/global';
 
-import { Header } from '../../../components/Header';
+import  Header  from '../../../components/Header';
 import { Footer } from '../../../components/Footer';
 import { Section } from '../../../components/Section';
 import { Card } from '../../../components/Card';
+
 
 import imgDemonstrative from '../../../assets/img/pngegg 1.png';
 
@@ -12,7 +13,7 @@ export function Home(){
     return (
         <>
             <Header/>
-                <Container>
+            <Container>
                     <Content>
                         <div className='group'>
                             <div className='group1'>
@@ -44,7 +45,12 @@ export function Home(){
                         <ContentCard>
                                 <Card/>
                                 <Card/>
-
+                                <Card/>
+                                <Card/>   
+                                <Card/>
+                                <Card/>
+                                <Card/>
+                                <Card/>  
                                 
                             </ContentCard>
                         </Section>
@@ -55,10 +61,28 @@ export function Home(){
                                 <Card/>
                                 <Card/>
                                 <Card/>
+                                <Card/>
+                                <Card/>   
+                                <Card/>
+                                <Card/>
+                                <Card/>
+                                <Card/>  
+                                <Card/>
+                                <Card/>   
+                                <Card/>
+                                <Card/>
+                                <Card/>
+                                <Card/>  
+                                <Card/>
+                                <Card/>   
+                                <Card/>
+                                <Card/>
+                                <Card/>
+                                <Card/>  
                             </ContentCard>
-                        </Section>
+                        </Section>                        
                     </Content>
-                </Container>
+            </Container>
             <Footer/>
         </>
     )

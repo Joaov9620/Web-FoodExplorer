@@ -91,6 +91,16 @@ export const ContentCard = styled.div`
     @media(min-width:1022px){
         max-width: 1122px;
     }
+
+    .swiper-container{
+        display: flex;
+    /* white-space: nowrap; */
+    max-width: 370px;
+    width: 100%;
+    animation: downtop 700ms 350ms backwards;
+    /* overflow-y: hidden; */
+    overflow: hidden;
+    }
 `;
 
 
