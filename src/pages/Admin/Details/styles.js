@@ -30,9 +30,9 @@ export const Content = styled.div`
             margin-bottom: 14px;
         }
 
-        /* div .buttonDish{
+        .dishInformation button{
             width: 50%;
-        } */
+        }
     }
 
     @media(min-width:1022px){

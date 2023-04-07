@@ -5,6 +5,8 @@ export const HeaderBody = styled.header`
     width: 100%;
     background: #00111A;
     height: 114px;
+    
+    
 
     .menu{
         display: flex;
