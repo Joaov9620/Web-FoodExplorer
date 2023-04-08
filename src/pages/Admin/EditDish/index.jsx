@@ -31,8 +31,8 @@ export function EditDish() {
         <Content>
           <ButtonText icon={IoIosArrowBack} title="Voltar" />
           <Section title="Editar prato">
-            <Group01>
-              <div>
+            <Group01 className='group01 groups'>
+              <div >
                 <LabelInput title="Imagem do prato" htmlFor="pratoImg" />
                 <div>
                   <input id="pratoImg" type="file" onChange={handleFileInput}/>
@@ -58,10 +58,12 @@ export function EditDish() {
               </div>
             </Group01>
 
-            <Group02>
+            <Group02 className='group02 groups'>
                 <div>
                   <LabelInput title="Ingredientes" htmlFor="ingredient"/>
                   <div className='ingredientItem' >       
+                    <IngredientItem id="ingredient" value="Pão Naan"/>
+                    <IngredientItem id="ingredient" value="Pão Naan"/>
                     <IngredientItem id="ingredient" value="Pão Naan"/>
                     <IngredientItem id="ingredient" isNew placeholder="Adicionar"/>
                   </div>
@@ -80,12 +82,14 @@ export function EditDish() {
                 </div>
             </Group02>
 
-            <Group03>
+            <Group03 className='groups'>
+              <div>
                 <LabelInput title="Descrição" htmlFor="textArea"/>
                 <TextArea id="textArea"/>
+              </div>
             </Group03>
 
-            <Group04>
+            <Group04 className='group04 groups'>
                 <Button title="Excluir prato"/>
                 <Button title="Salvar alterações"/>
             </Group04>
