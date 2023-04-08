@@ -104,7 +104,7 @@ export const Group01 = styled.div`
   }
 
   >div:nth-child(1) > div > label:hover{
-    
+    opacity: 0.6;
   }
 
   >div select {
@@ -148,6 +148,7 @@ export const Group04 = styled.div`
   display: flex;
   justify-content: space-evenly;
   gap: 3.2rem;
+  padding: 0;
 
   button:nth-child(1){
     background:${({theme})=>theme.COLORS.BACKGROUND_INPUT};

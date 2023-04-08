@@ -39,4 +39,8 @@ export const Container = styled.div`
             color: #7C7C8A;
         }
     }
+
+    @media(min-width:664px){
+        width: 175px;
+    }
 `;

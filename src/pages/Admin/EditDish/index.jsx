@@ -65,6 +65,8 @@ export function EditDish() {
                     <IngredientItem id="ingredient" value="Pão Naan"/>
                     <IngredientItem id="ingredient" value="Pão Naan"/>
                     <IngredientItem id="ingredient" value="Pão Naan"/>
+                    <IngredientItem id="ingredient" value="Pão Naan"/>
+                    <IngredientItem id="ingredient" value="Pão Naan"/>
                     <IngredientItem id="ingredient" isNew placeholder="Adicionar"/>
                   </div>
                 </div>
