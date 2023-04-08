@@ -8,7 +8,7 @@ export const FooterBody = styled.footer`
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 15px 24px;
+        padding: 15px 28px;
     }
 
     >div h2{

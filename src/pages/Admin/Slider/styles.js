@@ -1,46 +1,44 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.div`
-  max-width: 768px;
-  margin: 0 auto;
-`;
-
-export const SliderWrapper = styled.div`
-  position: relative;
-  overflow: hidden;
-`;
-
-export const SliderContainer = styled.div`
   display: flex;
-  transition: transform 0.3s ease-out;
+  flex-direction: column;
+  align-items: center;
 `;
 
-export const SliderItem = styled.div`
-  flex-shrink: 0;
+export const Input = styled.input`
+  display: none;
+`;
+
+export const Label = styled.label`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 200px;
-  margin-right: 10px;
+  height: 50px;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 20px;
 
-  img {
-    width: 100%;
+  &:hover {
+    background-color: #0069d9;
   }
 `;
 
-export const SliderButton = styled.button`
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 30px;
-  height: 30px;
-  background-color: transparent;
-  border: none;
-  font-size: 20px;
+export const Button = styled.span`
   cursor: pointer;
+  position: relative;
 
-  &:first-of-type {
-    left: 10px;
-  }
-
-  &:last-of-type {
-    right: 10px;
+  ::before {
+    content: '';
+    position: absolute;
+    left: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
   }
 `;

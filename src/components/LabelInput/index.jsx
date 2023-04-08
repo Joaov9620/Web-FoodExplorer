@@ -1,9 +1,10 @@
 import {Container} from './styles';
 
-export function LabelInput({title, ...rest}){
+export function LabelInput({title, children}){
     return(
-        <Container {...rest}>
-            {title}
+        <Container>
+            <label>{title}</label>
+            {children}
         </Container>
     )
 }
