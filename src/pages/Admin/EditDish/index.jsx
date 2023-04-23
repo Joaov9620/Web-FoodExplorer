@@ -25,20 +25,28 @@ export function EditDish() {
   const params = useParams();
 
   const [data, setData] = useState("");
+  
   const [selectedFile, setSelectedFile] = useState(null);
-  const [name, setName] = useState(data.name);
-  const [category, setCategory] = useState(data.category);
+  const [name, setName] = useState("");
+  const [category, setCategory] = useState("");
   const [ingredientItem, setItemIngredient] = useState("");
   const [ingredients, setIngredients] = useState([]);
-  const [price, setPrice] = useState(data.price);
-  const [description, setDescription] = useState(data.description);
-
+  const [price, setPrice] = useState("");
+  const [description, setDescription] = useState("");
 
   useEffect(()=>{
     async function fetchDish(){
       const response = await api.get(`/dish/${params.id}`);
+      const dishData = response.data;
+
       setData(response.data);
-    }
+      setData(dishData);
+      setName(dishData.name);
+      setCategory(dishData.category);
+      setIngredients(Array.isArray(dishData.ingredients) ? dishData.ingredients : []);
+      setPrice(dishData.price);
+      setDescription(dishData.description);
+      }
     fetchDish();
   },[params.id]);
   
@@ -56,7 +64,8 @@ export function EditDish() {
     if(!ingredientItem){
       return alert("Para adicionar digite um ingrediente!");
     }
-    setIngredients(prevState => [...prevState, ingredientItem]);
+    const ingredientObject = { name: ingredientItem };
+    setIngredients(prevState => [...prevState, ingredientObject]);
     setItemIngredient("");
   }
 
@@ -64,20 +73,8 @@ export function EditDish() {
     setIngredients(prevState => prevState.filter(ingredientItem => ingredientItem !== deleted))
   }
 
-  async function handleNewDish(){
-    if(!name){
-      return alert("Nome obrigatório!")
-    }
-
-    if(!price){
-      return alert("Preço obrigatório!")
-    }
-
-    if(ingredientItem){
-      return alert("Adicione a tag que está no campo ou remova para prosseguir!")
-    }
-
-    await api.post("/dish",{
+  async function handleEditDish(){
+    await api.put("/dish",{
       name,
       category,
       ingredients,
@@ -87,7 +84,7 @@ export function EditDish() {
 
     alert("Prato criado com sucesso!");
     navigate("/");
-  }
+  } //criar a rota de atualizar no backend
 
   const handleFileInput = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -139,19 +136,22 @@ export function EditDish() {
                     <LabelInput title="Ingredientes" htmlFor="ingredient"/>
                     <div className='ingredientItem' >   
                     {
-                      // data.ingredients &&    
+                      ingredients &&    
                       ingredients.map((item, index) =>(
                         <IngredientItem
                           key={String(index)}
-                          value={item}
+                          value={item.name}
                           onClick={()=> handleRemoveIngredient(item)}
                         />
                       ))
                     }
                       <IngredientItem 
-                        id="ingredient" 
+                        id="ingredient"
                         isNew 
                         placeholder="Adicionar"
+                        onChange={e => setItemIngredient(e.target.value)}
+                        onClick={handleAddIngredient}
+                        value={ingredientItem}
                       />
                     </div>
                   </div>

@@ -19,7 +19,7 @@ import { api } from "../../../services/api";
 export function Details(){
     const navigate  = useNavigate();
     const params = useParams();
-  
+
     function handleBack(){
         navigate("/");
     }
@@ -28,7 +28,7 @@ export function Details(){
         navigate(`/editDish/${id}`);
     }
 
-    const [data, setData] = useState("");
+    const [data, setData] = useState(null);
 
     useEffect(()=>{
         async function fetchDish(){
@@ -43,7 +43,7 @@ export function Details(){
             <Header/>
             <Container>
                 {
-                  data.ingredients &&
+                  data &&
                     <Content> 
                         <ButtonText 
                             icon={IoIosArrowBack}
@@ -59,13 +59,14 @@ export function Details(){
                                 <h1>{data.name}</h1>
                                 <span>{data.description}</span>
                                 <div>                               
-                                    {
-                                        data.ingredients.map(ingredient =>(
+                                {
+                                    data.ingredients &&  
+                                    data.ingredients.map((ingredient, index) =>(
                                         <IngredientDetails
-                                            key={String(ingredient.id)}
+                                            key={String(index)}
                                             value={ingredient.name}                                          
-                                        />
-                                            ))
+                                         />
+                                        ))
                                     }
                                 </div>
                                 <Button 
