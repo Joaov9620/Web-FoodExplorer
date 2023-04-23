@@ -65,13 +65,14 @@ export const Form = styled.form`
         }
     }
 
-    >button, h5{
+    >button, a{
         text-align: center;
         font-family: 'Poppins';
         font-style: normal;
         font-weight: 500;
         font-size: 1.4rem;
         line-height: 2.4rem;
+        color: white;
     }
     >button{
         width: 100%;

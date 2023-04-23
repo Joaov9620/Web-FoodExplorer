@@ -1,48 +1,82 @@
+import {Content, DishInformation } from "../Details/styles"; 
+import { Container } from '../../../styles/global';
+
 import Header  from '../../../components/Header'
 import { Footer } from '../../../components/Footer';
 import { ButtonText } from "../../../components/ButtonText";
 import { Button } from "../../../components/Button";
+import { IngredientDetails } from "../../../components/IngredientDetails";
 
 import { IoIosArrowBack } from "react-icons/io";
-
 import img from '../../../assets/img/Mask group.png'
 
-import {Content, DishInformation } from "../Details/styles"; 
-import { Container } from '../../../styles/global';
+import { useState, useEffect } from 'react';
+import { useParams ,useNavigate } from 'react-router-dom';
+
+import { api } from "../../../services/api";
+
 
 export function Details(){
+    const navigate  = useNavigate();
+    const params = useParams();
+  
+    function handleBack(){
+        navigate("/");
+    }
+
+    function handleEditDish(id){
+        navigate(`/editDish/${id}`);
+    }
+
+    const [data, setData] = useState("");
+
+    useEffect(()=>{
+        async function fetchDish(){
+          const response = await api.get(`/dish/${params.id}`);
+          setData(response.data);
+        }
+        fetchDish();
+      },[params.id]);
+
     return (
         <>
             <Header/>
             <Container>
-                <Content> 
-                    <ButtonText 
-                        icon={IoIosArrowBack}
-                        title="Voltar"
-                    />
-                    <div>
-                        <img
-                            src={img}
-                            alt="Imagem de comida"
+                {
+                  data.ingredients &&
+                    <Content> 
+                        <ButtonText 
+                            icon={IoIosArrowBack}
+                            title="Voltar"
+                            onClick={handleBack} 
                         />
-                        <DishInformation className='dishInformation'>
-                            <h1>Salada Ravanello</h1>
-                            <span>Rabanetes, folhas verdes e molho agridoce salpicados com gergelim. O pão naan dá um toque especial.</span>
-                            <div>
-                                <h5>Alface</h5>
-                                <h5>cebola</h5>
-                                <h5>pão naan</h5>
-                                <h5>pepino</h5>
-                                <h5>rabanete</h5>
-                                <h5>tomate</h5>
-                            </div>
-                            <Button 
-                                className="buttonDish"
-                                title="Editar prato" 
+                        <div>
+                            <img
+                                src={img}
+                                alt="Imagem de comida"
+                            />
+                            <DishInformation className='dishInformation'>
+                                <h1>{data.name}</h1>
+                                <span>{data.description}</span>
+                                <div>                               
+                                    {
+                                        data.ingredients.map(ingredient =>(
+                                        <IngredientDetails
+                                            key={String(ingredient.id)}
+                                            value={ingredient.name}                                          
+                                        />
+                                            ))
+                                    }
+                                </div>
+                                <Button 
+                                    className="buttonDish"
+                                    title="Editar prato" 
+                                    onClick={() => handleEditDish(data.id)}
                                 />
-                        </DishInformation>
-                    </div>          
-                </Content>
+                            </DishInformation>
+                        </div>          
+                    </Content>
+                }
             </Container>
             <Footer/>
         </>

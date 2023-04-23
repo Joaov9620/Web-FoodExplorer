@@ -4,7 +4,19 @@ import {Brand} from '../../components/Brand'
 import {Input} from '../../components/Input'
 import {Button} from '../../components/Button'
 
+import { api } from '../../services/api';
+
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
+
 export function SignIn(){
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+
+    function handleSingIn(){
+
+    };
+
     return(
         <Container>
             <div className='logo'>
@@ -32,9 +44,9 @@ export function SignIn(){
                 
                 <Button title='Entrar'/>
 
-                <h5>
+                <Link to="/signUp">
                     Criar uma conta
-                </h5>
+                </Link>
             </Form>
         </Container>
     )

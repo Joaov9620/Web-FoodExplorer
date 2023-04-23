@@ -5,6 +5,7 @@ export function Button({title, Loading = false, ...rest}){
         <Container
             type="button"
             disable={Loading}
+            {...rest}
         >
             {Loading?'Carregando...':title}
         </Container>

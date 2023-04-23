@@ -6,13 +6,11 @@ export const HeaderBody = styled.header`
     background: #00111A;
     height: 114px;
     
-    
-
     .menu{
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 56px 28px 28px;;
+        padding: 24px 28px;
     }
 
     .menu button, .ordersDesktop{
