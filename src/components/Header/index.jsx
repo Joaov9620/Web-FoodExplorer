@@ -16,12 +16,19 @@ import { Brand } from "../Brand";
 import { Input } from "../Input";
 
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../hooks/auth';
 
 function Header(){
     const navigate = useNavigate();
+    const {signOut} = useAuth();
 
     function handleNewDish(){
         navigate('/newDish')
+    }
+
+    function handleSignOut(){
+        navigate("/");
+        signOut();
     }
     
     return(
@@ -80,7 +87,7 @@ function Header(){
                             </div> */}
                             
                             <Logout className="logoutHeader">
-                                <img src={logout} alt="Sair" />
+                                <img src={logout} alt="Sair" onClick={handleSignOut} />
                             </Logout>
                         </div>
                     </div> 

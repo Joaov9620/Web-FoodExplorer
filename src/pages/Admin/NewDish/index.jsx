@@ -56,7 +56,7 @@ export function NewDish() {
     }
 
     if(ingredientItem){
-      return alert("Adicione a tag que está no campo ou remova para prosseguir!")
+      return alert("Adicione o ingrediente que está no campo ou remova para prosseguir!")
     }
 
     await api.post("/dish",{

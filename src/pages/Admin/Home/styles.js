@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Content = styled.div`
-    grid-area: content;
     padding: 44px 0 28px 24px; 
     min-height: 100vh; 
    

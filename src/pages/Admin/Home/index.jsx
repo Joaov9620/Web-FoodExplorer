@@ -35,11 +35,9 @@ export function Home(){
             setDish(dishData);
         }
         fetchDish();
-
     },[]);
 
     if(dish){
-
         for (let i = 0; i < dish.length; i++) {
             if (dish[i].category === "Refeições") {
               meals.push(dish[i]);
@@ -49,7 +47,7 @@ export function Home(){
               drinks.push(dish[i]);
             }
         }
-    }
+    } //refatorar esse código(fazer essa verificação no backend pois este mesmo codigo se repete na page SeeAll)
 
     function handleDetails(id){
         navigate(`/details/${id}`);
