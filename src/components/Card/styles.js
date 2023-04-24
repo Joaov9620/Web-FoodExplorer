@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const Container =  styled.div`
     width: fit-content;
-    min-width: 210px;
+    max-width: 210px;
+    height: 46rem ;
     /* min-width: 210px; */
     background: #00070A;
     padding: 0 24px 66px;
@@ -14,7 +15,7 @@ export const Container =  styled.div`
     margin-top: 24px;
 
     .descriptionDish{
-        display: none;
+        text-align: center;
     }
 
     :hover{

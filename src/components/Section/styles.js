@@ -4,6 +4,7 @@ import styled from "styled-components";
 export const Container =  styled.section`
     margin: 23px 0;
     width: 100%;
+    margin-top: 48px;
     /* white-space: nowrap; */
 
     >h2{
