@@ -4,18 +4,20 @@ import {Brand} from '../../components/Brand'
 import {Input} from '../../components/Input'
 import {Button} from '../../components/Button'
 
-import { api } from '../../services/api';
+import { useAuth } from '../../hooks/auth';
 
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
 export function SignIn(){
-    const [name, setName] = useState("");
     const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
-    function handleSingIn(){
+    const {signIn} = useAuth();
 
-    };
+    function handleSignIn(){
+        signIn({email,password});
+    }
 
     return(
         <Container>
@@ -31,6 +33,7 @@ export function SignIn(){
                     <Input
                         placeholder="Exemplo: Maria da Silva"
                         type="email"
+                        onChange={e => setEmail(e.target.value)}
                     />
                 </label>
 
@@ -39,10 +42,11 @@ export function SignIn(){
                     <Input
                         placeholder="No mínimo 6 caracteres"
                         type="password"
+                        onChange={e=>setPassword(e.target.value)}
                     />
                 </label>
                 
-                <Button title='Entrar'/>
+                <Button title='Entrar' onClick={handleSignIn}/>
 
                 <Link to="/signUp">
                     Criar uma conta
