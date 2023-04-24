@@ -71,12 +71,16 @@ export function NewDish() {
     navigate("/");
   }
 
+  function handleBack(){
+    navigate(-1);
+  }
+
   return (
     <>  
       <Header/>
       <Container>
         <Content>
-          <ButtonText icon={IoIosArrowBack} title="Voltar" />
+          <ButtonText icon={IoIosArrowBack} title="Voltar" onClick={handleBack} />
 
           <Section title="Adicionar prato">
             <Group01 className='group01 groups'>

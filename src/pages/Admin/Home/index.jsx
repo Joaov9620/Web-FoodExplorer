@@ -15,12 +15,17 @@ import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper";
 
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import {api} from '../../../services/api';
 
 export function Home(){
+    const navigate = useNavigate();
 
     const [dish, setDish] = useState([]);
+    const meals = [];
+    const desserts = [];
+    const drinks = [];
 
     useEffect(()=>{
         async function fetchDish(){
@@ -32,6 +37,23 @@ export function Home(){
         fetchDish();
 
     },[]);
+
+    if(dish){
+
+        for (let i = 0; i < dish.length; i++) {
+            if (dish[i].category === "Refeições") {
+              meals.push(dish[i]);
+            } else if (dish[i].category === "Sobremesas") {
+              desserts.push(dish[i]);
+            } else if (dish[i].category === "Bebidas") {
+              drinks.push(dish[i]);
+            }
+        }
+    }
+
+    function handleDetails(id){
+        navigate(`/details/${id}`);
+    }
 
     return (
         <>
@@ -62,10 +84,11 @@ export function Home(){
                             >
                                 <ContentCard>
                                     {
-                                        dish.map((dish, index)=>(
-                                            <SwiperSlide key={String(index)}>
+                                        meals.map(dish=>(
+                                            <SwiperSlide key={String(dish.id)}>
                                                 <Card
                                                     data={dish}
+                                                    onClick={() => handleDetails(dish.id)}
                                                 />
                                             </SwiperSlide>
                                         ))
@@ -88,10 +111,11 @@ export function Home(){
                             >
                                 <ContentCard>
                                     {
-                                        dish.map((dish, index)=>(
-                                            <SwiperSlide key={String(index)}>
+                                        desserts.map(dish=>(
+                                            <SwiperSlide key={String(dish.id)}>
                                                 <Card
                                                     data={dish}
+                                                    onClick={() => handleDetails(dish.id)}
                                                 />
                                             </SwiperSlide>
                                         ))
@@ -114,10 +138,11 @@ export function Home(){
                             >
                                 <ContentCard>
                                     {
-                                        dish.map((dish, index)=>(
-                                            <SwiperSlide key={String(index)}>
+                                        drinks.map(dish=>(
+                                            <SwiperSlide key={String(dish.id)}>
                                                 <Card
                                                     data={dish}
+                                                    onClick={() => handleDetails(dish.id)}
                                                 />
                                             </SwiperSlide>
                                         ))

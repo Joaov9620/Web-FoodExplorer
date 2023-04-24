@@ -57,7 +57,7 @@ export function EditDish() {
   async function handleDeletedDish(){
     await api.delete(`/dish/${params.id}`);	
     alert("Prato excluído com sucesso!")
-    navigate(-1);
+    navigate("/");
   }
 
   function handleAddIngredient(){
