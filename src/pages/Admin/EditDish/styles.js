@@ -1,14 +1,17 @@
 import styled from "styled-components";
 
 export const Content = styled.div`
-  min-height: 100vh;
+  height: calc(100vh -50px);
   width: 100%;
   padding: 11px 24px 55px;
 
   input:not(#ingredient){
-    background-color: #0d161b;
     text-align: start;
     border-radius: 8px;
+  }
+
+  .inputColors{
+    background-color:#0D161B;
   }
 
   >section{

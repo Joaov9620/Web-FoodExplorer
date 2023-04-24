@@ -10,7 +10,7 @@ import {Orders} from '../pages/Admin/Orders';
 export function AppRoutes(){
     return(
         <Routes>
-            <Route path="/" element={<Home/>}/>
+            <Route path="/home" element={<Home/>}/>
             <Route path="/seeAll" element={<SeeAll/>}/>
             <Route path="/newDish" element={<NewDish/>}/>
             <Route path="/details/:id" element={<Details/>}/>

@@ -10,7 +10,7 @@ import imgDemonstrative from '../../../assets/img/pngegg 1.png';
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import "swiper/css/pagination";
+// import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper";
 
@@ -58,12 +58,12 @@ export function Home(){
             <Header/>
             <Container>
                     <Content>
-                        <div className='group'>
-                            <div className='group1'>
+                        <div className='groupHeader'>
+                            <div className='group1Img'>
                                 <img src={imgDemonstrative} alt="Imagem demonstrativa" />
                             </div>
                             
-                            <div className='group2'>
+                            <div className='group2Inf'>
                                 <h1>Sabores inigualáveis</h1>
                                 <span>Sinta o cuidado do preparo com ingredientes selecionados</span>
                             </div> 
@@ -78,12 +78,12 @@ export function Home(){
                                 }}
                                 navigation={true}
                                 modules={[Pagination,Navigation]}
-                                className="mySwiper"
+                               
                             >
                                 <ContentCard>
-                                    {
+                                    {  
                                         meals.map(dish=>(
-                                            <SwiperSlide key={String(dish.id)}>
+                                            <SwiperSlide key={String(dish.id)} className='swiperSlider'>
                                                 <Card
                                                     data={dish}
                                                     onClick={() => handleDetails(dish.id)}

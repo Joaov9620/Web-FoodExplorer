@@ -10,7 +10,7 @@ export function Section({title, children}) {
 
     return(
         <Container>
-            <div>
+            <div className="section">
                 <h2>{title}</h2>
                 <a onClick={handleSeeAll}>Ver todos</a>
             </div>

@@ -8,12 +8,12 @@ export const Container =  styled.section`
     font-family: 'Poppins';
     /* white-space: nowrap; */
 
-    >div{
+    >.section{
         display: flex;
         justify-content: space-between;
     }
 
-    div h2{
+    .section h2{
         font-style: normal;
         font-weight: 500;
         font-size: clamp(18px, calc(18px + 1vw), 32px);
@@ -21,12 +21,12 @@ export const Container =  styled.section`
         color: ${({theme}) => theme.COLORS.TEXT_COLOR};
     }
 
-    div a{
+    .section  a{
         font-size:20px;
         color: white;
     }
 
-    div a:hover{
+    .section  a:hover{
         filter: brightness(0.5);
     }
 `;

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container =  styled.div`
     width: fit-content;
-    max-width: 210px;
+    width: 210px;
     height: 46rem ;
     /* min-width: 210px; */
     background: #00070A;
@@ -32,7 +32,7 @@ export const Container =  styled.div`
     }
 
     @media(min-width:768px){
-        min-width: 304px;
+        width: 304px;
     }
     
 `;
@@ -49,11 +49,6 @@ export const CardImg = styled.div`
         height: 176px;
         width: 176px;
         object-fit: cover;
-
-        /* @media(max-width: 768px){
-            width: 88px;
-            height: 88px;
-        } */
     }
 
     >h1{

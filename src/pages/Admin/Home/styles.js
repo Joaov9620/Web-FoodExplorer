@@ -3,9 +3,9 @@ import styled from "styled-components";
 export const Content = styled.div`
     padding: 44px 0 28px 24px; 
     min-height: 100vh; 
-   
 
-    >.group{
+
+    >.groupHeader{
         padding: 36px 0 22px;
         margin-top: 44px;
         margin-right: 16px;
@@ -15,7 +15,7 @@ export const Content = styled.div`
         border-radius: 8px;
     }
 
-    >div .group1{
+    >div .group1Img{
         position: absolute;
         z-index: 1;
         /* top: 142.06px; */
@@ -24,7 +24,7 @@ export const Content = styled.div`
         width: 197px;  
     }
 
-    >div .group1 img{
+    >div .group1Img img{
         
         object-fit: cover;
         /* height: clamp(149px, 100%, 407px);
@@ -33,7 +33,7 @@ export const Content = styled.div`
         width: 100%;
     }
 
-    >div .group2{
+    >div .group2Inf{
         position: relative;
         /* margin: 17.2rem 0 6.3rem; */
         /* padding: 8.7rem  10rem 8.7rem 0; */
@@ -60,17 +60,22 @@ export const Content = styled.div`
 
 export const ContentCard = styled.div`
     display: flex;
-    /* white-space: nowrap; */
+    gap: 32px;
     max-width: 370px;
     width: 100%;
     animation: downtop 700ms 350ms backwards;
-    /* overflow-y: hidden; */
     overflow: hidden;
+
+  .swiperSlider{
+    width: auto;
+    margin-right: 47px;
+  }
     
 
     .dishImg img:hover{
         transform: scale(1.1);
     }
+    
 
     @keyframes downtop {
         0% {
@@ -91,15 +96,7 @@ export const ContentCard = styled.div`
         max-width: 1122px;
     }
 
-    .swiper-container{
-        display: flex;
-    /* white-space: nowrap; */
-    max-width: 370px;
-    width: 100%;
-    animation: downtop 700ms 350ms backwards;
-    /* overflow-y: hidden; */
-    overflow: hidden;
-    }
+    
 `;
 
 

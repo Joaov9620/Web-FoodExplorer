@@ -118,6 +118,7 @@ export function EditDish() {
                     type="text" 
                     value={name}
                     onChange={e => setName(e.target.value)}
+                    className="inputColors"
                   />
                 </div>
 
@@ -167,6 +168,7 @@ export function EditDish() {
                       required
                       value={price}
                       onChange={e => setPrice(e.target.value)}
+                      className="inputColors"
                     />
                   </div>
               </Group02>

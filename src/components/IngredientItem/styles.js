@@ -8,6 +8,7 @@ export const Container = styled.div`
     justify-content: center;
     border-radius: 8px;
     padding: 8px 16px;
+    
    
    
     background-color: ${({isNew}) => isNew ? "transparent" : "#76797B"};

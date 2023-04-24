@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Content = styled.div`
-    min-height: 100vh; 
-    padding: 0 28px 44px; 
+    height: calc(100vh - 207px);
+    padding: 0 28px 0; 
 
     >button{
         margin-top: 3.1rem;
