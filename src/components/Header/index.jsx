@@ -67,17 +67,17 @@ function Header(){
                                 />
                             </SearchMobile>
     
-                            <div className="orders">
+                            {/* <div className="orders">
                                 <img src={orders} alt="Imagem desmontrativa de pedidos" />
                                 <span>0</span>
                             </div>
-    
+     */}
                             <Button title='Novo prato' onClick={handleNewDish} />
     
-                            <div className="ordersDesktop">
+                            {/* <div className="ordersDesktop">
                                 <img src={orders} alt="Imagem desmontrativa de pedidos" />
                                 <span>0</span>
-                            </div>
+                            </div> */}
                             
                             <Logout className="logoutHeader">
                                 <img src={logout} alt="Sair" />
