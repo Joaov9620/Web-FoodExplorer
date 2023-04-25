@@ -54,6 +54,7 @@ export function Home(){
     }
 
     return (
+        
         <>
             <Header/>
             <Container>
@@ -69,30 +70,36 @@ export function Home(){
                             </div> 
                         </div>
                         <Section title="Refeições">
-                            <Swiper
-                                slidesPerView={3}
-                                spaceBetween={30}
-                                loop={true}
-                                pagination={{
-                                clickable: true,
-                                }}
-                                navigation={true}
-                                modules={[Pagination,Navigation]}
-                               
-                            >
-                                <ContentCard>
-                                    {  
-                                        meals.map(dish=>(
-                                            <SwiperSlide key={String(dish.id)} className='swiperSlider'>
-                                                <Card
-                                                    data={dish}
-                                                    onClick={() => handleDetails(dish.id)}
-                                                />
-                                            </SwiperSlide>
-                                        ))
-                                    }
-                                </ContentCard>
-                            </Swiper>
+                            <div className='sliderContainer'>
+                                <div className='cardColor'>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                                <Swiper 
+                                    slidesPerView={3}
+                                    spaceBetween={30}
+                                    loop={true}
+                                    pagination={{
+                                    clickable: true,
+                                    }}
+                                    navigation={true}
+                                    modules={[Pagination,Navigation]}
+                                    className="swiper-button"
+                                >
+                                    <ContentCard >
+                                        {  
+                                            meals.map(dish=>(
+                                                <SwiperSlide key={String(dish.id)} className='swiperSlider'>
+                                                    <Card
+                                                        data={dish}
+                                                        onClick={() => handleDetails(dish.id)}
+                                                    />
+                                                </SwiperSlide>
+                                            ))
+                                        }
+                                    </ContentCard>
+                                </Swiper>
+                            </div>
                         </Section>
 
                         <Section title="Sobremesas">
@@ -105,12 +112,12 @@ export function Home(){
                                 }}
                                 navigation={true}
                                 modules={[Pagination,Navigation]}
-                                className="mySwiper"
+                                className="swiper-button"
                             >
                                 <ContentCard>
                                     {
                                         desserts.map(dish=>(
-                                            <SwiperSlide key={String(dish.id)}>
+                                            <SwiperSlide key={String(dish.id)} className='swiperSlider'>
                                                 <Card
                                                     data={dish}
                                                     onClick={() => handleDetails(dish.id)}
@@ -132,12 +139,12 @@ export function Home(){
                                 }}
                                 navigation={true}
                                 modules={[Pagination,Navigation]}
-                                className="mySwiper"
+                                className="swiper-button"
                             >
                                 <ContentCard>
                                     {
                                         drinks.map(dish=>(
-                                            <SwiperSlide key={String(dish.id)}>
+                                            <SwiperSlide key={String(dish.id)} className='swiperSlider'>
                                                 <Card
                                                     data={dish}
                                                     onClick={() => handleDetails(dish.id)}

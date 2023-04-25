@@ -1,9 +1,15 @@
 import styled from "styled-components";
+import { Swiper} from "swiper/react";
 
 export const Content = styled.div`
     padding: 44px 0 28px 24px; 
     min-height: 100vh; 
 
+    .swiperSlider {
+        width: auto !important;
+        margin-right: 0 !important;
+        box-sizing: border-box;
+    }
 
     >.groupHeader{
         padding: 36px 0 22px;
@@ -55,6 +61,36 @@ export const Content = styled.div`
             line-height: 140%;
         }
     }
+
+    .sliderContainer{
+        position: relative;
+    }
+
+    .cardColor{
+        display: flex;
+        justify-content: space-between;
+        height: 448px;
+        position: absolute;
+        z-index: 2;
+        width: 1122px;
+
+        div{
+            position: absolute;
+            width: 278px;
+            left: 276px;
+            top: 0px;
+            background: linear-gradient(90deg, rgba(0, 10, 15, 0.272541) 0%, #000A0F 100%);
+            /* background-color: #00131C; */
+            transform: matrix(-1, 0, 0, 1, 0, 0);
+        }
+    }
+
+    .swiper-button {
+        .swiper-button-prev::after, .swiper-button-next::after {
+            color: #FFFFFF;
+            font-size: 40px;
+        }
+    }
 `;
 
 
@@ -98,5 +134,3 @@ export const ContentCard = styled.div`
 
     
 `;
-
-

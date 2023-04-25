@@ -29,6 +29,7 @@ export const Container =  styled.div`
         width: 24px;
         margin-top: 16px ;
         margin-bottom: 27px;
+        margin-right: 16px;
     }
 
     @media(min-width:768px){

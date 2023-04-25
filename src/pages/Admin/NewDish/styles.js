@@ -6,9 +6,12 @@ export const Content = styled.div`
   padding: 11px 24px 55px;
 
   input:not(#ingredient){
-    background-color: #0d161b;
     text-align: start;
     border-radius: 8px;
+  }
+
+  .inputColors{
+    background-color:#0D161B;
   }
 
   >section{

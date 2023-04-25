@@ -68,7 +68,7 @@ export function NewDish() {
     })
 
     alert("Prato criado com sucesso!");
-    navigate("/");
+    navigate("/home");
   }
 
   function handleBack(){
@@ -102,6 +102,7 @@ export function NewDish() {
                   type="text" 
                   placeholder="Ex.: Salada Ceasar"
                   onChange={e=>setName(e.target.value)}
+                  className="inputColors"
                 />
               </div>
 
@@ -151,6 +152,7 @@ export function NewDish() {
                     required
                     placeholder="R$ 00,00"
                     onChange={e => setPrice(e.target.value)}
+                    className="inputColors"
                   />
                 </div>
             </Group02>

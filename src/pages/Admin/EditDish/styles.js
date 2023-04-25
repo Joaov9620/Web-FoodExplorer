@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Content = styled.div`
-  height: calc(100vh -50px);
+  min-height: 100vh;
   width: 100%;
   padding: 11px 24px 55px;
 

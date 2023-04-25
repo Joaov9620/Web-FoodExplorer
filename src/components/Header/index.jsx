@@ -35,7 +35,6 @@ function Header(){
         <ErrorBoundary>
             <HeaderBody>
                 <Container>
-                    <div className="menuMobile">
                         <MenuMobile>
                             <div className="buttonMenuHeader">
                                 <ButtonText
@@ -90,7 +89,6 @@ function Header(){
                                 <img src={logout} alt="Sair" onClick={handleSignOut} />
                             </Logout>
                         </div>
-                    </div> 
                 </Container>
             </HeaderBody>
         </ErrorBoundary>

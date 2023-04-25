@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Content = styled.div`
-    height: calc(100vh - 207px);
+    min-height: 100vh;
     padding: 0 28px 0; 
 
     >button{
@@ -84,5 +84,6 @@ export const DishInformation = styled.div`
         color: ${({theme}) => theme.COLORS.WHITE};
         font-family: 'Poppins', sans-serif;
         width: 65%;
+        margin-bottom: 10rem;
     }
 `;

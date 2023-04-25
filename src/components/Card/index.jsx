@@ -10,7 +10,7 @@ export function Card({data = {}, ...rest}){
            <CardImg>
             <img src={imgDemonstrative} alt="Imagem demonstrtivo"/>
                 <h1>{data.name} ...</h1>
-                <span className='descriptionDish'>{data.description}</span>
+                <span className='descriptionDish'>{data.description.slice(0,40) + '...'}</span>
                 <h4>R$ {data.price}</h4>
            </CardImg>
         </Container>
