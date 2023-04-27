@@ -1,6 +1,6 @@
 import React from 'react';
 import ErrorBoundary from '../ErrorBoundary';
-import {HeaderBody,MenuMobile, LogoMobile, SearchMobile,SearchMobile2,Logout} from "./styles"
+import {HeaderBody,MenuMobile,MenuDesktop, Logo, Search,SearchMobile,Logout} from "./styles"
 import { Container } from "../../styles/global";
 
 import {BiSearch} from 'react-icons/bi'
@@ -14,8 +14,10 @@ import { Button } from "../Button";
 import { ButtonText } from "../ButtonText";
 import { Brand } from "../Brand";
 import { Input } from "../Input";
+import { Footer } from "../Footer";
 
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import { useAuth } from '../../hooks/auth';
 
 function Header(){
@@ -23,62 +25,77 @@ function Header(){
     const {signOut} = useAuth();
 
     function handleNewDish(){
-        navigate('/newDish')
+        navigate('/newDish');
     }
 
     function handleSignOut(){
         navigate("/");
         signOut();
     }
-    
+
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(true);
+  
+    function handleMobileMenuClick() {
+      setIsMobileMenuOpen(!isMobileMenuOpen);
+      console.log(isMobileMenuOpen)
+    }
+    // 
+
     return(
         <ErrorBoundary>
             <HeaderBody>
                 <Container>
-                        <MenuMobile>
-                            <div className="buttonMenuHeader">
+                        <MenuMobile style={{ display: isMobileMenuOpen ? 'none' : 'block' }}> 
+                            <div className="buttonMenuHeader" >
                                 <ButtonText
                                     icon={AiOutlineClose}
                                     title="Menu"
+                                    onClick={handleMobileMenuClick} 
                                 />
-                            </div>  
-                            
-                            <SearchMobile2 className="searchMobile2">
-                                <Input
-                                    // icon={BiSearch}
-                                    placeholder="Busque por pratos ou ingredientes"
-                                    type="text"
-                                />
-                            </SearchMobile2>
-    
-                            <div className="buttonsMenu">
-                                <ButtonText title="Novo prato"/>
-                                <ButtonText title="Sair"/>
+                            </div> 
+                            <div>
+                                <SearchMobile>
+                                    <Input
+                                        // icon={BiSearch}
+                                        placeholder="Busque por pratos ou ingredientes"
+                                        type="text"
+                                    />
+                                </SearchMobile>
+        
+                                <div className="buttonsMenu">
+                                    <ButtonText title="Novo prato" onClick={handleNewDish}/>
+                                    <ButtonText title="Sair" onClick={handleSignOut} />
+                                </div>
                             </div>
+                            {/* <Footer/> */}
                         </MenuMobile>
                     
-                        <div className="menu">
-                            <img src={menuMobile} alt="Imagem desmontrativa" className="buttonMenu"/>
+                        <MenuDesktop className="menu">
+                            <div className='buttonMenuDesktop'>
+                                <button onClick={handleMobileMenuClick} style={{ display: isMobileMenuOpen ? 'flex' : 'none' }}>
+                                    <img src={menuMobile} alt="Imagem desmontrativa"/>
+                                </button>
+                            </div>
     
-                            <LogoMobile className="logoHeader">
+                            <Logo className="logoHeader">
                                 <Brand/>
                                 <span>admin</span>
-                            </LogoMobile>
+                            </Logo>
     
-                            <SearchMobile className="searchMobile">
+                            <Search className="search">
                                 <Input
                                     // icon={BiSearch}
                                     placeholder="Busque por pratos ou ingredientes"
                                     type="text"
                                 />
-                            </SearchMobile>
+                            </Search>
     
                             {/* <div className="orders">
                                 <img src={orders} alt="Imagem desmontrativa de pedidos" />
                                 <span>0</span>
-                            </div>
-     */}
-                            <Button title='Novo prato' onClick={handleNewDish} />
+                            </div> */}
+                           
+                            <Button title='Novo prato' onClick={handleNewDish} className="newDish" />
     
                             {/* <div className="ordersDesktop">
                                 <img src={orders} alt="Imagem desmontrativa de pedidos" />
@@ -88,7 +105,7 @@ function Header(){
                             <Logout className="logoutHeader">
                                 <img src={logout} alt="Sair" onClick={handleSignOut} />
                             </Logout>
-                        </div>
+                        </MenuDesktop>
                 </Container>
             </HeaderBody>
         </ErrorBoundary>

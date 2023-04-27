@@ -87,7 +87,6 @@ export const Group01 = styled.div`
     align-items: center;
     justify-content: center;
     height: 48px;
-    position: relative;
     font-weight: 500;
     font-size: 14px;
     margin-top: 16px;

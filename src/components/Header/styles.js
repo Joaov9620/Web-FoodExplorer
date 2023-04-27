@@ -5,29 +5,21 @@ export const HeaderBody = styled.header`
     width: 100%;
     background: #00111A;
     height: 114px;
-    
-    .menu{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 24px 28px;
-    }
 
-    .menu button, .ordersDesktop{
+    /* .menuMobile{
+        display: hidden;
+    } */
+
+    .newDish, .ordersDesktop{
         display: none;
     }
 
-    >button{
+    .newDish{
         font-weight: 500;
         font-size: 1.4REM;
         line-height: 2.4REM;
         color:  ${({theme}) => theme.COLORS.WHITE};
-    }
-
-    @media(max-width:850px){
-        .searchMobile{
-            display: none;
-        }
+        background:  ${({theme}) => theme.COLORS.BACKGROUND_BUTTON_RED};
     }
 
     @media(max-width:850px){
@@ -39,9 +31,9 @@ export const HeaderBody = styled.header`
             padding: 28px 24px;
         }
 
-        .searchMobile2{
+        /* .searchMobile2{
             display: none;
-        }
+        } */
 
         .logoHeader{
             flex-direction: column;
@@ -49,8 +41,14 @@ export const HeaderBody = styled.header`
         }
     }
 
+    @media(max-width:1050px){
+        .search{
+            display: none;
+        }
+    }
+
     @media(min-width: 1290px){
-        .buttonMenu, .orders{
+        .buttonMenuDesktop, .orders{
             display: none;
         }
 
@@ -60,21 +58,47 @@ export const HeaderBody = styled.header`
     }
 `;
 
+export const MenuDesktop = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 28px;
+    /* display: none; */
+
+    >div button{
+        background: transparent;
+        border: none;
+    }
+`;
+
 export const MenuMobile = styled.div`
-    display: none;
    backdrop-filter: blur(75px); 
    position: absolute;
    top: 0;
    left: 0;
    width: 100%;
-   height: 100vh;
+   min-height: 100vh;
+    transform: translate(0px);
 
-   img{
-    padding: 28px 24px;
+   >div:nth-child(2){
+    margin: 40px 28px;
    }
 
-   >.buttonsMenu{
-    width: 372px;
+   .buttonMenuHeader{
+    height: 114px;
+    width: 100%;
+    background: #00111A;
+    padding:56px 28px 24px;
+   }
+
+   .buttonMenuHeader button{
+        font-weight: 400;
+        font-size: 22px;
+        line-height: 25px;
+   }
+
+   .buttonsMenu{
+    /* width: 372px; */
     margin: 36px auto;
     display: flex;
     flex-direction: column; 
@@ -92,22 +116,9 @@ export const MenuMobile = styled.div`
     .buttonsMenu :hover{
         background: #000A0F;
     }
-
-   .buttonMenuHeader{
-    height: 114px;
-    width: 100%;
-    background: #00111A;
-    padding:56px 28px 24px;
-   }
-
-   .buttonMenuHeader button{
-        font-weight: 400;
-        font-size: 22px;
-        line-height: 25px;
-   }
 `;
 
-export const LogoMobile = styled.div`
+export const Logo = styled.div`
     display: flex;
     align-items: center;
 
@@ -123,18 +134,19 @@ export const LogoMobile = styled.div`
     }
 `;
 
-export const SearchMobile = styled.div`
+export const Search = styled.div`
     width: 518px;
 
-    .orders{
-        display: flex;
-        gap: 32px;
+    >div{
+        margin-top: 0;
     }
 `;
 
-export const SearchMobile2 = styled.div`
-    width: 372px;
+export const SearchMobile = styled.div`
     margin: 36px auto 0;
+    >div{
+        width: 100%
+    }
 `;
 
 export const Logout = styled.button`

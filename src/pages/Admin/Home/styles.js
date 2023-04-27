@@ -63,19 +63,19 @@ export const Content = styled.div`
     }
 
     .sliderContainer{
-        position: relative;
+        /* position: relative; */
     }
 
     .cardColor{
         display: flex;
         justify-content: space-between;
         height: 448px;
-        position: absolute;
+        /* position: absolute; */
         z-index: 2;
         width: 1122px;
 
         div{
-            position: absolute;
+            /* position: absolute; */
             width: 278px;
             left: 276px;
             top: 0px;
