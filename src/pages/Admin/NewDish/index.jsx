@@ -68,7 +68,7 @@ export function NewDish() {
     })
 
     alert("Prato criado com sucesso!");
-    navigate("/home");
+    navigate("/");
   }
 
   function handleBack(){
