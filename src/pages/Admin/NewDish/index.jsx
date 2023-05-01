@@ -55,6 +55,10 @@ export function NewDish() {
       return alert("Preço obrigatório!")
     }
 
+    if(!ingredientItem){
+      return alert("Adicione no mínimo um ingrediente!")
+    }
+
     if(ingredientItem){
       return alert("Adicione o ingrediente que está no campo ou remova para prosseguir!")
     }

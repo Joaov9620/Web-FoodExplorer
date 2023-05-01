@@ -17,6 +17,8 @@ import { api } from "../../../services/api";
 
 
 export function Details(){
+    const [data, setData] = useState(null);
+
     const navigate  = useNavigate();
     const params = useParams();
 
@@ -28,22 +30,25 @@ export function Details(){
         navigate(`/editDish/${id}`);
     }
 
-    const [data, setData] = useState(null);
+    async function fetchDish(){
+        const response = await api.get(`/dish/${params.id}`);
+        setData(response.data);
+      }
 
-    useEffect(()=>{
-        async function fetchDish(){
-          const response = await api.get(`/dish/${params.id}`);
-          setData(response.data);
-        }
+    useEffect(()=> {
+        // async function fetchDish(){
+        //   const response = await api.get(`/dish/${params.id}`);
+        //   setData(response.data);
+        // }
         fetchDish();
-      },[params.id]);
-
+    }, []);
+    console.log(data);
     return (
         <>
             <Header/>
             <Container>
                 {
-                  data &&
+                  data &&(
                     <Content> 
                         <ButtonText 
                             icon={IoIosArrowBack}
@@ -57,15 +62,15 @@ export function Details(){
                             />
                             <DishInformation className='dishInformation'>
                                 <h1>{data.name}</h1>
-                                <span>{data.description}</span>
+                                <p>{data.description}</p>
                                 <div>                               
-                                {
-                                    data.ingredients &&  
-                                    data.ingredients.map((ingredient, index) =>(
-                                        <IngredientDetails
-                                            key={String(index)}
-                                            value={ingredient.name}                                          
-                                         />
+                                    {
+                                        data.ingredients &&  
+                                        data.ingredients.map((ingredient, index) =>(
+                                            <IngredientDetails
+                                                key={String(index)}
+                                                value={ingredient.name}                                          
+                                            />
                                         ))
                                     }
                                 </div>
@@ -77,6 +82,7 @@ export function Details(){
                             </DishInformation>
                         </div>          
                     </Content>
+                    )
                 }
             </Container>
             <Footer/>

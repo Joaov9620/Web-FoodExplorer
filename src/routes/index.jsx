@@ -8,33 +8,25 @@ import {useAuth} from '../hooks/auth';
 
 export function Routes(){
     const {user} = useAuth();
-    console.log(user)
 
-    // if(user || user.type === 'employee'){
-    //    return (
-    //     <BrowserRouter>
-    //         <AdminRoutes />
-    //     </BrowserRouter>
-    //    )
-    // }else if(user || user.type === 'client'){
-    //     return (
-    //         <BrowserRouter>
-    //             <ClientRoutes/>
-    //         </BrowserRouter>
-    //     )
-    // }else{
-    //     return(
-    //         <BrowserRouter>
-    //             <AuthRoutes/>
-    //         </BrowserRouter>
-    //     )
-    // }
-
-    
-    return(
+    if(user && user.type === 'employee'){
+       return (
         <BrowserRouter>
-           {user?<AdminRoutes />:<AuthRoutes/>}
-      </BrowserRouter>
-    )
-    
+            <AdminRoutes/>
+        </BrowserRouter>
+       )
+    }else if(user && user.type === 'client'){
+        return (
+            <BrowserRouter>
+                <ClientRoutes/>
+            </BrowserRouter>
+        )
+    }else{
+        return(
+            <BrowserRouter>
+                <AuthRoutes/>
+            </BrowserRouter>
+        )
+    }
+  
 };

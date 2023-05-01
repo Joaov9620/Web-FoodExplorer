@@ -59,7 +59,7 @@ export function Home(){
             <Header/>
             <Container>
                     <Content>
-                        {/* <GroupHeader>
+                        <GroupHeader>
                             <div className='group1Img'>
                                 <img src={imgDemonstrative} alt="Imagem demonstrativa" />
                             </div>
@@ -68,7 +68,7 @@ export function Home(){
                                 <h1>Sabores inigualáveis</h1>
                                 <span>Sinta o cuidado do preparo com ingredientes selecionados</span>
                             </div> 
-                        </GroupHeader> */}
+                        </GroupHeader>
 
                         {  (dish.length === 0) &&
                             <BackgroundHome>

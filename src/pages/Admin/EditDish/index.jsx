@@ -46,9 +46,15 @@ export function EditDish() {
       setIngredients(Array.isArray(dishData.ingredients) ? dishData.ingredients : []);
       setPrice(dishData.price);
       setDescription(dishData.description);
+      console.log(response)
       }
     fetchDish();
   },[params.id]);
+
+  
+
+  const ingredientsNames = ingredients.map(ingredient => ingredient.name);
+  
   
   function handleBack(){
     navigate(-1);
@@ -74,17 +80,21 @@ export function EditDish() {
   }
 
   async function handleEditDish(){
-    await api.put("/dish",{
+    if(ingredientItem){
+      return alert("Adicione o ingrediente que está no campo ou remova para prosseguir!")
+    }
+
+    await api.put(`/dish/${params.id}`,{
       name,
       category,
-      ingredients,
+      ingredients: ingredientsNames,
       price,
       description
     })
 
-    alert("Prato criado com sucesso!");
+    alert("Prato atualizado com sucesso!");
     navigate("/");
-  } //criar a rota de atualizar no backend
+  } 
 
   const handleFileInput = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -95,100 +105,101 @@ export function EditDish() {
       <Header/>
       <Container>
         {
-          data &&
-          <Content>
-            <ButtonText icon={IoIosArrowBack} title="Voltar" onClick={handleBack}/>
-            <Section title="Editar prato">
-              <Group01 className='group01 groups'>
-                <div >
-                  <LabelInput title="Imagem do prato" htmlFor="pratoImg" />
-                  <div>
-                    <input id="pratoImg" type="file" onChange={handleFileInput}/>
-                    <label htmlFor="pratoImg">
-                      <ButtonText icon={HiOutlineArrowUpTray} />
-                      Selecione a imagem
-                    </label>
-                  </div>
-                </div>
-
-                <div>
-                  <LabelInput title="Nome" htmlFor="name" />
-                  <Input 
-                    id="name" 
-                    type="text" 
-                    value={name}
-                    onChange={e => setName(e.target.value)}
-                    className="inputColors"
-                  />
-                </div>
-
-                <div>
-                  <LabelInput title="Categoria" htmlFor="category" />
-                  <select id="category" value={category} onChange={e=>setCategory(e.target.value)}>
-                    <option value="Refeição">Refeição</option>
-                    <option value="Sobremesas">Sobremesas</option>
-                    <option value="Bebidas">Bebidas</option>
-                  </select>
-                </div>
-              </Group01>
-
-              <Group02 className='group02 groups'>
-                  <div>
-                    <LabelInput title="Ingredientes" htmlFor="ingredient"/>
-                    <div className='ingredientItem' >   
-                    {
-                      ingredients &&    
-                      ingredients.map((item, index) =>(
-                        <IngredientItem
-                          key={String(index)}
-                          value={item.name}
-                          onClick={()=> handleRemoveIngredient(item)}
-                        />
-                      ))
-                    }
-                      <IngredientItem 
-                        id="ingredient"
-                        isNew 
-                        placeholder="Adicionar"
-                        onChange={e => setItemIngredient(e.target.value)}
-                        onClick={handleAddIngredient}
-                        value={ingredientItem}
-                      />
+          data && (
+            <Content>
+              <ButtonText icon={IoIosArrowBack} title="Voltar" onClick={handleBack}/>
+              <Section title="Editar prato">
+                <Group01 className='group01 groups'>
+                  <div >
+                    <LabelInput title="Imagem do prato" htmlFor="pratoImg" />
+                    <div>
+                      <input id="pratoImg" type="file" onChange={handleFileInput}/>
+                      <label htmlFor="pratoImg">
+                        <ButtonText icon={HiOutlineArrowUpTray} />
+                        Selecione a imagem
+                      </label>
                     </div>
                   </div>
 
                   <div>
-                    <LabelInput title="Preço" htmlFor="Price"/>
+                    <LabelInput title="Nome" htmlFor="name" />
                     <Input 
-                      id="Price"
-                      type="number"
-                      step="0.01"
-                      min="0"
-                      max="10000"
-                      required
-                      value={price}
-                      onChange={e => setPrice(e.target.value)}
+                      id="name" 
+                      type="text" 
+                      value={name}
+                      onChange={e => setName(e.target.value)}
                       className="inputColors"
                     />
                   </div>
-              </Group02>
 
-              <Group03 className='groups'>
-                <div>
-                  <LabelInput title="Descrição" htmlFor="textArea"/>
-                  <TextArea 
-                    id="textArea"  
-                    value={description}
-                    onChange={e=>setDescription(e.target.value)}/>
-                </div>
-              </Group03>
+                  <div>
+                    <LabelInput title="Categoria" htmlFor="category" />
+                    <select id="category" value={category} onChange={e=>setCategory(e.target.value)}>
+                      <option value="Refeição">Refeição</option>
+                      <option value="Sobremesas">Sobremesas</option>
+                      <option value="Bebidas">Bebidas</option>
+                    </select>
+                  </div>
+                </Group01>
 
-              <Group04 className='group04 groups'>
-                  <Button title="Excluir prato" onClick={handleDeletedDish}/>
-                  <Button title="Salvar alterações"/>
-              </Group04>
-            </Section>
-          </Content>
+                <Group02 className='group02 groups'>
+                    <div>
+                      <LabelInput title="Ingredientes" htmlFor="ingredient"/>
+                      <div className='ingredientItem' >   
+                      {
+                        ingredients &&    
+                        ingredients.map((item, index) =>(
+                          <IngredientItem
+                            key={String(index)}
+                            value={item.name}
+                            onClick={()=> handleRemoveIngredient(item)}
+                          />
+                        ))
+                      }
+                        <IngredientItem 
+                          id="ingredient"
+                          isNew 
+                          placeholder="Adicionar"
+                          onChange={e => setItemIngredient(e.target.value)}
+                          onClick={handleAddIngredient}
+                          value={ingredientItem}
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <LabelInput title="Preço" htmlFor="Price"/>
+                      <Input 
+                        id="Price"
+                        type="number"
+                        step="0.01"
+                        min="0"
+                        max="10000"
+                        required
+                        value={price}
+                        onChange={e => setPrice(e.target.value)}
+                        className="inputColors"
+                      />
+                    </div>
+                </Group02>
+
+                <Group03 className='groups'>
+                  <div>
+                    <LabelInput title="Descrição" htmlFor="textArea"/>
+                    <TextArea 
+                      id="textArea"  
+                      value={description}
+                      onChange={e=>setDescription(e.target.value)}/>
+                  </div>
+                </Group03>
+
+                <Group04 className='group04 groups'>
+                    <Button title="Excluir prato" onClick={handleDeletedDish}/>
+                    <Button title="Salvar alterações" onClick={handleEditDish}/>
+                </Group04>
+              </Section>
+            </Content>
+          )
         }
       </Container>
       <Footer />

@@ -63,7 +63,7 @@ export const DishInformation = styled.div`
         margin-bottom: 24px;
     }
 
-    span{
+    p{
         font-weight: 400;
         font-size:clamp(1.6rem, calc(1.2rem + 1vw), 2rem);
         line-height: 140%;
