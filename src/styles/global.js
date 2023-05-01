@@ -15,6 +15,7 @@ export default createGlobalStyle `
         background-color: ${({theme}) => theme.COLORS.BACKGROUND_900};
         color: ${({theme}) => theme.COLORS.WHITE};
         -webkit-font-smoothing: antialiased;
+        height: 100vh;
     }
 
     body, input, button, textarea, select{
@@ -39,7 +40,7 @@ export default createGlobalStyle `
 
 export const Container = styled.div`
     width: 100%;
-    
+
     margin: 0 auto;
     max-width: 370px;
 

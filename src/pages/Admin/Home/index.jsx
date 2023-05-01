@@ -59,7 +59,7 @@ export function Home(){
             <Header/>
             <Container>
                     <Content>
-                        <GroupHeader>
+                        <GroupHeader className='groupHeader'>
                             <div className='group1Img'>
                                 <img src={imgDemonstrative} alt="Imagem demonstrativa" />
                             </div>

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Swiper} from "swiper/react";
 
 export const Content = styled.div`
     padding: 44px 0 28px 24px; 
@@ -52,6 +51,51 @@ export const Content = styled.div`
             }
         }
     }
+
+    @media(min-width:664px){
+        .groupHeader{
+            .group1Img{
+                left: -34px;
+                top: -51px;
+                height: 204px;
+                width:306px;  
+            }
+
+            .group2Inf{
+                margin-left: 270px;
+
+                >h1{
+                    font-size: 28px;
+                }
+
+                >span{
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+
+    @media(min-width:1022px){
+        .groupHeader{
+            padding: 90px 0;
+            margin: 164px 0;
+    
+            .group1Img{
+                left: -60px;
+                top: -132px;
+                height: 398px;
+                width: 615px;
+            }
+    
+            .group2Inf{
+                margin-left: 525px;
+    
+                >h1{
+                    font-size: 40px;
+                }
+            }
+        }
+    }
 `;
 
 export const GroupHeader = styled.header`
@@ -59,44 +103,43 @@ export const GroupHeader = styled.header`
     margin: 44px 16px 62px 0;
     background: linear-gradient(180deg, #091E26 0%, #00131C 100%);
     border-radius: 8px;
+    position: relative;
 
     .group1Img{
-        /* position: absolute;
-        z-index: 1; */
-        /* top: 142.06px; */
-        top: 163px;   
+        position: absolute;
+        left: -30px;
+        top: -11px;
         height: 149px;
         width: 197px;  
     }
 
     .group1Img img{
-        
         object-fit: cover;
-        /* height: clamp(149px, 100%, 407px);
-        width: clamp(197px, 100%, 633px); */
         height: auto;
         width: 100%;
     }
 
     .group2Inf{
-        /* position: relative; */
-        /* margin: 17.2rem 0 6.3rem; */
-        /* padding: 8.7rem  10rem 8.7rem 0; */
-        margin: 0 21px 0 189px;
         color: ${({theme}) => theme.COLORS.TEXT_COLOR};
-        text-align: left;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        margin-left: 150px;
+        margin-right: 10px;
 
         >h1{
             font-family: 'Poppins',sans-serif;
             /* font-weight: 500; */
             font-weight: 600; 
-            font-size: clamp(18px, calc(18px +1vw), 40px);
+            font-size: 15px;
             line-height: 140%;
+            margin-bottom: 5px;
         }
 
         >span{
             font-weight: 400;
-            font-size: clamp(12px,calc(10px + 1vw),16px);
+            font-size: 11px;
             line-height: 140%;
         }
     }

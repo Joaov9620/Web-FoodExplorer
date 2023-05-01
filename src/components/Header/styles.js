@@ -74,6 +74,7 @@ export const MenuDesktop = styled.div`
 export const MenuMobile = styled.div`
    backdrop-filter: blur(75px); 
    position: absolute;
+   z-index: 2;
    top: 0;
    left: 0;
    width: 100%;
