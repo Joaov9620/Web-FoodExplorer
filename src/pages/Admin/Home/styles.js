@@ -54,6 +54,7 @@ export const Content = styled.div`
 
     @media(min-width:664px){
         .groupHeader{
+
             .group1Img{
                 left: -34px;
                 top: -51px;
@@ -76,6 +77,8 @@ export const Content = styled.div`
     }
 
     @media(min-width:1022px){
+        margin-right: 30px;
+        
         .groupHeader{
             padding: 90px 0;
             margin: 164px 0;
