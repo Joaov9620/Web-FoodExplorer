@@ -53,6 +53,7 @@ export function Home(){
         navigate(`/details/${id}`);
     }
 
+
     return (
         <Layout>
             <Container>

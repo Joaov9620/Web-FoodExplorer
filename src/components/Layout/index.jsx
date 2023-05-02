@@ -1,15 +1,18 @@
-import React from 'react';
 
+import React from 'react';
 import Header from '../Header';
 import { Footer } from '../Footer';
 
-export function Layout({ children }){
-  return (
-    <>
-      <Header />
-      {children}
-      <Footer />
-    </>
-  );
-};
+import { HeaderProvider } from '../../hooks/HeaderContext';
 
+
+export function Layout({ children }) {
+
+  return (
+      <HeaderProvider>
+      <Header/>
+        {children}
+      <Footer />
+      </HeaderProvider>
+  );
+}

@@ -19,10 +19,20 @@ import { Footer } from "../Footer";
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useAuth } from '../../hooks/auth';
+import { useHeader } from '../../hooks/HeaderContext';
 
 function Header(){
     const navigate = useNavigate();
     const {signOut} = useAuth();
+
+    const {headerSearchValue, setSearchValue}  = useHeader();
+    const [valueSearch, setValueSearch] = useState(headerSearchValue);
+  
+    function handleChange(event) {
+        const value = event.target.value;
+        setValueSearch(value);
+        setSearchValue(value);
+    }
 
     function handleNewDish(){
         navigate('/newDish');
@@ -37,9 +47,7 @@ function Header(){
   
     function handleMobileMenuClick() {
       setIsMobileMenuOpen(!isMobileMenuOpen);
-      console.log(isMobileMenuOpen)
     }
-    // 
 
     return(
         <ErrorBoundary>
@@ -87,6 +95,7 @@ function Header(){
                                     // icon={BiSearch}
                                     placeholder="Busque por pratos ou ingredientes"
                                     type="text"
+                                   onChange={handleChange} 
                                 />
                             </Search>
     
