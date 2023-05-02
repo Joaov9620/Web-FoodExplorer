@@ -1,8 +1,7 @@
 import {Content, DishInformation } from "../Details/styles"; 
 import { Container } from '../../../styles/global';
 
-import Header  from '../../../components/Header'
-import { Footer } from '../../../components/Footer';
+import { Layout } from '../../../components/Layout/index';
 import { ButtonText } from "../../../components/ButtonText";
 import { Button } from "../../../components/Button";
 import { IngredientDetails } from "../../../components/IngredientDetails";
@@ -42,10 +41,9 @@ export function Details(){
         // }
         fetchDish();
     }, []);
-    console.log(data);
+
     return (
-        <>
-            <Header/>
+        <Layout>
             <Container>
                 {
                   data &&(
@@ -85,7 +83,6 @@ export function Details(){
                     )
                 }
             </Container>
-            <Footer/>
-        </>
+        </Layout>
     )
 };

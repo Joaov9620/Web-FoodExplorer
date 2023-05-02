@@ -1,8 +1,7 @@
 import { ContentCard, GroupHeader, BackgroundHome, Content,} from './styles';
 import { Container } from '../../../styles/global';
 
-import  Header  from '../../../components/Header';
-import { Footer } from '../../../components/Footer';
+import { Layout } from '../../../components/Layout/index';
 import { Section } from '../../../components/Section';
 import { Card } from '../../../components/Card';
 
@@ -55,8 +54,7 @@ export function Home(){
     }
 
     return (
-        <>
-            <Header/>
+        <Layout>
             <Container>
                     <Content>
                         <GroupHeader className='groupHeader'>
@@ -70,7 +68,8 @@ export function Home(){
                             </div> 
                         </GroupHeader>
 
-                        {  (dish.length === 0) &&
+                        {  
+                            (dish.length === 0) &&
                             <BackgroundHome>
                                 <span>Nenhum prato adicionado!</span>
                             </BackgroundHome>
@@ -79,23 +78,23 @@ export function Home(){
                         {
                             (meals.length > 0) &&
                             <Section title="Refeições">
-                                        <div className='sliderContainer'>
-                                            <div className='cardColor' style={{display: 'none'}}>
-                                                <div></div>
-                                                <div></div>
-                                            </div>
-                                            <Swiper 
-                                                slidesPerView={3}
-                                                spaceBetween={30}
-                                                loop={true}
-                                                pagination={{
-                                                clickable: true,
-                                                }}
-                                                navigation={true}
-                                                modules={[Pagination,Navigation]}
-                                                className="swiper-button"
-                                            >
-                                                <ContentCard >
+                                <div className='sliderContainer'>
+                                    <div className='cardColor' style={{display: 'none'}}>
+                                        <div></div>
+                                        <div></div>
+                                    </div>
+                                    <Swiper 
+                                        slidesPerView={3}
+                                        spaceBetween={30}
+                                        loop={true}
+                                        pagination={{
+                                        clickable: true,
+                                        }}
+                                        navigation={true}
+                                        modules={[Pagination,Navigation]}
+                                        className="swiper-button"
+                                        >
+                                            <ContentCard >
                                                     {  
                                                         meals.map(dish=>(
                                                             <SwiperSlide key={String(dish.id)} className='swiperSlider'>
@@ -106,12 +105,15 @@ export function Home(){
                                                             </SwiperSlide>
                                                         ))
                                                     }
-                                                </ContentCard>
-                                            </Swiper>
-                                        </div>
-                                        <div className="buttonText">
-                                            <ButtonText title='Ver mais'/>
-                                        </div>
+                                            </ContentCard>
+                                    </Swiper>
+                                </div>
+                                {
+                                    (meals.length > 10) &&
+                                    <div className="buttonText">
+                                        <ButtonText title='Ver mais'/>
+                                    </div>
+                                }      
                             </Section>
                         }
 
@@ -142,9 +144,12 @@ export function Home(){
                                                 }
                                             </ContentCard>
                                         </Swiper>
-                                        <div className="buttonText">
-                                            <ButtonText title='Ver mais'/>
-                                        </div>
+                                        {   
+                                            (desserts.length > 10) &&
+                                            <div className="buttonText">
+                                                <ButtonText title='Ver mais'/>
+                                            </div>
+                                        }
                             </Section>
                         }
                                 
@@ -175,15 +180,17 @@ export function Home(){
                                             }
                                         </ContentCard>
                                     </Swiper>
-                                    <div className="buttonText">
+                                    {
+                                        (drinks.length > 10) &&
+                                        <div className="buttonText">
                                             <ButtonText title='Ver mais'/>
-                                    </div>
+                                        </div>
+                                    }
                             </Section>
                         }                                
 
                     </Content>
             </Container>
-            <Footer/>
-        </>
+        </Layout>
     )
 };

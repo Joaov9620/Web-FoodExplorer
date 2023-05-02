@@ -1,8 +1,7 @@
 import {Content, Group01,Group02,Group03,Group04} from "./styles";
 import { Container } from '../../../styles/global';
 
-import Header from '../../../components/Header';
-import { Footer } from '../../../components/Footer';
+import { Layout } from "../../../components/Layout";
 import { ButtonText } from '../../../components/ButtonText';
 import { Section } from '../../../components/Section';
 import { LabelInput } from '../../../components/LabelInput';
@@ -80,8 +79,7 @@ export function NewDish() {
   }
 
   return (
-    <>  
-      <Header/>
+    <Layout>
       <Container>
         <Content>
           <ButtonText icon={IoIosArrowBack} title="Voltar" onClick={handleBack} />
@@ -179,7 +177,6 @@ export function NewDish() {
           </Section>
         </Content>
       </Container>
-      <Footer />
-    </>
+    </Layout>
   );
 };
