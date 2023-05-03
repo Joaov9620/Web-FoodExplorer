@@ -25,8 +25,6 @@ export function Home(){
     const navigate = useNavigate();
     
     const {searchValue} = useHeader();
-    console.log(searchValue);
-
     const [dish, setDish] = useState([]);
     const meals = [];
     const desserts = [];
