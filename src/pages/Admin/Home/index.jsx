@@ -4,6 +4,7 @@ import { Container } from '../../../styles/global';
 import { Layout } from '../../../components/Layout/index';
 import { Section } from '../../../components/Section';
 import { Card } from '../../../components/Card';
+import { ButtonText } from '../../../components/ButtonText';
 
 import imgDemonstrative from '../../../assets/img/pngegg 1.png';
 
@@ -13,29 +14,23 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper";
 
+import {api} from '../../../services/api';
+
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useHeader } from '../../../hooks/HeaderContext';
 
-import {api} from '../../../services/api';
-import { ButtonText } from '../../../components/ButtonText';
 
 export function Home(){
     const navigate = useNavigate();
+    
+    const {searchValue} = useHeader();
+    console.log(searchValue);
 
     const [dish, setDish] = useState([]);
     const meals = [];
     const desserts = [];
     const drinks = [];
-
-    useEffect(()=>{
-        async function fetchDish(){
-            const response = await api.get("/dish");
-            const dishData = (response.data);
-
-            setDish(dishData);
-        }
-        fetchDish();
-    },[]);
 
     if(dish){
         for (let i = 0; i < dish.length; i++) {
@@ -47,13 +42,33 @@ export function Home(){
               drinks.push(dish[i]);
             }
         }
-    } //refatorar esse código(fazer essa verificação no backend pois este mesmo codigo se repete na page SeeAll)
+    }
 
     function handleDetails(id){
         navigate(`/details/${id}`);
     }
 
+    useEffect(()=>{
+        async function fetchDish(){
+            const response = await api.get("/dish");
+            const dishData = (response.data);
 
+            setDish(dishData);
+        }
+        fetchDish();
+    },[]);
+
+    useEffect(() => {
+        async function fetchNotes(){
+            const response = await api.get(`/dish?name=${searchValue}`);
+            const dishData = (response.data);
+
+            setDish(dishData);
+        }
+        fetchNotes();
+
+    }, [searchValue]);
+    
     return (
         <Layout>
             <Container>
