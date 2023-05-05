@@ -5,7 +5,6 @@ export const HeaderContext = createContext('');
 function HeaderProvider({ children , value}) {
   const [searchValue, setSearchValue] = useState(value);
   
-  
   return (
     <HeaderContext.Provider value={{searchValue, setSearchValue}}>
       {children}

@@ -24,7 +24,7 @@ import { useHeader } from '../../../hooks/HeaderContext';
 export function Home(){
     const navigate = useNavigate();
     
-    const {searchValue} = useHeader();
+    const {searchValue} = useHeader("");
     const [dish, setDish] = useState([]);
     const meals = [];
     const desserts = [];

@@ -1,10 +1,10 @@
 import { ContentCard, GroupHeader, BackgroundHome, Content,} from './styles';
 import { Container } from '../../../styles/global';
 
-import  Header  from '../../../components/Header';
-import { Footer } from '../../../components/Footer';
+import { LayoutClient } from '../../../components/LayoutClient';
 import { Section } from '../../../components/Section';
-import { Card } from '../../../components/Card';
+import { CardClient } from '../../../components/CardClient';
+import { ButtonText } from '../../../components/ButtonText';
 
 import imgDemonstrative from '../../../assets/img/pngegg 1.png';
 
@@ -14,29 +14,23 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper";
 
+import {api} from '../../../services/api';
+
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useHeader } from '../../../hooks/HeaderContext';
 
-import {api} from '../../../services/api';
-import { ButtonText } from '../../../components/ButtonText';
 
 export function Home(){
     const navigate = useNavigate();
-
+    
+    const {searchValue} = useHeader("");
     const [dish, setDish] = useState([]);
     const meals = [];
     const desserts = [];
     const drinks = [];
 
-    useEffect(()=>{
-        async function fetchDish(){
-            const response = await api.get("/dish");
-            const dishData = (response.data);
-
-            setDish(dishData);
-        }
-        fetchDish();
-    },[]);
+    console.log(searchValue)
 
     if(dish){
         for (let i = 0; i < dish.length; i++) {
@@ -48,18 +42,38 @@ export function Home(){
               drinks.push(dish[i]);
             }
         }
-    } //refatorar esse código(fazer essa verificação no backend pois este mesmo codigo se repete na page SeeAll)
+    }
 
     function handleDetails(id){
         navigate(`/details/${id}`);
     }
 
+    useEffect(()=>{
+        async function fetchDish(){
+            const response = await api.get("/dish");
+            const dishData = (response.data);
+
+            setDish(dishData);
+        }
+        fetchDish();
+    },[]);
+
+    useEffect(() => {
+        async function fetchNotes(){
+            const response = await api.get(`/dish?name=${searchValue}`);
+            const dishData = (response.data);
+
+            setDish(dishData);
+        }
+        fetchNotes();
+
+    }, [searchValue]);
+    
     return (
-        <>
-            <Header/>
+        <LayoutClient>
             <Container>
                     <Content>
-                        {/* <GroupHeader>
+                        <GroupHeader className='groupHeader'>
                             <div className='group1Img'>
                                 <img src={imgDemonstrative} alt="Imagem demonstrativa" />
                             </div>
@@ -68,9 +82,10 @@ export function Home(){
                                 <h1>Sabores inigualáveis</h1>
                                 <span>Sinta o cuidado do preparo com ingredientes selecionados</span>
                             </div> 
-                        </GroupHeader> */}
+                        </GroupHeader>
 
-                        {  (dish.length === 0) &&
+                        {  
+                            (dish.length === 0) &&
                             <BackgroundHome>
                                 <span>Nenhum prato adicionado!</span>
                             </BackgroundHome>
@@ -79,39 +94,43 @@ export function Home(){
                         {
                             (meals.length > 0) &&
                             <Section title="Refeições">
-                                        <div className='sliderContainer'>
-                                            <div className='cardColor' style={{display: 'none'}}>
-                                                <div></div>
-                                                <div></div>
-                                            </div>
-                                            <Swiper 
-                                                slidesPerView={3}
-                                                spaceBetween={30}
-                                                loop={true}
-                                                pagination={{
-                                                clickable: true,
-                                                }}
-                                                navigation={true}
-                                                modules={[Pagination,Navigation]}
-                                                className="swiper-button"
-                                            >
-                                                <ContentCard >
+                                <div className='sliderContainer'>
+                                    <div className='cardColor' style={{display: 'none'}}>
+                                        <div></div>
+                                        <div></div>
+                                    </div>
+                                    <Swiper 
+                                        slidesPerView={3}
+                                        spaceBetween={30}
+                                        loop={true}
+                                        pagination={{
+                                        clickable: true,
+                                        }}
+                                        navigation={true}
+                                        modules={[Pagination,Navigation]}
+                                        className="swiper-button"
+                                        >
+                                            <ContentCard >
                                                     {  
                                                         meals.map(dish=>(
                                                             <SwiperSlide key={String(dish.id)} className='swiperSlider'>
-                                                                <Card
+                                                                <CardClient
                                                                     data={dish}
-                                                                    onClick={() => handleDetails(dish.id)}
+                                                                    handleDetails={handleDetails}
+                                                                    id={dish.id}
                                                                 />
                                                             </SwiperSlide>
                                                         ))
                                                     }
-                                                </ContentCard>
-                                            </Swiper>
-                                        </div>
-                                        <div className="buttonText">
-                                            <ButtonText title='Ver mais'/>
-                                        </div>
+                                            </ContentCard>
+                                    </Swiper>
+                                </div>
+                                {
+                                    (meals.length > 10) &&
+                                    <div className="buttonText">
+                                        <ButtonText title='Ver mais'/>
+                                    </div>
+                                }      
                             </Section>
                         }
 
@@ -133,18 +152,22 @@ export function Home(){
                                                 {
                                                     desserts.map(dish=>(
                                                         <SwiperSlide key={String(dish.id)} className='swiperSlider'>
-                                                            <Card
+                                                            <CardClient
                                                                 data={dish}
-                                                                onClick={() => handleDetails(dish.id)}
+                                                                handleDetails={handleDetails}
+                                                                id={dish.id}
                                                             />
                                                         </SwiperSlide>
                                                     ))
                                                 }
                                             </ContentCard>
                                         </Swiper>
-                                        <div className="buttonText">
-                                            <ButtonText title='Ver mais'/>
-                                        </div>
+                                        {   
+                                            (desserts.length > 10) &&
+                                            <div className="buttonText">
+                                                <ButtonText title='Ver mais'/>
+                                            </div>
+                                        }
                             </Section>
                         }
                                 
@@ -166,24 +189,27 @@ export function Home(){
                                             {
                                                 drinks.map(dish=>(
                                                     <SwiperSlide key={String(dish.id)} className='swiperSlider'>
-                                                        <Card
+                                                        <CardClient
                                                             data={dish}
-                                                             onClick={() => handleDetails(dish.id)}
+                                                            handleDetails={handleDetails}
+                                                            id={dish.id}
                                                         />
                                                      </SwiperSlide>
                                                 ))
                                             }
                                         </ContentCard>
                                     </Swiper>
-                                    <div className="buttonText">
+                                    {
+                                        (drinks.length > 10) &&
+                                        <div className="buttonText">
                                             <ButtonText title='Ver mais'/>
-                                    </div>
+                                        </div>
+                                    }
                             </Section>
                         }                                
 
                     </Content>
             </Container>
-            <Footer/>
-        </>
+        </LayoutClient>
     )
 };

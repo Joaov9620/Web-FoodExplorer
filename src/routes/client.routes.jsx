@@ -1,7 +1,7 @@
 import {Routes, Route} from 'react-router-dom';
 
 import {Home} from '../pages/Client/Home';
-import {Details} from '../pages/Admin/Details';
+import {Details} from '../pages/Client/Details';
 import {SeeAll} from '../pages/Admin/SeeAll';
 
 export function ClientRoutes(){

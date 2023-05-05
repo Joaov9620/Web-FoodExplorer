@@ -29,16 +29,11 @@ export function Details(){
         navigate(`/editDish/${id}`);
     }
 
-    async function fetchDish(){
-        const response = await api.get(`/dish/${params.id}`);
-        setData(response.data);
-      }
-
     useEffect(()=> {
-        // async function fetchDish(){
-        //   const response = await api.get(`/dish/${params.id}`);
-        //   setData(response.data);
-        // }
+        async function fetchDish(){
+          const response = await api.get(`/dish/${params.id}`);
+          setData(response.data);
+        }
         fetchDish();
     }, []);
 

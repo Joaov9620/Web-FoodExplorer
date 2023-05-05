@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Content = styled.div`
-    min-height: 100vh;
     padding: 0 28px 0; 
+    height: calc(100vh - 70px);
 
     >button{
         margin-top: 3.1rem;
@@ -63,7 +63,7 @@ export const DishInformation = styled.div`
         margin-bottom: 24px;
     }
 
-    span{
+    p{
         font-weight: 400;
         font-size:clamp(1.6rem, calc(1.2rem + 1vw), 2rem);
         line-height: 140%;
