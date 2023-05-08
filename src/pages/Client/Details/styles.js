@@ -15,7 +15,7 @@ export const Content = styled.div`
         text-align: center;
     }
 
-    div img{
+    div .imgDish{
         margin-top: 16px;
         height: 264px;
         width: 264px;
@@ -24,14 +24,10 @@ export const Content = styled.div`
 
 
     @media(min-width:664px){
-        div img{
+        div .imgDish{
             height: 390px;
             width: 390px;
             margin-bottom: 14px;
-        }
-
-        .dishInformation button{
-            width: 50%;
         }
     }
 
@@ -44,6 +40,10 @@ export const Content = styled.div`
         .dishInformation{
             text-align: start;
             align-items: self-start;
+        }
+
+        .buttons{
+            flex-direction: row;
         }
     }
 `;
@@ -70,20 +70,46 @@ export const DishInformation = styled.div`
         
     }
 
-    div{    
+    .ingredients{    
         margin-bottom: 52px;
         margin-top: 24px;
         display: flex;
         gap: 20px;
         justify-content:center;
         flex-wrap: wrap;
+    }   
+
+    .buttons{
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
     }
 
-    button{
-        font-size: 14px;
-        color: ${({theme}) => theme.COLORS.WHITE};
+    .buttons div{
+        display: flex;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .buttons div span{
+        width: 40px;
+        text-align: center;
+        font-size: 24px;
+    }
+    
+    .buttons div button{
+        background: none;
+        border: none;
+        width: fit-content;
+        display: flex;
+        align-items: center;
+    }
+
+    .buttons >button{
         font-family: 'Poppins', sans-serif;
-        width: 65%;
+        font-size: 14px;
+        line-height: 24px;
         margin-bottom: 10rem;
     }
 `;

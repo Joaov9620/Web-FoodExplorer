@@ -54,9 +54,9 @@ export function NewDish() {
       return alert("Preço obrigatório!")
     }
 
-    if(!ingredientItem){
-      return alert("Adicione no mínimo um ingrediente!")
-    }
+    // if(!ingredientItem){
+    //   return alert("Adicione no mínimo um ingrediente!")
+    // }
 
     if(ingredientItem){
       return alert("Adicione o ingrediente que está no campo ou remova para prosseguir!")
@@ -111,7 +111,7 @@ export function NewDish() {
               <div>
                 <LabelInput title="Categoria" htmlFor="category" />
                 <select id="category" value={category} onChange={e=>setCategory(e.target.value)}>
-                  <option value="Refeição">Refeição</option>
+                  <option value="Refeições">Refeição</option>
                   <option value="Sobremesas">Sobremesas</option>
                   <option value="Bebidas">Bebidas</option>
                 </select>

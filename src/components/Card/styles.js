@@ -54,7 +54,7 @@ export const CardImg = styled.div`
 
     >h1{
         font-family: 'Poppins', sans-serif;
-        font-size: clamp(14px, calc(14px +1vw),24px);
+        font-size: clamp(14px, calc(23px +1vw),24px);
         line-height: 140%;
         color: ${({theme}) => theme.COLORS.TEXT_COLOR};
     }

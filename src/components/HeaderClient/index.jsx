@@ -25,12 +25,10 @@ function Header(){
     const navigate = useNavigate();
     const {signOut} = useAuth();
 
-    const {headerSearchValue, setSearchValue}  = useHeader();
-    const [valueSearch, setValueSearch] = useState(headerSearchValue);
+    const {setSearchValue}  = useHeader();
   
     function handleChange(event) {
         const value = event.target.value;
-        setValueSearch(value);
         setSearchValue(value);
     }
 

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Content = styled.div`
-    padding: 44px 0 28px 24px; 
+    padding: 44px 0 60px 24px; 
     min-height: 100vh; 
 
     .swiperSlider {
@@ -81,7 +81,7 @@ export const Content = styled.div`
         
         .groupHeader{
             padding: 90px 0;
-            margin: 164px 0;
+            margin: 116px 0 80px;
     
             .group1Img{
                 left: -60px;

@@ -21,6 +21,14 @@ export const Container =  styled.div`
         box-shadow: 0px 0px 6px 1px rgba(1,5,10,1);
     }
 
+    .favoriteActive{
+        color: red;
+    }
+
+    .favoriteActive:hover{
+       filter: brightness(0.8);
+    }
+
     @media(min-width:768px){
         width: 304px;
     }
@@ -35,7 +43,7 @@ export const FavoriteIcon = styled(AiFillHeart)`
     opacity: 0.5;
 
     :hover{
-        color: red;
+        filter: brightness(0.8);
     }
 `;
 

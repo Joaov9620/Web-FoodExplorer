@@ -114,7 +114,7 @@ export function Home(){
                                                             <SwiperSlide key={String(dish.id)} className='swiperSlider'>
                                                                 <Card
                                                                     data={dish}
-                                                                    onClick={() => handleDetails(dish.id)}
+                                                                    handleDetails={handleDetails}
                                                                 />
                                                             </SwiperSlide>
                                                         ))
@@ -151,7 +151,7 @@ export function Home(){
                                                         <SwiperSlide key={String(dish.id)} className='swiperSlider'>
                                                             <Card
                                                                 data={dish}
-                                                                onClick={() => handleDetails(dish.id)}
+                                                                handleDetails={handleDetails}
                                                             />
                                                         </SwiperSlide>
                                                     ))
@@ -187,7 +187,7 @@ export function Home(){
                                                     <SwiperSlide key={String(dish.id)} className='swiperSlider'>
                                                         <Card
                                                             data={dish}
-                                                             onClick={() => handleDetails(dish.id)}
+                                                            handleDetails={handleDetails}
                                                         />
                                                      </SwiperSlide>
                                                 ))

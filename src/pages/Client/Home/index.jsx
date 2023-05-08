@@ -18,19 +18,19 @@ import {api} from '../../../services/api';
 
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../../hooks/auth';
 import { useHeader } from '../../../hooks/HeaderContext';
 
 
 export function Home(){
     const navigate = useNavigate();
-    
-    const {searchValue} = useHeader("");
+
+    const {searchValue} = useHeader();
+    const {user} = useAuth();
     const [dish, setDish] = useState([]);
     const meals = [];
     const desserts = [];
     const drinks = [];
-
-    console.log(searchValue)
 
     if(dish){
         for (let i = 0; i < dish.length; i++) {
@@ -50,7 +50,7 @@ export function Home(){
 
     useEffect(()=>{
         async function fetchDish(){
-            const response = await api.get("/dish");
+            const response = await api.get('/favoriteDish', { params: { user_id: user.id } });
             const dishData = (response.data);
 
             setDish(dishData);
@@ -60,7 +60,7 @@ export function Home(){
 
     useEffect(() => {
         async function fetchNotes(){
-            const response = await api.get(`/dish?name=${searchValue}`);
+            const response = await api.get(`/favoriteDish?user_id=${user.id}&name=${searchValue}`);
             const dishData = (response.data);
 
             setDish(dishData);
@@ -68,6 +68,7 @@ export function Home(){
         fetchNotes();
 
     }, [searchValue]);
+
     
     return (
         <LayoutClient>
@@ -117,7 +118,6 @@ export function Home(){
                                                                 <CardClient
                                                                     data={dish}
                                                                     handleDetails={handleDetails}
-                                                                    id={dish.id}
                                                                 />
                                                             </SwiperSlide>
                                                         ))
@@ -155,7 +155,6 @@ export function Home(){
                                                             <CardClient
                                                                 data={dish}
                                                                 handleDetails={handleDetails}
-                                                                id={dish.id}
                                                             />
                                                         </SwiperSlide>
                                                     ))
@@ -192,7 +191,6 @@ export function Home(){
                                                         <CardClient
                                                             data={dish}
                                                             handleDetails={handleDetails}
-                                                            id={dish.id}
                                                         />
                                                      </SwiperSlide>
                                                 ))
