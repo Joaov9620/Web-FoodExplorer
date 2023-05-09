@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { BsFillCartFill } from "react-icons/bs";
 
 export const HeaderBody = styled.header`
     grid-area: header;
@@ -132,6 +133,16 @@ export const Logo = styled.div`
         font-size: 1.2rem;
         line-height: 160%;
         color: #82F3FF;
+    }
+`;
+
+export const IconCart = styled(BsFillCartFill)`
+    font-size: 30px;
+    color: #f4e8e8;
+    cursor: pointer;
+
+    :hover{
+        filter: brightness(0.6);
     }
 `;
 

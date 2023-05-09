@@ -13,5 +13,6 @@ export const Container = styled.div`
     h1>{
         line-height: 2.8rem;
         font-weight: 700;
+        cursor:pointer;
     }
 `;

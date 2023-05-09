@@ -1,6 +1,6 @@
 import React from 'react';
 import ErrorBoundary from '../ErrorBoundary';
-import {HeaderBody,MenuMobile,MenuDesktop, Logo, Search,SearchMobile,Logout} from "./styles"
+import {HeaderBody,MenuMobile,MenuDesktop, Logo, Search,SearchMobile,IconCart,Logout} from "./styles"
 import { Container } from "../../styles/global";
 
 import {BiSearch} from 'react-icons/bi'
@@ -14,7 +14,6 @@ import { Button } from "../Button";
 import { ButtonText } from "../ButtonText";
 import { Brand } from "../Brand";
 import { Input } from "../Input";
-import { Footer } from "../Footer";
 
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
@@ -32,10 +31,15 @@ function Header(){
         setSearchValue(value);
     }
 
-    function handleNewDish(){
-        // navigate('/newDish');
-        //criar rota de pedidos
+    function handleOrders(){
+        navigate('/orders');
     }
+    
+    function handleCart(){
+        navigate('/cart');
+    }
+    
+  
 
     function handleSignOut(){
         navigate("/");
@@ -70,7 +74,6 @@ function Header(){
                                 </SearchMobile>
         
                                 <div className="buttonsMenu">
-                                    <ButtonText title="Novo prato" onClick={handleNewDish}/>
                                     <ButtonText title="Sair" onClick={handleSignOut} />
                                 </div>
                             </div>
@@ -85,7 +88,7 @@ function Header(){
                             </div>
     
                             <Logo className="logoHeader">
-                                <Brand/>
+                                <Brand />
                                 <span>Cliente</span>
                             </Logo>
     
@@ -97,13 +100,15 @@ function Header(){
                                    onChange={handleChange} 
                                 />
                             </Search>
+
+                            <IconCart onClick={handleCart}/>
     
                             {/* <div className="orders">
                                 <img src={orders} alt="Imagem desmontrativa de pedidos" />
                                 <span>0</span>
                             </div> */}
                            
-                            <Button title='Pedidos (0)' onClick={handleNewDish} className="newDish" />
+                            <Button title='Pedidos (0)' onClick={handleOrders} className="newDish" />
     
                             {/* <div className="ordersDesktop">
                                 <img src={orders} alt="Imagem desmontrativa de pedidos" />

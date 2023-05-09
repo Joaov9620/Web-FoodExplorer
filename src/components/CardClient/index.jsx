@@ -13,7 +13,7 @@ import {api} from '../../services/api';
 
 import { useAuth } from '../../hooks/auth';
 
-export function CardClient({data = {}, handleDetail, ...rest}){
+export function CardClient({data = {}, handleDetails, ...rest}){
 
     const [isFavorite, setIsFavorite] = useState(data.isFavorite);
     const [count, setCount] = useState(1);
@@ -47,7 +47,7 @@ export function CardClient({data = {}, handleDetail, ...rest}){
             />
            <CardImg>
             <img src={imgDemonstrative} alt="Imagem demonstrtivo"/>
-            <h1 onClick={() => handleDetail(data.id)}>
+            <h1 onClick={() => handleDetails(data.id)}>
                 {data.name} &gt;
             </h1>
             <span className='descriptionDish'>{data.description.slice(0,40) + '...'}</span>
