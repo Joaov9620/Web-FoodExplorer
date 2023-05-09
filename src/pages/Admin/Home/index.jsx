@@ -25,6 +25,7 @@ export function Home(){
     const navigate = useNavigate();
     
     const {searchValue} = useHeader("");
+    const search =  searchValue ?? '';
     const [dish, setDish] = useState([]);
     const meals = [];
     const desserts = [];
@@ -58,14 +59,14 @@ export function Home(){
 
     useEffect(() => {
         async function fetchNotes(){
-            const response = await api.get(`/dish?name=${searchValue}`);
+            const response = await api.get(`/dish?name=${search}`);
             const dishData = (response.data);
 
             setDish(dishData);
         }
         fetchNotes();
 
-    }, [searchValue]);
+    }, [search]);
     
     return (
         <Layout>

@@ -111,7 +111,7 @@ export function NewDish() {
               <div>
                 <LabelInput title="Categoria" htmlFor="category" />
                 <select id="category" value={category} onChange={e=>setCategory(e.target.value)}>
-                  <option value="Refeições">Refeição</option>
+                  <option value="Refeições">Refeições</option>
                   <option value="Sobremesas">Sobremesas</option>
                   <option value="Bebidas">Bebidas</option>
                 </select>

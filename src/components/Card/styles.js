@@ -9,8 +9,7 @@ export const Container =  styled.div`
     padding: 0 24px 66px;
     border: 1px solid #000204;
     border-radius: 8px;
-    text-align: right;
-    cursor: pointer;    
+    text-align: right; 
     margin-right: 27px;
     margin-top: 24px;
 
@@ -30,6 +29,7 @@ export const Container =  styled.div`
         margin-top: 16px ;
         margin-bottom: 27px;
         margin-right: 16px;
+        cursor: pointer;
     }
 
     @media(min-width:768px){
@@ -57,6 +57,7 @@ export const CardImg = styled.div`
         font-size: clamp(14px, calc(23px +1vw),24px);
         line-height: 140%;
         color: ${({theme}) => theme.COLORS.TEXT_COLOR};
+        cursor: pointer;
     }
     
     >span{

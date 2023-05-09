@@ -26,6 +26,7 @@ export function Home(){
     const navigate = useNavigate();
 
     const {searchValue} = useHeader();
+    const search =  searchValue ?? '';
     const {user} = useAuth();
     const [dish, setDish] = useState([]);
     const meals = [];
@@ -60,14 +61,14 @@ export function Home(){
 
     useEffect(() => {
         async function fetchNotes(){
-            const response = await api.get(`/favoriteDish?user_id=${user.id}&name=${searchValue}`);
+            const response = await api.get(`/favoriteDish?user_id=${user.id}&name=${search}`);
             const dishData = (response.data);
 
             setDish(dishData);
         }
         fetchNotes();
 
-    }, [searchValue]);
+    }, [search]);
 
     
     return (
