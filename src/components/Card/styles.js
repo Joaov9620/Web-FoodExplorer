@@ -35,6 +35,12 @@ export const Container =  styled.div`
     @media(min-width:768px){
         width: 304px;
     }
+
+    @media(max-width:768px){
+       .descriptionDish{
+         display: none;
+       }
+    } 
     
 `;
 

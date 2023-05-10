@@ -55,7 +55,7 @@ export function CardClient({data = {}, handleDetails, ...rest}){
             </h1>
             <span className='descriptionDish'>{data.description.slice(0,40) + '...'}</span>
             <h4>R$ {data.price}</h4>
-            <div>
+            <div className='buttonsCard'>
                 <button onClick={handleToDecrease}>
                     <img src={iconToDecrease} alt="Icone de diminuir" />
                 </button>
