@@ -49,20 +49,22 @@ export function CardClient({data = {}, handleDetails, ...rest}){
                 className={isFavorite ? 'favoriteActive' : ''}
             />
            <CardImg>
-            <img src={imgDemonstrative} alt="Imagem demonstrtivo"/>
+            <img className='imgDish' src={imgDemonstrative} alt="Imagem demonstrtivo"/>
             <h1 onClick={() => handleDetails(data.id)}>
                 {data.name} &gt;
             </h1>
             <span className='descriptionDish'>{data.description.slice(0,40) + '...'}</span>
             <h4>R$ {data.price}</h4>
             <div className='buttonsCard'>
-                <button onClick={handleToDecrease}>
-                    <img src={iconToDecrease} alt="Icone de diminuir" />
-                </button>
-                <span>{count < 10 ? `0${count}` : count}</span>
-                <button onClick={handleAdd}>
-                    <img src={iconToAdd} alt="Icone de adicionar" />
-                </button>
+                <div>
+                    <button onClick={handleToDecrease}>
+                        <img src={iconToDecrease} alt="Icone de diminuir" />
+                    </button>
+                    <span>{count < 10 ? `0${count}` : count}</span>
+                    <button onClick={handleAdd}>
+                        <img src={iconToAdd} alt="Icone de adicionar" />
+                    </button>
+                </div>
                 <Button title='Incluir' className="buttonAddDish" onClick={() => addToCart(data)}/>
             </div>
            </CardImg>

@@ -3,9 +3,8 @@ import { AiFillHeart } from "react-icons/ai";
 
 export const Container =  styled.div`
     width: fit-content;
-    width: 210px;
+    width: 260px;
     height: 46rem ;
-    /* min-width: 210px; */
     background: #00070A;
     padding: 0 24px 66px;
     border: 1px solid #000204;
@@ -31,6 +30,11 @@ export const Container =  styled.div`
 
     @media(min-width:768px){
         width: 304px;
+        
+        .imgDish{
+            height: 176px;
+            width: 176px;
+        }
     }
 
     @media(max-width:768px){
@@ -38,9 +42,9 @@ export const Container =  styled.div`
          display: none;
        }
 
-       /* .buttonsCard{
+       .buttonsCard{
             flex-direction: column;
-       } */
+       }
     }    
 `;
 
@@ -65,8 +69,8 @@ export const CardImg = styled.div`
     gap: 13px;
 
     >img{
-        height: 176px;
-        width: 176px;
+        height: 140px;
+        width: 140px;
         object-fit: cover;
     }
 
@@ -98,16 +102,20 @@ export const CardImg = styled.div`
         display: flex;
         align-items: center;
         gap: 14px;
-        /* margin-bottom: 24px; */
     }
 
-    >div span{
+    >div div{
+       display: flex;
+       gap: 10px;
+    }
+
+    >div div span{
         width: 40px;
         text-align: center;
         font-size: 24px;
     }
     
-    >div button{
+    >div div button{
         background: none;
         border: none;
         width: fit-content;

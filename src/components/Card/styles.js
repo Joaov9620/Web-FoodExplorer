@@ -34,6 +34,11 @@ export const Container =  styled.div`
 
     @media(min-width:768px){
         width: 304px;
+
+        .imgDish{
+            height: 176px;
+            width: 176px;
+        }
     }
 
     @media(max-width:768px){
@@ -53,8 +58,8 @@ export const CardImg = styled.div`
     gap: 15px;
 
     >img{
-        height: 176px;
-        width: 176px;
+        height: 140px;
+        width: 140px;
         object-fit: cover;
     }
 

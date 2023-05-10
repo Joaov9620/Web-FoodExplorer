@@ -15,7 +15,7 @@ export function Card({data = {},handleDetails, ...rest}){
         <Container {...rest}>
             <img className='pencilImg' src={iconPencil} alt="Icon de editar"   onClick={() => handleEditDish(data.id)}/>
            <CardImg>
-            <img src={imgDemonstrative} alt="Imagem demonstrtivo"/>
+            <img className='imgDish' src={imgDemonstrative} alt="Imagem demonstrtivo"/>
             <h1 onClick={() => handleDetails(data.id)}>
                 {data.name} &gt;
             </h1>
