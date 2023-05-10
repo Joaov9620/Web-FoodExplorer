@@ -4,14 +4,20 @@ export const Content = styled.div`
     height: 100vh;
     padding: 35px 28px;
 
-    >div{
+    .addedDishes{
         display: flex;
         gap: 75px;
         margin-top: 40px;
     }
 
+    .noDishes{
+        flex-direction: column;
+        margin-top: 100px;
+        align-items: center;
+    }
+
     .dishes{
-        max-height: 480px;
+        height: 385px;
         overflow-x: hidden;
         margin-bottom: 25px;  
     }
@@ -47,6 +53,10 @@ export const Section = styled.section`
         line-height: 140%;
         color: #E1E1E6;
         margin-bottom: 32px;
+    }
+
+    .total{
+        color: #AB4D55;
     }
 `;
 
@@ -89,31 +99,65 @@ export const DishesAdded = styled.div`
 
 export const Payment = styled.div`
     width: 100%;
-    /* border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px; */
 
     >div:first-child {
         width: 100%;
         display: flex;
-        /* padding: 32px 104px; */
+    }
+
+    >div span{
+        width: 50%;
+        text-align: center;
+        padding: 35px 0;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        cursor: pointer;
+    }
+
+    >div span:hover{
+        filter: brightness(0.5);
     }
 
     >div span:first-child{
         background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px 0 0 0;
     }
 
-    /* .group05 span{
-        padding: 32px 104px;
+    >div span:last-child{
+        border-radius: 0 10px 0 0;
     }
 
-    .group04 div:nth-child(2){
-        padding: 57px 140px;
-    }
-     */
-
-    >.qrCode{
+    .qrCode{
         padding: 57px 140px;
         border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .creditCard{
+        padding: 50px 53px 53px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+    }
+
+    .creditCard div{
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        width: 100%;
+    }
+
+    .creditCard div input{
+        padding: 10px;
+        background-color: #000A0F;
+        border-radius: 3px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: white;
+    }
+
+    .creditCard .validity{
+        flex-direction: row;
+        gap: 14px;
     }
 
 `;

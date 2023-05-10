@@ -101,7 +101,6 @@ function Header(){
                                 />
                             </Search>
 
-                            <IconCart onClick={handleCart}/>
     
                             {/* <div className="orders">
                                 <img src={orders} alt="Imagem desmontrativa de pedidos" />
@@ -109,7 +108,9 @@ function Header(){
                             </div> */}
                            
                             <Button title='Pedidos (0)' onClick={handleOrders} className="newDish" />
-    
+                            
+                            <IconCart onClick={handleCart}/>
+                            
                             {/* <div className="ordersDesktop">
                                 <img src={orders} alt="Imagem desmontrativa de pedidos" />
                                 <span>0</span>
