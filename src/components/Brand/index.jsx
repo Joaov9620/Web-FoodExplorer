@@ -12,9 +12,9 @@ export function Brand(){
     }
     
     return(
-        <Container>
+        <Container onClick={handleHome}>
             <img src={logo} alt="Logo" />
-            <h1 onClick={handleHome}>food explorer</h1>
+            <h1>food explorer</h1>
         </Container>
     )
 };

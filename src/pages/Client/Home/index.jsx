@@ -33,6 +33,8 @@ export function Home(){
     const desserts = [];
     const drinks = [];
 
+
+
     if(dish){
         for (let i = 0; i < dish.length; i++) {
             if (dish[i].category === "Refeições") {
@@ -48,6 +50,7 @@ export function Home(){
     function handleDetails(id){
         navigate(`/details/${id}`);
     }
+
 
     useEffect(()=>{
         async function fetchDish(){
@@ -118,7 +121,7 @@ export function Home(){
                                                             <SwiperSlide key={String(dish.id)} className='swiperSlider'>
                                                                 <CardClient
                                                                     data={dish}
-                                                                    handleDetails={handleDetails}
+                                                                    handleDetails={handleDetails}                                                  
                                                                 />
                                                             </SwiperSlide>
                                                         ))
@@ -191,7 +194,7 @@ export function Home(){
                                                     <SwiperSlide key={String(dish.id)} className='swiperSlider'>
                                                         <CardClient
                                                             data={dish}
-                                                            handleDetails={handleDetails}
+                                                            handleDetails={handleDetails}                                       
                                                         />
                                                      </SwiperSlide>
                                                 ))

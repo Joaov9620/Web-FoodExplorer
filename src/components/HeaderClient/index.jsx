@@ -20,6 +20,7 @@ import { useState } from 'react';
 import { useAuth } from '../../hooks/auth';
 import { useHeader } from '../../hooks/HeaderContext';
 
+
 function Header(){
     const navigate = useNavigate();
     const {signOut} = useAuth();
@@ -38,8 +39,7 @@ function Header(){
     function handleCart(){
         navigate('/cart');
     }
-    
-  
+
 
     function handleSignOut(){
         navigate("/");

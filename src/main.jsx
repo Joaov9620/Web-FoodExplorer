@@ -8,6 +8,7 @@ import theme from './styles/theme';
 import {Routes} from './routes';
 import { AuthProvider } from './hooks/auth';
 import { HeaderProvider } from './hooks/HeaderContext';
+import {CartProvider} from './hooks/CartContext';
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -16,7 +17,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <GlobalStyle/>
         <AuthProvider>
           <HeaderProvider>
-          <Routes/>
+            <CartProvider>
+              <Routes/>
+            </CartProvider>
           </HeaderProvider>
         </AuthProvider>
     </ThemeProvider>

@@ -4,21 +4,19 @@ import { Button } from '../Button';
 
 import iconToDecrease from '../../assets/toDecrease.svg';
 import iconToAdd from '../../assets/toAdd.svg';
-
 import imgDemonstrative from '../../assets/img/Mask group-2.png';
 
-import { useState } from 'react';
-
+import { useState, useEffect } from 'react';
 import {api} from '../../services/api';
-
 import { useAuth } from '../../hooks/auth';
+import { useCart } from '../../hooks/CartContext';
 
 export function CardClient({data = {}, handleDetails, ...rest}){
-
     const [isFavorite, setIsFavorite] = useState(data.isFavorite);
     const [count, setCount] = useState(1);
     
     const {user} = useAuth();
+    const {cartItems, addToCart} = useCart();
 
     async function handleFavoriteClick(){
         setIsFavorite(!isFavorite);
@@ -38,6 +36,11 @@ export function CardClient({data = {}, handleDetails, ...rest}){
             setCount(count - 1);
         }
     }
+
+    useEffect(() => {
+        localStorage.setItem("dishSelect", JSON.stringify(cartItems));
+    }, [cartItems]);
+
 
     return(
         <Container {...rest}>
@@ -60,7 +63,7 @@ export function CardClient({data = {}, handleDetails, ...rest}){
                 <button onClick={handleAdd}>
                     <img src={iconToAdd} alt="Icone de adicionar" />
                 </button>
-                <Button title='Incluir' className="buttonAddDish"/>
+                <Button title='Incluir' className="buttonAddDish" onClick={() => addToCart(data)}/>
             </div>
            </CardImg>
         </Container>

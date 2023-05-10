@@ -4,6 +4,7 @@ export const Container = styled.div`
     display: flex;
     flex-direction: row;
     gap: 1rem;
+    cursor: pointer;
 
     >img{
         width: 3rem;
@@ -13,6 +14,5 @@ export const Container = styled.div`
     h1>{
         line-height: 2.8rem;
         font-weight: 700;
-        cursor:pointer;
     }
 `;

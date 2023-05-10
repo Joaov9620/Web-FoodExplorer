@@ -5,10 +5,9 @@ import { Footer } from '../Footer';
 
 
 export function LayoutClient({ children }) {
-
   return (
     <>
-      <HeaderClient/>
+      <HeaderClient />
         {children}
       <Footer />
     </>
