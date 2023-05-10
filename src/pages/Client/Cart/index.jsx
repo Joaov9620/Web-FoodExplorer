@@ -19,6 +19,7 @@ export function Cart(){
         navigate(-1);
     }
 
+
     useEffect(() => {
         const dishSelect = JSON.parse(localStorage.getItem("dishSelect"));
         if (dishSelect) {

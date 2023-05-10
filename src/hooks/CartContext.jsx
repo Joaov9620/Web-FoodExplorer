@@ -7,6 +7,11 @@ function CartProvider({ children , dish}) {
 
   function addToCart(dish) {
     setCartItems(prevCartItems => [...prevCartItems, dish]);
+    notification();
+  }
+
+  function notification(){
+    alert("Prato adicionado ao carrinho!");
   }
 
   function removeFromCart(dish) {
