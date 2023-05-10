@@ -13,14 +13,10 @@ export function Cart(){
 
     const navigate = useNavigate();
 
-    const {cartItems, setCartItems} = useCart();
+    const {cartItems, setCartItems, removeFromCart} = useCart();
 
     function handleBack(){
         navigate(-1);
-    }
-
-    function handleDeleteCartDish(){
-
     }
 
     useEffect(() => {
@@ -49,10 +45,10 @@ export function Cart(){
                                     <img src={img} alt="" />
                                     <div>
                                         <div className='group'>
-                                            <h5>{item.name}</h5>
+                                            <h5>01 {item.name}</h5>
                                             <span>R$ {item.price.toFixed(2)}</span>
                                         </div>
-                                        <span onClick={handleDeleteCartDish}>Excluir</span>
+                                        <span onClick={() => removeFromCart(item)}>Excluir</span>
                                     </div>
                                 </DishesAdded>
                             ))}

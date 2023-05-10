@@ -8,9 +8,13 @@ function CartProvider({ children , dish}) {
   function addToCart(dish) {
     setCartItems(prevCartItems => [...prevCartItems, dish]);
   }
+
+  function removeFromCart(dish) {
+    setCartItems(prevCartItems => prevCartItems.filter(item => item.id !== dish.id));
+  }
   
   return (
-    <CartContext.Provider value={{cartItems, setCartItems, addToCart}}>
+    <CartContext.Provider value={{cartItems, setCartItems, addToCart, removeFromCart}}>
       {children}
     </CartContext.Provider>
   )
