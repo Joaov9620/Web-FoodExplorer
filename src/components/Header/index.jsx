@@ -67,6 +67,7 @@ function Header(){
                                         // icon={BiSearch}
                                         placeholder="Busque por pratos ou ingredientes"
                                         type="text"
+                                        onChange={handleChange} 
                                     />
                                 </SearchMobile>
         
@@ -98,18 +99,8 @@ function Header(){
                                    onChange={handleChange} 
                                 />
                             </Search>
-    
-                            {/* <div className="orders">
-                                <img src={orders} alt="Imagem desmontrativa de pedidos" />
-                                <span>0</span>
-                            </div> */}
                            
                             <Button title='Novo prato' onClick={handleNewDish} className="newDish" />
-    
-                            {/* <div className="ordersDesktop">
-                                <img src={orders} alt="Imagem desmontrativa de pedidos" />
-                                <span>0</span>
-                            </div> */}
                             
                             <Logout className="logoutHeader">
                                 <img src={logout} alt="Sair" onClick={handleSignOut} />

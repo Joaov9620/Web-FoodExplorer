@@ -7,7 +7,6 @@ import {BiSearch} from 'react-icons/bi'
 import { AiOutlineClose } from "react-icons/ai";
 
 import logout from '../../assets/logout.svg';
-import orders from '../../assets/orders.svg';
 import menuMobile from '../../assets/menuMobile.svg';
 
 import { Button } from "../Button";
@@ -70,6 +69,7 @@ function Header(){
                                         // icon={BiSearch}
                                         placeholder="Busque por pratos ou ingredientes"
                                         type="text"
+                                        onChange={handleChange} 
                                     />
                                 </SearchMobile>
         
@@ -100,21 +100,10 @@ function Header(){
                                    onChange={handleChange} 
                                 />
                             </Search>
-
-    
-                            {/* <div className="orders">
-                                <img src={orders} alt="Imagem desmontrativa de pedidos" />
-                                <span>0</span>
-                            </div> */}
                            
                             <Button title='Pedidos (0)' onClick={handleOrders} className="newDish" />
                             
                             <IconCart onClick={handleCart}/>
-                            
-                            {/* <div className="ordersDesktop">
-                                <img src={orders} alt="Imagem desmontrativa de pedidos" />
-                                <span>0</span>
-                            </div> */}
                             
                             <Logout className="logoutHeader">
                                 <img src={logout} alt="Sair" onClick={handleSignOut} />
