@@ -7,10 +7,6 @@ export const HeaderBody = styled.header`
     background: #00111A;
     height: 114px;
 
-    /* .menuMobile{
-        display: hidden;
-    } */
-
     .newDish, .ordersDesktop{
         display: none;
     }
@@ -32,9 +28,6 @@ export const HeaderBody = styled.header`
             padding: 28px 24px;
         }
 
-        /* .searchMobile2{
-            display: none;
-        } */
 
         .logoHeader{
             flex-direction: column;
@@ -73,13 +66,13 @@ export const MenuDesktop = styled.div`
 `;
 
 export const MenuMobile = styled.div`
-   backdrop-filter: blur(75px); 
-   position: absolute;
-   z-index: 2;
+  backdrop-filter: blur(75px); 
+   position: fixed;
    top: 0;
    left: 0;
+   z-index: 999;
    width: 100%;
-   min-height: 100vh;
+   min-height: 100%;
     transform: translate(0px);
 
    >div:nth-child(2){
@@ -117,6 +110,11 @@ export const MenuMobile = styled.div`
 
     .buttonsMenu :hover{
         background: #000A0F;
+    }
+
+    >footer{
+        position: fixed;
+        bottom: 0;
     }
 `;
 
