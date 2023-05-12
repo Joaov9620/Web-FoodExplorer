@@ -30,7 +30,6 @@ export function Home(){
     const drinks = [];
     
 
-
     if(dish){
         for (let i = 0; i < dish.length; i++) {
             if (dish[i].category === "Refeições") {
@@ -45,6 +44,56 @@ export function Home(){
 
     function handleDetails(id){
         navigate(`/details/${id}`);
+    }
+
+    //transformar essa function em um componente
+    function Slider({ title, data, handleDetails }) {
+        return (
+          <Section title={title}>
+            <div className='sliderContainer'>
+              <div className='cardColor' style={{display: 'none'}}>
+                <div></div>
+                <div></div>
+              </div>
+              <Swiper
+                spaceBetween={30}
+                loop={true}
+                speed={500}
+                navigation={true}
+                pagination={{
+                  clickable: true,
+                }}
+                modules={[Pagination, Navigation]}
+                className='swiper-button'
+                breakpoints={{
+                  375: {
+                    slidesPerView: 2,
+                    loop: true,
+                    watchOverflow: true,
+                  },
+                  768: {
+                    slidesPerView: 2,
+                    loop: true,
+                    watchOverflow: true,
+                  },
+                  1024: {
+                    slidesPerView: 3,
+                    loop: true,
+                    watchOverflow: true,
+                  },
+                }}
+              >
+                <ContentCard>
+                  {data.map((dish) => (
+                    <SwiperSlide key={String(dish.id)} className='swiperSlider'>
+                      <Card data={dish} handleDetails={handleDetails} />
+                    </SwiperSlide>
+                  ))}
+                </ContentCard>
+              </Swiper>
+            </div>
+          </Section>
+        );
     }
 
     useEffect(()=>{
@@ -90,100 +139,17 @@ export function Home(){
                        
                         {
                             (meals.length > 0) &&
-                            <Section title="Refeições">
-                                <div className='sliderContainer'>
-                                    <div className='cardColor' style={{display: 'none'}}>
-                                        <div></div>
-                                        <div></div>
-                                    </div>
-                                    <Swiper 
-                                        slidesPerView={3}
-                                        spaceBetween={30}
-                                        loop={true}
-                                        pagination={{
-                                        clickable: true,
-                                        }}
-                                        navigation={true}
-                                        modules={[Pagination,Navigation]}
-                                        className="swiper-button"
-                                        >
-                                            <ContentCard >
-                                                    {  
-                                                        meals.map(dish=>(
-                                                            <SwiperSlide key={String(dish.id)} className='swiperSlider'>
-                                                                <Card
-                                                                    data={dish}
-                                                                    handleDetails={handleDetails}
-                                                                />
-                                                            </SwiperSlide>
-                                                        ))
-                                                    }
-                                            </ContentCard>
-                                    </Swiper>
-                                </div>
-                                    
-                            </Section>
+                            <Slider title='Refeições' data={meals} handleDetails={handleDetails} />
                         }
 
                         {
                             (desserts.length > 0) &&
-                            <Section title="Sobremesas">
-                                        <Swiper
-                                            slidesPerView={3}
-                                            spaceBetween={30}
-                                            loop={true}
-                                            pagination={{
-                                            clickable: true,
-                                            }}
-                                            navigation={true}
-                                            modules={[Pagination,Navigation]}
-                                            className="swiper-button"
-                                        >
-                                            <ContentCard>
-                                                {
-                                                    desserts.map(dish=>(
-                                                        <SwiperSlide key={String(dish.id)} className='swiperSlider'>
-                                                            <Card
-                                                                data={dish}
-                                                                handleDetails={handleDetails}
-                                                            />
-                                                        </SwiperSlide>
-                                                    ))
-                                                }
-                                            </ContentCard>
-                                        </Swiper>
-                                       
-                            </Section>
+                            <Slider title='Refeições' data={desserts} handleDetails={handleDetails} />
                         }
                                 
                         {
                             (drinks.length > 0) &&
-                            <Section title="Bebidas">
-                                    <Swiper
-                                         slidesPerView={3}
-                                        spaceBetween={30}
-                                        loop={true}
-                                        pagination={{
-                                        clickable: true,
-                                        }}
-                                        navigation={true}
-                                        modules={[Pagination,Navigation]}
-                                        className="swiper-button"
-                                    >
-                                        <ContentCard>
-                                            {
-                                                drinks.map(dish=>(
-                                                    <SwiperSlide key={String(dish.id)} className='swiperSlider'>
-                                                        <Card
-                                                            data={dish}
-                                                            handleDetails={handleDetails}
-                                                        />
-                                                     </SwiperSlide>
-                                                ))
-                                            }
-                                        </ContentCard>
-                                    </Swiper>
-                            </Section>
+                            <Slider title='Refeições' data={drinks} handleDetails={handleDetails} />
                         }                                
 
                     </Content>
