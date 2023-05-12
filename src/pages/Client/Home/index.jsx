@@ -122,13 +122,7 @@ export function Home(){
                                                     }
                                             </ContentCard>
                                     </Swiper>
-                                </div>
-                                {
-                                    (meals.length > 10) &&
-                                    <div className="buttonText">
-                                        <ButtonText title='Ver mais'/>
-                                    </div>
-                                }      
+                                </div>     
                             </Section>
                         }
 
@@ -159,12 +153,6 @@ export function Home(){
                                                 }
                                             </ContentCard>
                                         </Swiper>
-                                        {   
-                                            (desserts.length > 10) &&
-                                            <div className="buttonText">
-                                                <ButtonText title='Ver mais'/>
-                                            </div>
-                                        }
                             </Section>
                         }
                                 
@@ -195,12 +183,6 @@ export function Home(){
                                             }
                                         </ContentCard>
                                     </Swiper>
-                                    {
-                                        (drinks.length > 10) &&
-                                        <div className="buttonText">
-                                            <ButtonText title='Ver mais'/>
-                                        </div>
-                                    }
                             </Section>
                         }                                
 
