@@ -10,6 +10,7 @@ export const Content = styled.div`
         box-sizing: border-box;
     }
 
+
     .cardColor{
         display: flex;
         justify-content: space-between;

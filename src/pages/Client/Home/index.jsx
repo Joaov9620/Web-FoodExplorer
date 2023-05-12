@@ -9,10 +9,10 @@ import { ButtonText } from '../../../components/ButtonText';
 import imgDemonstrative from '../../../assets/img/pngegg 1.png';
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-// import "swiper/css/pagination";
-import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 import {api} from '../../../services/api';
 
@@ -102,8 +102,10 @@ export function Home(){
                                         slidesPerView={3}
                                         spaceBetween={30}
                                         loop={true}
+                                        effect='fade'
+                                        speed={400}
                                         pagination={{
-                                        clickable: true,
+                                        clickable: true,           
                                         }}
                                         navigation={true}
                                         modules={[Pagination,Navigation]}
@@ -133,6 +135,7 @@ export function Home(){
                                             slidesPerView={3}
                                             spaceBetween={30}
                                             loop={true}
+                                            speed={300}
                                             pagination={{
                                             clickable: true,
                                             }}

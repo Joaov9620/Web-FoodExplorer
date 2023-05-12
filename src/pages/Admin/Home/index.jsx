@@ -183,7 +183,6 @@ export function Home(){
                                             }
                                         </ContentCard>
                                     </Swiper>
-                                   
                             </Section>
                         }                                
 
