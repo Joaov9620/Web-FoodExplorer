@@ -37,4 +37,19 @@ export const ContentCard = styled.div`
     @media(min-width:1022px){
         max-width: 1122px;
     }
+
+    @media(max-width:768px){
+        .swiper-button {
+            .swiper-button-prev::after, .swiper-button-next::after {
+                display: none;
+            }
+        }
+    }
+
+    .swiper-button {
+        .swiper-button-prev::after, .swiper-button-next::after {
+            color: #FFFFFF;
+            font-size: 40px;
+        }
+    }
 `;

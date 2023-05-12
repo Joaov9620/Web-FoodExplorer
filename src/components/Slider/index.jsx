@@ -4,7 +4,7 @@ import { Card } from '../Card';
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-// import "swiper/css/pagination";
+import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper";
 
@@ -30,11 +30,13 @@ export function Slider({ title, data, handleDetails }) {
               375: {
                 slidesPerView: 2,
                 loop: true,
+                pagination:false,
                 watchOverflow: true,
               },
               768: {
                 slidesPerView: 2,
                 loop: true,
+                pagination:false,
                 watchOverflow: true,
               },
               1060: {

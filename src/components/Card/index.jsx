@@ -18,7 +18,7 @@ export function Card({data = {},handleDetails, ...rest}){
             <img className='imgDish' src={imgDemonstrative} alt="Imagem demonstrtivo"/>
             <h1 onClick={() => handleDetails(data.id)}>
                 {data.name.length > 10 ? 
-                    (<p>{data.name.slice(0, 10) + '...'} &gt;</p>) 
+                    (<p>{data.name.slice(0, 9) + '...'} &gt;</p>) 
                     : 
                     (<p>{data.name} &gt;</p>)
                 }

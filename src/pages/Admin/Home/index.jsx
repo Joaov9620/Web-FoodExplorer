@@ -85,12 +85,12 @@ export function Home(){
 
                         {
                             (desserts.length > 0) &&
-                            <Slider title='Refeições' data={desserts} handleDetails={handleDetails} />
+                            <Slider title='Sobremesas' data={desserts} handleDetails={handleDetails} />
                         }
                                 
                         {
                             (drinks.length > 0) &&
-                            <Slider title='Refeições' data={drinks} handleDetails={handleDetails} />
+                            <Slider title='Bebidas' data={drinks} handleDetails={handleDetails} />
                         }                                
 
                     </Content>
