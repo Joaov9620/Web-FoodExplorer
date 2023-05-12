@@ -30,11 +30,13 @@ function Header(){
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(true);
     const [isHeaderVisible, setIsHeaderVisible] = useState(true);
     const [isHeaderFixed, setIsHeaderFixed] = useState(false);
-  
+   
     function handleChange(event) {
-        const value = event.target.value;
-        setValueSearch(value);
-        setSearchValue(value);
+        if(window.location.pathname === "/"){
+            const value = event.target.value;
+            setValueSearch(value);
+            setSearchValue(value);
+        }
     }
 
     function handleNewDish(){

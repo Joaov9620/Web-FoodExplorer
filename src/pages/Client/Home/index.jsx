@@ -25,15 +25,12 @@ import { useHeader } from '../../../hooks/HeaderContext';
 export function Home(){
     const navigate = useNavigate();
 
-    const {searchValue} = useHeader();
-    const search =  searchValue ?? '';
+    const {searchValue = ''} = useHeader();
     const {user} = useAuth();
     const [dish, setDish] = useState([]);
     const meals = [];
     const desserts = [];
     const drinks = [];
-
-
 
     if(dish){
         for (let i = 0; i < dish.length; i++) {
@@ -51,7 +48,6 @@ export function Home(){
         navigate(`/details/${id}`);
     }
 
-
     useEffect(()=>{
         async function fetchDish(){
             const response = await api.get('/favoriteDish', { params: { user_id: user.id } });
@@ -64,16 +60,14 @@ export function Home(){
 
     useEffect(() => {
         async function fetchNotes(){
-            const response = await api.get(`/favoriteDish?user_id=${user.id}&name=${search}`);
+            const response = await api.get(`/favoriteDish?user_id=${user.id}&name=${searchValue}`);
             const dishData = (response.data);
-
-            setDish(dishData);
+            setDish(dishData);    
         }
         fetchNotes();
+    }, [searchValue]);
 
-    }, [search]);
 
-    
     return (
         <LayoutClient>
             <Container>

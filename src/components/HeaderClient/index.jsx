@@ -28,8 +28,10 @@ function Header(){
     const {setSearchValue}  = useHeader();
   
     function handleChange(event) {
-        const value = event.target.value;
-        setSearchValue(value);
+        if (window.location.pathname === "/") {
+            const value = event.target.value;
+            setSearchValue(value);
+        }
     }
 
     function handleOrders(){
