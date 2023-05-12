@@ -15,7 +15,7 @@ import { Brand } from "../Brand";
 import { Input } from "../Input";
 import { Footer } from '../Footer';
 
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useAuth } from '../../hooks/auth';
 import { useHeader } from '../../hooks/HeaderContext';
@@ -23,8 +23,8 @@ import { useHeader } from '../../hooks/HeaderContext';
 
 function Header(){
     const navigate = useNavigate();
+    const location = useLocation();
     const {signOut} = useAuth();
-
     const {setSearchValue}  = useHeader();
   
     function handleChange(event) {
@@ -86,6 +86,10 @@ function Header(){
           clearTimeout(timeoutId);
         };
     }, []); //rever esse código para entender
+
+    useEffect(() => {
+        setSearchValue('');
+    }, [location]);
 
     return(
         <ErrorBoundary>

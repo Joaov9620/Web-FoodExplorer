@@ -16,13 +16,14 @@ import { Brand } from "../Brand";
 import { Input } from "../Input";
 import { Footer } from "../Footer";
 
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useAuth } from '../../hooks/auth';
 import { useHeader } from '../../hooks/HeaderContext';
 
 function Header(){
     const navigate = useNavigate();
+    const location = useLocation();
     const {signOut} = useAuth();
 
     const {headerSearchValue, setSearchValue}  = useHeader();
@@ -84,7 +85,11 @@ function Header(){
           window.removeEventListener('scroll', handleScroll);
           clearTimeout(timeoutId);
         };
-      }, []); //rever esse código para entender
+    }, []); //rever esse código para entender
+
+    useEffect(() => {
+        setSearchValue('');
+    }, [location]);
 
     return(
         <ErrorBoundary>
