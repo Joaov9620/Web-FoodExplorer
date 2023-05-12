@@ -1,18 +1,10 @@
-import { ContentCard, GroupHeader, BackgroundHome, Content,} from './styles';
+import { GroupHeader, BackgroundHome, Content,} from './styles';
 import { Container } from '../../../styles/global';
 
 import { Layout } from '../../../components/Layout/index';
-import { Section } from '../../../components/Section';
-import { Card } from '../../../components/Card';
-import { ButtonText } from '../../../components/ButtonText';
+import { Slider } from '../../../components/Slider';
 
 import imgDemonstrative from '../../../assets/img/pngegg 1.png';
-
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-// import "swiper/css/pagination";
-import "swiper/css/navigation";
-import { Pagination, Navigation } from "swiper";
 
 import {api} from '../../../services/api';
 
@@ -45,57 +37,6 @@ export function Home(){
     function handleDetails(id){
         navigate(`/details/${id}`);
     }
-
-    //transformar essa function em um componente
-    function Slider({ title, data, handleDetails }) {
-        return (
-          <Section title={title}>
-            <div className='sliderContainer'>
-              <div className='cardColor' style={{display: 'none'}}>
-                <div></div>
-                <div></div>
-              </div>
-              <Swiper
-                spaceBetween={30}
-                loop={true}
-                speed={500}
-                navigation={true}
-                pagination={{
-                  clickable: true,
-                }}
-                modules={[Pagination, Navigation]}
-                className='swiper-button'
-                breakpoints={{
-                  375: {
-                    slidesPerView: 2,
-                    loop: true,
-                    watchOverflow: true,
-                  },
-                  768: {
-                    slidesPerView: 2,
-                    loop: true,
-                    watchOverflow: true,
-                  },
-                  1024: {
-                    slidesPerView: 3,
-                    loop: true,
-                    watchOverflow: true,
-                  },
-                }}
-              >
-                <ContentCard>
-                  {data.map((dish) => (
-                    <SwiperSlide key={String(dish.id)} className='swiperSlider'>
-                      <Card data={dish} handleDetails={handleDetails} />
-                    </SwiperSlide>
-                  ))}
-                </ContentCard>
-              </Swiper>
-            </div>
-          </Section>
-        );
-    }
-
     useEffect(()=>{
         async function fetchDish(){
             const response = await api.get("/dish");
