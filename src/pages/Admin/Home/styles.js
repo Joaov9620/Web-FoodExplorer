@@ -14,6 +14,20 @@ export const Content = styled.div`
         background-color: red;
     }
 
+    @media(max-width:768px){
+        .swiper-button {
+            .swiper-button-prev::after, .swiper-button-next::after {
+                /* display: none; */
+            }
+        }
+    }
+
+    .swiper-button {
+        .swiper-button-prev::after, .swiper-button-next::after {
+            color: #FFFFFF;
+            font-size: 40px;
+        }
+    }
     .cardColor{
         display: flex;
         justify-content: space-between;

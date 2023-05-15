@@ -3,6 +3,7 @@ import { Container } from '../../../styles/global';
 
 import { Layout } from '../../../components/Layout/index';
 import { Slider } from '../../../components/Slider';
+import {Card} from '../../../components/Card';
 
 import imgDemonstrative from '../../../assets/img/pngegg 1.png';
 
@@ -80,17 +81,17 @@ export function Home(){
                        
                         {
                             (meals.length > 0) &&
-                            <Slider title='Refeições' data={meals} handleDetails={handleDetails} />
+                            <Slider title='Refeições' data={meals} handleDetails={handleDetails} Card={Card}/>
                         }
 
                         {
                             (desserts.length > 0) &&
-                            <Slider title='Sobremesas' data={desserts} handleDetails={handleDetails} />
+                            <Slider title='Sobremesas' data={desserts} handleDetails={handleDetails} Card={Card}/>
                         }
                                 
                         {
                             (drinks.length > 0) &&
-                            <Slider title='Bebidas' data={drinks} handleDetails={handleDetails} />
+                            <Slider title='Bebidas' data={drinks} handleDetails={handleDetails} Card={Card}/>
                         }                                
 
                     </Content>

@@ -1,6 +1,6 @@
 import {ContentCard} from './styles';
 import {Section} from '../Section'
-import { Card } from '../Card';
+// import { Card } from '../Card';
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -8,7 +8,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper";
 
-export function Slider({ title, data, handleDetails }) {
+export function Slider({ title, data, handleDetails, Card }) {
     return (
       <Section title={title}>
         <div className='sliderContainer'>
@@ -29,19 +29,17 @@ export function Slider({ title, data, handleDetails }) {
             breakpoints={{
               375: {
                 slidesPerView: 2,
-                loop: true,
                 pagination:false,
                 watchOverflow: true,
               },
               768: {
                 slidesPerView: 2,
-                loop: true,
                 pagination:false,
                 watchOverflow: true,
               },
               1060: {
                 slidesPerView: 3,
-                loop: true,
+                pagination:true,
                 watchOverflow: true,
               },
             }}
