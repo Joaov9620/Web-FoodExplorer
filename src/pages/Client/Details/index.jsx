@@ -9,7 +9,7 @@ import { IngredientDetails } from "../../../components/IngredientDetails";
 import { IoIosArrowBack } from "react-icons/io";
 import iconToDecrease from '../../../assets/toDecrease.svg';
 import iconToAdd from '../../../assets/toAdd.svg';
-import img from '../../../assets/img/Mask group.png'
+import imgDishPlaceholder from '../../../assets/img/dishImg.jpg';
 
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate} from 'react-router-dom';
@@ -25,6 +25,8 @@ export function Details(){
 
     const params = useParams();
     const navigate = useNavigate();
+    
+    const fileImgDish = data.img? `${api.defaults.baseURL}/files/${data.img}` :imgDishPlaceholder;
 
     function handleAdd(){
         setCount(count + 1);
@@ -48,9 +50,11 @@ export function Details(){
           setData(response.data);
           setCountPrice(response.data.price);
           setPrice(response.data.price);
-        }
+        }      
         fetchDish();
     }, []);
+
+    
 
     return (
         <LayoutClient>
@@ -65,7 +69,7 @@ export function Details(){
                         />
                         <div>
                             <img
-                                src={img}
+                                src={fileImgDish}
                                 alt="Imagem de comida"
                                 className="imgDish"
                             />

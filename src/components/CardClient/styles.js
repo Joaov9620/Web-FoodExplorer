@@ -13,6 +13,11 @@ export const Container =  styled.div`
     cursor: auto;    
     margin-right: 27px;
     margin-top: 24px;
+
+    .imgDish{
+        border-radius: 50%;
+        object-fit: cover;
+    }
     
     :hover{
         filter: brightness(0.9);

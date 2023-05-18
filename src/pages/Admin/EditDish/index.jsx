@@ -18,13 +18,12 @@ import { useParams ,useNavigate } from 'react-router-dom';
 
 import { api } from "../../../services/api";
 
-
 export function EditDish() {
   const navigate  = useNavigate();
   const params = useParams();
 
   const [data, setData] = useState("");
-  
+
   const [selectedFile, setSelectedFile] = useState(null);
   const [name, setName] = useState("");
   const [category, setCategory] = useState("");
@@ -37,7 +36,7 @@ export function EditDish() {
     async function fetchDish(){
       const response = await api.get(`/dish/${params.id}`);
       const dishData = response.data;
-
+      
       setData(response.data);
       setData(dishData);
       setName(dishData.name);
@@ -45,15 +44,12 @@ export function EditDish() {
       setIngredients(Array.isArray(dishData.ingredients) ? dishData.ingredients : []);
       setPrice(dishData.price);
       setDescription(dishData.description);
-      console.log(response)
-      }
+      setSelectedFile(dishData.img);
+    }
     fetchDish();
   },[params.id]);
 
-  
-
   const ingredientsNames = ingredients.map(ingredient => ingredient.name);
-  
   
   function handleBack(){
     navigate(-1);
@@ -61,6 +57,7 @@ export function EditDish() {
 
   async function handleDeletedDish(){
     await api.delete(`/dish/${params.id}`);	
+    // await api.delete(`/dish/fileDish/${params.id}`);	
     alert("Prato excluído com sucesso!")
     navigate("/");
   }
@@ -82,7 +79,7 @@ export function EditDish() {
     if(ingredientItem){
       return alert("Adicione o ingrediente que está no campo ou remova para prosseguir!")
     }
-
+    
     await api.put(`/dish/${params.id}`,{
       name,
       category,
@@ -91,12 +88,20 @@ export function EditDish() {
       description
     })
 
+    if(selectedFile){
+      const fileUploadForm = new FormData();
+      fileUploadForm.append("fileDish", selectedFile);
+
+      await api.patch(`/dish/fileDish/${params.id}`, fileUploadForm);
+    }
+
     alert("Prato atualizado com sucesso!");
     navigate("/");
   } 
 
   const handleFileInput = (event) => {
-    setSelectedFile(event.target.files[0]);
+    const file  = (event.target.files[0]);
+    setSelectedFile(file);
   };
 
   return (

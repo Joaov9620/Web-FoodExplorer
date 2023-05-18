@@ -4,7 +4,7 @@ import { Button } from '../Button';
 
 import iconToDecrease from '../../assets/toDecrease.svg';
 import iconToAdd from '../../assets/toAdd.svg';
-import imgDemonstrative from '../../assets/img/Mask group-2.png';
+import imgDishPlaceholder from '../../assets/img/dishImg.jpg';
 
 import { useState, useEffect } from 'react';
 import {api} from '../../services/api';
@@ -17,6 +17,8 @@ export function CardClient({data = {}, handleDetails, ...rest}){
     
     const {user} = useAuth();
     const {cartItems, addToCart} = useCart();
+
+    const fileImgDish = data.img? `${api.defaults.baseURL}/files/${data.img}` :imgDishPlaceholder;
 
     async function handleFavoriteClick(){
         setIsFavorite(!isFavorite);
@@ -49,7 +51,7 @@ export function CardClient({data = {}, handleDetails, ...rest}){
                 className={isFavorite ? 'favoriteActive' : ''}
             />
            <CardImg>
-            <img className='imgDish' src={imgDemonstrative} alt="Imagem demonstrtivo"/>
+            <img className='imgDish' src={fileImgDish} alt="Imagem demonstrtivo"/>
             <h1 onClick={() => handleDetails(data.id)}>
             {data.name.length > 10 ? 
                 (<p>{data.name.slice(0, 10) + '...'} &gt;</p>) 

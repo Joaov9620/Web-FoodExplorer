@@ -23,7 +23,7 @@ export function NewDish() {
   
   const [selectedFile, setSelectedFile] = useState(null);
   const [name, setName] = useState("");
-  const [category, setCategory] = useState("Refeição");
+  const [category, setCategory] = useState("Refeições");
   const [ingredientItem, setItemIngredient] = useState("");
   const [ingredients, setIngredients] = useState([]);
   const [price, setPrice] = useState("");
@@ -54,22 +54,25 @@ export function NewDish() {
       return alert("Preço obrigatório!")
     }
 
-    // if(!ingredientItem){
-    //   return alert("Adicione no mínimo um ingrediente!")
-    // }
+    if(!ingredients){
+      return alert("Adicione no mínimo um ingrediente!")
+    }
 
     if(ingredientItem){
       return alert("Adicione o ingrediente que está no campo ou remova para prosseguir!")
     }
 
-    await api.post("/dish",{
-      name,
-      category,
-      ingredients,
-      price,
-      description
-    })
-
+    const fileUploadForm = new FormData();
+    fileUploadForm.append("fileDish", selectedFile);
+    fileUploadForm.append("name", name);
+    fileUploadForm.append("category", category);
+    ingredients.forEach((ingredient, index) => {
+      fileUploadForm.append(`ingredients[${index}]`, ingredient);
+    });
+    fileUploadForm.append("description", description);
+    fileUploadForm.append("price", price);
+    
+    await api.post("/dish", fileUploadForm);
     alert("Prato criado com sucesso!");
     navigate("/");
   }

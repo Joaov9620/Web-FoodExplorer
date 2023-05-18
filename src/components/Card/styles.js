@@ -17,6 +17,11 @@ export const Container =  styled.div`
         text-align: center;
     }
 
+    .imgDish{
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
     :hover{
         filter: brightness(0.9);
         /* transition: box-shadow 200ms ease 0s; */
