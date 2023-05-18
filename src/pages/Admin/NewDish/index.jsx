@@ -28,7 +28,6 @@ export function NewDish() {
   const [ingredients, setIngredients] = useState([]);
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
-  const [ img, setImg] = useState(null);
   const [isUploadingImg, setIsUploadingImg] = useState(false);
 
   const handleFileInput = (event) => {
@@ -65,49 +64,30 @@ export function NewDish() {
     }
   }
 
-   async function createImg(){
-    try {
-      if(selectedFile){
-        setIsUploadingImg(true);
-        const formData = new FormData();
-        formData.append('fileDish', selectedFile);
-        
-        const response = await api.post('/upload', formData);
-        const image = response.data.imagePath;
-        setImg(image);
-      }else{
-        setImg(null);
-      }
-    } catch (error) {
-      console.error('Erro ao enviar a imagem:', error);
-    }finally{
-      setIsUploadingImg(false);
-    }
-  }
-
   async function handleNewDish(){  
     await validarCampos();  
-    await createImg();
-    console.log(img);
+
     try {
-      await api.post("/dish", {
-        name,
-        category,
-        ingredients,
-        price,
-        description,
-        img: img
+      setIsUploadingImg(true);
+      const formData = new FormData();
+      formData.append('fileDish', selectedFile);
+      formData.append('name', name);
+      formData.append('category', category);
+      formData.append('description', description);
+      ingredients.forEach((ingredient, index) => {
+        formData.append(`ingredients[${index}]`, ingredient);
       });
+      formData.append('price', price);
 
-      //img indo nulo para o backend
+      await api.post('/dish', formData);
 
-      return alert("Prato criado com sucesso!");
+      alert("Prato criado com sucesso!");
       navigate("/");
     } catch(error){
       if(error.response){
-          alert(error.response.data.message);
+        alert(error.response.data.message);
       }else{
-          alert("Erro ai criar o prato!")
+        alert("Erro ai criar o prato!")
       }
     }
   }
