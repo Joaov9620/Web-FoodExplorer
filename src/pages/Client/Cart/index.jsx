@@ -57,7 +57,7 @@ export function Cart(){
                                             <div>
                                                 <div className='group'>
                                                     <h5>01 {item.name}</h5>
-                                                    <span>R${parseFloat(item.price).toFixed(2)}</span>
+                                                    <span>R$ {parseFloat(item.price).toFixed(2)}</span>
                                                 </div>
                                                 <span onClick={() => removeFromCart(item)}>Excluir</span>
                                             </div>
