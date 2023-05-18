@@ -73,6 +73,7 @@ export function Details(){
                                     onClick={() => handleEditDish(data.id)}
                                 />
                             </DishInformation>
+
                         </div>          
                     </Content>
                     )

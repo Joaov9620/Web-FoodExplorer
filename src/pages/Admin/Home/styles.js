@@ -10,14 +10,6 @@ export const Content = styled.div`
         box-sizing: border-box;
     }
 
-    @media(max-width:768px){
-        .swiper-button {
-            .swiper-button-prev::after, .swiper-button-next::after {
-                display: none;
-            }
-        }
-    }
-
     .swiper-button {
         .swiper-button-prev::after, .swiper-button-next::after {
             color: #FFFFFF;
@@ -87,6 +79,14 @@ export const Content = styled.div`
                 >h1{
                     font-size: 40px;
                 }
+            }
+        }
+    }
+
+    @media(max-width:768px){
+        .swiper-button {
+            .swiper-button-prev::after, .swiper-button-next::after {
+                display: none;
             }
         }
     }

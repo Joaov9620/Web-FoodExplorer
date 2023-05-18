@@ -30,6 +30,7 @@ export function NewDish() {
   const [description, setDescription] = useState("");
   const [isUploadingImg, setIsUploadingImg] = useState(false);
 
+
   const handleFileInput = (event) => {
     setSelectedFile(event.target.files[0]);
   };
