@@ -15,7 +15,7 @@ import { IoIosArrowBack } from "react-icons/io";
 
 import {api} from '../../../services/api';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export function NewDish() {
@@ -28,6 +28,8 @@ export function NewDish() {
   const [ingredients, setIngredients] = useState([]);
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
+  const [ img, setImg] = useState(null);
+  const [isUploadingImg, setIsUploadingImg] = useState(false);
 
   const handleFileInput = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -45,7 +47,7 @@ export function NewDish() {
     setIngredients(prevState => prevState.filter(ingredientItem => ingredientItem !== deleted))
   }
 
-  async function handleNewDish(){
+  async function validarCampos(){
     if(!name){
       return alert("Nome obrigatório!")
     }
@@ -54,27 +56,53 @@ export function NewDish() {
       return alert("Preço obrigatório!")
     }
 
-    if(!ingredients){
+    if(ingredients.length == 0){
       return alert("Adicione no mínimo um ingrediente!")
     }
 
     if(ingredientItem){
       return alert("Adicione o ingrediente que está no campo ou remova para prosseguir!")
     }
+  }
 
-    const fileUploadForm = new FormData();
-    fileUploadForm.append("fileDish", selectedFile);
-    fileUploadForm.append("name", name);
-    fileUploadForm.append("category", category);
-    ingredients.forEach((ingredient, index) => {
-      fileUploadForm.append(`ingredients[${index}]`, ingredient);
-    });
-    fileUploadForm.append("description", description);
-    fileUploadForm.append("price", price);
-    
-    await api.post("/dish", fileUploadForm);
-    alert("Prato criado com sucesso!");
-    navigate("/");
+   async function createImg(){
+    try {
+      if(selectedFile){
+        setIsUploadingImg(true);
+        const formData = new FormData();
+        formData.append('fileDish', selectedFile);
+        
+        const response = await api.post('/upload', formData);
+        const image = response.data.imagePath;
+        setImg(image);
+      }else{
+        setImg(null);
+      }
+    } catch (error) {
+      console.error('Erro ao enviar a imagem:', error);
+    }finally{
+      setIsUploadingImg(false);
+    }
+  }
+
+  async function handleNewDish(){  
+    await validarCampos();  
+    await createImg();
+    try {
+      await api.post("/dish", {
+        name,
+        category,
+        ingredients,
+        price,
+        description,
+        img: img
+      });
+
+      alert("Prato criado com sucesso!");
+      navigate("/");
+    } catch (error) {
+      console.error("Erro ao criar o prato:", error);
+    }
   }
 
   function handleBack(){
@@ -175,7 +203,7 @@ export function NewDish() {
             </Group03>
 
             <Group04 className='group04 groups'>
-                <Button title="Adicionar prato" onClick={handleNewDish}/>
+                <Button title="Adicionar prato" onClick={handleNewDish} Loading={isUploadingImg}/>
             </Group04>
           </Section>
         </Content>

@@ -80,13 +80,17 @@ export function EditDish() {
       return alert("Adicione o ingrediente que está no campo ou remova para prosseguir!")
     }
     
-    await api.put(`/dish/${params.id}`,{
-      name,
-      category,
-      ingredients: ingredientsNames,
-      price,
-      description
-    })
+    try{
+      await api.put(`/dish/${params.id}`,{
+        name,
+        category,
+        ingredients: ingredientsNames,
+        price,
+        description
+      })
+    }catch{
+      console.log('Error ao editar o prato');
+    }
 
     if(selectedFile){
       const fileUploadForm = new FormData();
