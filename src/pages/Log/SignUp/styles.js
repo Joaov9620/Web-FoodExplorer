@@ -13,11 +13,11 @@ export const Container = styled.div`
         padding:0 16px;
     }
 
-    @media(min-width:700px) {
+    @media(min-width:850px) {
        flex-direction: row;
        
         .logo{
-            flex: 2;
+            flex: 1;
             display: flex;
             justify-content: center;
         }
@@ -36,7 +36,7 @@ export const Container = styled.div`
 
 export const Form = styled.form`
     max-width: 48rem;
-    max-height: 62rem;
+    max-height: 65rem;
     padding: 6.4rem;
     border-radius: 1.6rem;
     display: flex;

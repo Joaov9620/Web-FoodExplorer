@@ -13,11 +13,11 @@ export const Container = styled.div`
         padding:0 16px;
     }
 
-    @media(min-width:700px) {
+    @media(min-width:850px) {
        flex-direction: row;
        
         .logo{
-            flex: 2;
+            flex: 1;
             display: flex;
             justify-content: center;
         }

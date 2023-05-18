@@ -49,27 +49,27 @@ export function Cart(){
                     (
                         <div className='addedDishes'>
                             <Section>
-                                    <h1>Meu pedido</h1>
-                                    <div className='dishes'>
-                                        {cartItems.map((item, index) => (
-                                            <DishesAdded key={index}>
-                                                <img src={img} alt="" />
-                                                <div>
-                                                    <div className='group'>
-                                                        <h5>01 {item.name}</h5>
-                                                        <span>R$ {item.price.toFixed(2)}</span>
-                                                    </div>
-                                                    <span onClick={() => removeFromCart(item)}>Excluir</span>
+                                <h1>Meu pedido</h1>
+                                 <div className='dishes'>
+                                    {cartItems.map((item, index) => (
+                                        <DishesAdded key={index}>
+                                            <img src={img} alt="" />
+                                            <div>
+                                                <div className='group'>
+                                                    <h5>01 {item.name}</h5>
+                                                    <span>R${parseFloat(item.price).toFixed(2)}</span>
                                                 </div>
-                                            </DishesAdded>
-                                        ))}
+                                                <span onClick={() => removeFromCart(item)}>Excluir</span>
+                                            </div>
+                                        </DishesAdded>
+                                    ))}
                                     </div> 
-                                    <h2 className='total'>Total: R$ {cartItems.reduce((total, item) => total + item.price, 0).toFixed(2)}</h2> 
+                                    <h2 className='total'>Total: R$ {parseFloat(cartItems.reduce((total, item) => total + item.price, 0)).toFixed(2)}</h2> 
                             </Section>
                             
                             <Section>
                                     <h1>Pagamento</h1>
-                                    <Payment>
+                                    <Payment className='payment'>
                                         <div>
                                             <span onClick={() => handlePaymentMethod('pix')} >PIX</span>
                                             <span onClick={() => handlePaymentMethod('credit')}>Crédito</span>
@@ -79,7 +79,7 @@ export function Cart(){
                                             paymentMethod === 'pix' ? 
                                             (
                                                 <div className='qrCode'>
-                                                <img src={qrcode} alt="Imagem do QrCode"/>
+                                                    <img src={qrcode} alt="Imagem do QrCode"/>
                                                 </div>
                                             ) :
                                             (
@@ -124,9 +124,9 @@ export function Cart(){
                     ) :
                     (
                         <div className='noDishes'>
-                            <MdOutlineFoodBank/>
+                            <MdOutlineFoodBank />
                             <div>
-                                <h1> Nehum prato adicionado </h1>
+                                <h1> Nenhum prato adicionado </h1>
                                 <span>Adicione um prato</span>
                             </div>
                         </div>

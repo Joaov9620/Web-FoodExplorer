@@ -1,19 +1,42 @@
 import styled from "styled-components";
 
 export const Content = styled.div`
-    height: 100vh;
-    padding: 35px 28px;
+    min-height: 100vh;
+    padding: 70px 28px;
 
     .addedDishes{
         display: flex;
+        flex-direction: column;
         gap: 75px;
         margin-top: 40px;
     }
 
     .noDishes{
-        flex-direction: column;
-        margin-top: 100px;
+        display: flex;
+        justify-content: center;
         align-items: center;
+        gap: 30px;
+        flex-direction: column;
+        height: 500px;
+        max-height: 700px;
+        text-align: center;
+        color: #1d2f37;
+        font-size: 20rem;
+        padding: 0 24px;
+        margin-bottom: 60px;
+    }
+
+    .noDishes >icon{
+        font-size: 40px;
+    }
+
+    .noDishes >div{
+        font-size: 4rem;
+    }
+
+    .noDishes >div h1{
+        margin-bottom: 30px;
+        font-size: 7rem;
     }
 
     .dishes{
@@ -39,6 +62,33 @@ export const Content = styled.div`
         background-color: #7c777e;
         border-radius: 10px;
         border: 3px solid #ffffff;
+    }
+
+    @media(min-width:1022px){
+        .addedDishes{
+            flex-direction: row;
+        }
+
+        .payment .creditCard{
+            padding: 57px 160px;
+        }
+    }
+
+    @media(min-width:664px){
+        .payment .qrCode{
+            padding: 57px 160px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .payment .creditCard{
+            gap: 40px;
+            padding: 50px 75px 53px;
+        }
+        
+        .payment .creditCard .validity{
+            flex-direction: row;
+            gap: 14px;
+        }
     }
 `;
 
@@ -127,17 +177,21 @@ export const Payment = styled.div`
     }
 
     .qrCode{
-        padding: 57px 140px;
+        padding: 50px 30px;
         border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
+    .qrCode img{
+        margin: 0 auto;
+    }
+
     .creditCard{
-        padding: 50px 53px 53px;
+        padding: 30px;
         border: 1px solid rgba(255, 255, 255, 0.1);
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 40px;
+        gap: 14px;
     }
 
     .creditCard div{
@@ -156,7 +210,7 @@ export const Payment = styled.div`
     }
 
     .creditCard .validity{
-        flex-direction: row;
+        flex-direction: collumn;
         gap: 14px;
     }
 

@@ -10,14 +10,10 @@ export const Content = styled.div`
         box-sizing: border-box;
     }
 
-    .empty-slide{
-        background-color: red;
-    }
-
     @media(max-width:768px){
         .swiper-button {
             .swiper-button-prev::after, .swiper-button-next::after {
-                /* display: none; */
+                display: none;
             }
         }
     }

@@ -28,7 +28,7 @@ export function Card({data = {},handleDetails, ...rest}){
                     (<p>{data.name} &gt;</p>)
                 }
             </h1>
-                <span className='descriptionDish'>{data.description.slice(0,40) + '...'}</span>
+                <span className='descriptionDish'>{data.description.slice(0,20) + '...'}</span>
                 <h4>R$ {data.price}</h4>
            </CardImg>
         </Container>

@@ -88,6 +88,7 @@ export function NewDish() {
   async function handleNewDish(){  
     await validarCampos();  
     await createImg();
+    console.log(img);
     try {
       await api.post("/dish", {
         name,
@@ -98,10 +99,16 @@ export function NewDish() {
         img: img
       });
 
-      alert("Prato criado com sucesso!");
+      //img indo nulo para o backend
+
+      return alert("Prato criado com sucesso!");
       navigate("/");
-    } catch (error) {
-      console.error("Erro ao criar o prato:", error);
+    } catch(error){
+      if(error.response){
+          alert(error.response.data.message);
+      }else{
+          alert("Erro ai criar o prato!")
+      }
     }
   }
 

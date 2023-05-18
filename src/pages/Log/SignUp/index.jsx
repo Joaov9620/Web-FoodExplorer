@@ -77,7 +77,7 @@ export function SignUp(){
 
                 <Button title='Criar conta' onClick={handleSignUp}/>
 
-                <Link to="/signIn">
+                <Link to="/" className='pageHome'>
                     Já tenho uma conta
                 </Link>
             </Form>
