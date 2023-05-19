@@ -54,12 +54,13 @@ export function CardClient({data = {}, handleDetails, ...rest}){
             <img className='imgDish' src={fileImgDish} alt="Imagem demonstrtivo"/>
             <h1 onClick={() => handleDetails(data.id)}>
             {data.name.length > 10 ? 
-                (<p>{data.name.slice(0, 10) + '...'} &gt;</p>) 
+            //.slice(0, 10) + '...' .slice(0,20) + '...'
+                (<p>{data.name} &gt;</p>) 
                 : 
                 (<p>{data.name} &gt;</p>)
             }
             </h1>
-            <span className='descriptionDish'>{data.description.slice(0,20) + '...'}</span>
+            <span className='descriptionDish'>{data.description}</span>
             <h4>R$ {data.price}</h4>
             <div className='buttonsCard'>
                 <div>

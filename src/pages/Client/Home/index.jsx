@@ -18,8 +18,6 @@ import { useHeader } from '../../../hooks/HeaderContext';
 export function Home(){
     const navigate = useNavigate();
 
-    //verifica bug da pesquisa
-
     const {searchValue = ''} = useHeader();
     const {user} = useAuth();
     const [dish, setDish] = useState([]);

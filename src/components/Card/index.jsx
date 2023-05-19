@@ -17,7 +17,7 @@ export function Card({data = {},handleDetails, ...rest}){
     }
 
     const fileImgDish = data.img? `${api.defaults.baseURL}/files/${data.img}` : imgDishPlaceholder;
-    // const fileImgDish =  data.img ? data.img : imgDishPlaceholder
+
 
     return(
         <Container {...rest}>

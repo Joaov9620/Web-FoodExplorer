@@ -22,11 +22,12 @@ export function Details(){
     const [count, setCount] = useState(1);
     const [countPriceD, setCountPrice] = useState('');
     const [price, setPrice] = useState(null);
+    const [img, setImg] = useState(null);
 
     const params = useParams();
     const navigate = useNavigate();
     
-    const fileImgDish = data.img? `${api.defaults.baseURL}/files/${data.img}` :imgDishPlaceholder;
+    const fileImgDish = img? `${api.defaults.baseURL}/files/${img}` :imgDishPlaceholder;
 
     function handleAdd(){
         setCount(count + 1);
@@ -50,6 +51,7 @@ export function Details(){
           setData(response.data);
           setCountPrice(response.data.price);
           setPrice(response.data.price);
+          setImg(response.data.img);
         }      
         fetchDish();
     }, []);
