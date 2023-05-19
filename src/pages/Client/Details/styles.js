@@ -20,6 +20,7 @@ export const Content = styled.div`
         height: 264px;
         width: 264px;
         object-fit: cover;
+        border-radius: 50%;
     }
 
 
@@ -81,7 +82,6 @@ export const DishInformation = styled.div`
 
     .buttons{
         display: flex;
-        flex-direction: column;
         gap: 30px;
         align-items: center;
     }
@@ -98,7 +98,7 @@ export const DishInformation = styled.div`
         font-size: 24px;
     }
     
-    .buttons div button{
+    .buttons div:first-child button{
         background: none;
         border: none;
         width: fit-content;

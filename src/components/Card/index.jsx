@@ -26,14 +26,13 @@ export function Card({data = {},handleDetails, ...rest}){
             <img className='imgDish' src={fileImgDish} alt="Imagem demonstrtivo"/>
             <h1 onClick={() => handleDetails(data.id)}>
                 {data.name.length > 10 ? 
-                    (<p>{data.name} &gt;</p>) 
+                    (<p>{data.name.slice(0, 9) +'...'} &gt;</p>) 
                     : 
-                    //.slice(0, 9) , (0,20) + '...'
-                    (<p>{data.name} &gt;</p>)
+                    (<p>{data.name.slice(0, 20)+'...'} &gt;</p>)
                 }
             </h1>
-                <span className='descriptionDish'>{data.description}</span>
-                <h4>R$ {data.price}</h4>
+                <span className='descriptionDish'>{data.description ? data.description.slice(0,20)+'...' : 'Sem descrição'}</span>
+                <h4>R$ {data.price ? data.price.toFixed(2) : '0,00'}</h4>
            </CardImg>
         </Container>
     )

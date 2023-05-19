@@ -100,10 +100,12 @@ export function Details(){
                                             <img src={iconToAdd} alt="Icone de adicionar" />
                                         </button>
                                     </div>
-                                    <Button 
-                                        className="buttonDish"
-                                        title= { `incluir ∙ R$ ${countPriceD.toString().slice(0, 4)}`}	
-                                    />
+                                    <div>
+                                        <Button 
+                                            className="buttonDish"
+                                            title= { `incluir ∙ R$ ${countPriceD.toString().slice(0, 4)}`}	
+                                        />
+                                    </div>
                                 </div>
                             </DishInformation>
                         </div>          
