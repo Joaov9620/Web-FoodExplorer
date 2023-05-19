@@ -42,10 +42,6 @@ export const Content = styled.div`
             text-align: start;
             align-items: self-start;
         }
-
-        .buttons{
-            flex-direction: row;
-        }
     }
 `;
 
@@ -111,5 +107,10 @@ export const DishInformation = styled.div`
         font-size: 14px;
         line-height: 24px;
         margin-bottom: 10rem;
+    }
+
+    .buttons .buttonDish{
+        width: 180px;
+        padding: 1.2rem 1.2rem;
     }
 `;

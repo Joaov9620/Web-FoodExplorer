@@ -13,6 +13,7 @@ import imgDishPlaceholder from '../../../assets/img/dishImg.jpg';
 
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate} from 'react-router-dom';
+import { useCart } from '../../../hooks/CartContext';
 
 import { api } from "../../../services/api";
 
@@ -23,6 +24,7 @@ export function Details(){
     const [countPriceD, setCountPrice] = useState('');
     const [price, setPrice] = useState(null);
     const [img, setImg] = useState(null);
+    const {cartItems, addToCart} = useCart();
 
     const params = useParams();
     const navigate = useNavigate();
@@ -56,7 +58,10 @@ export function Details(){
         fetchDish();
     }, []);
 
-    
+    useEffect(() => {
+        localStorage.setItem("dishSelect", JSON.stringify(cartItems));
+    }, [cartItems]);
+
 
     return (
         <LayoutClient>
@@ -104,6 +109,7 @@ export function Details(){
                                         <Button 
                                             className="buttonDish"
                                             title= { `incluir ∙ R$ ${countPriceD.toString().slice(0, 4)}`}	
+                                            onClick={() => addToCart(data)}
                                         />
                                     </div>
                                 </div>

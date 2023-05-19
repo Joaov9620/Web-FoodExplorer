@@ -21,6 +21,7 @@ export const Content = styled.div`
         height: 264px;
         width: 264px;
         object-fit: cover;
+        border-radius: 50%;
     }
 
 
