@@ -19,10 +19,10 @@ export const SpinnerWrapper = styled.div`
 ;
 
 export const Spinner = styled.div`
-  border: 4px solid #f3f3f3; /* Cor da borda do spinner */
-  border-top: 4px solid #3498db; /* Cor da borda do topo do spinner */
+  border: 4px solid #0D1D25; /* Cor da borda do spinner */
+  border-top: 4px solid #000A0F; /* Cor da borda do topo do spinner */
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   animation: ${spinAnimation} 0.8s linear infinite; /* Aplica a animação */`
 ;

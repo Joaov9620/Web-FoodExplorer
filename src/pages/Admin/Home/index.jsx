@@ -4,6 +4,7 @@ import { Container } from '../../../styles/global';
 import { Layout } from '../../../components/Layout/index';
 import { Slider } from '../../../components/Slider';
 import {Card} from '../../../components/Card';
+import { LoadingSpinner } from '../../../components/LoadingSpinner';
 
 import imgDemonstrative from '../../../assets/img/pngegg 1.png';
 
@@ -21,8 +22,8 @@ export function Home(){
     const meals = [];
     const desserts = [];
     const drinks = [];
-    
-
+    const [loading, setLoading] = useState(true);
+ 
     if(dish){
         for (let i = 0; i < dish.length; i++) {
             if (dish[i].category === "Refeições") {
@@ -44,8 +45,9 @@ export function Home(){
             const dishData = (response.data);
 
             setDish(dishData);
+            setLoading(false);
         }
-        fetchDish();
+        fetchDish(); 
     },[]);
 
     useEffect(() => {
@@ -53,6 +55,7 @@ export function Home(){
             const response = await api.get(`/dish?name=${searchValue}`);
             const dishData = response.data;
             setDish(dishData);    
+            setLoading(false);
         }
         fetchNotes();
     }, [searchValue]);
@@ -72,11 +75,14 @@ export function Home(){
                             </div> 
                         </GroupHeader>
 
-                        {  
-                            (dish.length === 0) &&
-                            <BackgroundHome>
+                        {
+                            loading ? (
+                                <LoadingSpinner /> 
+                            ) : (dish.length === 0) && (
+                                <BackgroundHome>
                                 <span>Nenhum prato adicionado!</span>
-                            </BackgroundHome>
+                                </BackgroundHome>
+                            )
                         }
                        
                         {

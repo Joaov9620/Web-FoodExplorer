@@ -4,6 +4,14 @@ export const Content = styled.div`
     padding: 0 28px 100px; 
     min-height: 100vh;
 
+    min-height: 100vh;
+
+    >div:first-child{
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+    }
+
     >button{
         margin-top: 3.1rem;
     }

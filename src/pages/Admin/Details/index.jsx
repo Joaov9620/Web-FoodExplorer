@@ -5,6 +5,7 @@ import { Layout } from '../../../components/Layout/index';
 import { ButtonText } from "../../../components/ButtonText";
 import { Button } from "../../../components/Button";
 import { IngredientDetails } from "../../../components/IngredientDetails";
+import { LoadingSpinner } from '../../../components/LoadingSpinner';
 
 import { IoIosArrowBack } from "react-icons/io";
 import img from '../../../assets/img/Mask group.png'
@@ -17,6 +18,7 @@ import { api } from "../../../services/api";
 
 export function Details(){
     const [data, setData] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     const navigate  = useNavigate();
     const params = useParams();
@@ -33,6 +35,7 @@ export function Details(){
         async function fetchDish(){
           const response = await api.get(`/dish/${params.id}`);
           setData(response.data);
+          setLoading(false);
         }
         fetchDish();
     }, []);
@@ -40,44 +43,47 @@ export function Details(){
     return (
         <Layout>
             <Container>
-                {
-                  data &&(
-                    <Content> 
-                        <ButtonText 
-                            icon={IoIosArrowBack}
-                            title="Voltar"
-                            onClick={handleBack} 
-                        />
-                        <div>
-                            <img
-                                src={img}
-                                alt="Imagem de comida"
-                            />
-                            <DishInformation className='dishInformation'>
-                                <h1>{data.name}</h1>
-                                <p>{data.description}</p>
-                                <div>                               
-                                    {
-                                        data.ingredients &&  
-                                        data.ingredients.map((ingredient, index) =>(
-                                            <IngredientDetails
-                                                key={String(index)}
-                                                value={ingredient.name}                                          
-                                            />
-                                        ))
-                                    }
-                                </div>
-                                <Button 
-                                    className="buttonDish"
-                                    title="Editar prato" 
-                                    onClick={() => handleEditDish(data.id)}
+                <Content> 
+                    {
+                        loading ? <div className="loading"><LoadingSpinner/></div>
+                        :
+                        data &&(
+                            <>
+                                <ButtonText 
+                                    icon={IoIosArrowBack}
+                                    title="Voltar"
+                                    onClick={handleBack} 
                                 />
-                            </DishInformation>
-
-                        </div>          
-                    </Content>
-                    )
-                }
+                                <div>
+                                    <img
+                                        src={img}
+                                        alt="Imagem de comida"
+                                    />
+                                    <DishInformation className='dishInformation'>
+                                        <h1>{data.name}</h1>
+                                        <p>{data.description}</p>
+                                        <div>                               
+                                            {
+                                                data.ingredients &&  
+                                                data.ingredients.map((ingredient, index) =>(
+                                                    <IngredientDetails
+                                                        key={String(index)}
+                                                        value={ingredient.name}                                          
+                                                    />
+                                                ))
+                                            }
+                                        </div>
+                                        <Button 
+                                            className="buttonDish"
+                                            title="Editar prato" 
+                                            onClick={() => handleEditDish(data.id)}
+                                        />
+                                    </DishInformation>
+                                </div>  
+                            </>        
+                        )
+                    }
+                </Content>
             </Container>
         </Layout>
     )

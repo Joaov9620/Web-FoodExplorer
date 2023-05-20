@@ -4,6 +4,7 @@ import { Container } from '../../../styles/global';
 import { LayoutClient } from '../../../components/LayoutClient';
 import { CardClient } from '../../../components/CardClient';
 import { Slider } from '../../../components/Slider';
+import { LoadingSpinner } from '../../../components/LoadingSpinner';
 
 import imgDemonstrative from '../../../assets/img/pngegg 1.png';
 
@@ -14,6 +15,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../../hooks/auth';
 import { useHeader } from '../../../hooks/HeaderContext';
 
+
 export function Home(){
     const navigate = useNavigate();
 
@@ -23,6 +25,7 @@ export function Home(){
     const meals = [];
     const desserts = [];
     const drinks = [];
+    const [loading, setLoading] = useState(true);
 
     if(dish){
         for (let i = 0; i < dish.length; i++) {
@@ -46,6 +49,7 @@ export function Home(){
             const dishData = (response.data);
 
             setDish(dishData);
+            setLoading(false);
         }
         fetchDish();
     },[]);
@@ -54,7 +58,8 @@ export function Home(){
         async function fetchNotes(){
             const response = await api.get(`/favoriteDish?user_id=${user.id}&name=${searchValue}`);
             const dishData = (response.data);
-            setDish(dishData);    
+            setDish(dishData);   
+            setLoading(false); 
         }
         fetchNotes();
     }, [searchValue]);
@@ -75,11 +80,14 @@ export function Home(){
                             </div> 
                         </GroupHeader>
 
-                        {  
-                            (dish.length === 0) &&
-                            <BackgroundHome>
+                        {
+                            loading ? (
+                                <LoadingSpinner /> 
+                            ) : (dish.length === 0) && (
+                                <BackgroundHome>
                                 <span>Nenhum prato adicionado!</span>
-                            </BackgroundHome>
+                                </BackgroundHome>
+                            )
                         }
 
                         {

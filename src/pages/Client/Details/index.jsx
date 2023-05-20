@@ -10,6 +10,7 @@ import { IoIosArrowBack } from "react-icons/io";
 import iconToDecrease from '../../../assets/toDecrease.svg';
 import iconToAdd from '../../../assets/toAdd.svg';
 import imgDishPlaceholder from '../../../assets/img/dishImg.jpg';
+import { LoadingSpinner } from '../../../components/LoadingSpinner';
 
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate} from 'react-router-dom';
@@ -25,6 +26,7 @@ export function Details(){
     const [price, setPrice] = useState(null);
     const [img, setImg] = useState(null);
     const {cartItems, addToCart} = useCart();
+    const [loading, setLoading] = useState(true);
 
     const params = useParams();
     const navigate = useNavigate();
@@ -54,6 +56,7 @@ export function Details(){
           setCountPrice(response.data.price);
           setPrice(response.data.price);
           setImg(response.data.img);
+          setLoading(false);
         }      
         fetchDish();
     }, []);
@@ -66,58 +69,62 @@ export function Details(){
     return (
         <LayoutClient>
             <Container>
-                {
-                  data &&(
-                    <Content> 
-                        <ButtonText 
-                            icon={IoIosArrowBack}
-                            title="Voltar"
-                            onClick={handleBack} 
-                        />
-                        <div>
-                            <img
-                                src={fileImgDish}
-                                alt="Imagem de comida"
-                                className="imgDish"
-                            />
-                            <DishInformation className='dishInformation'>
-                                <h1>{data.name}</h1>
-                                <p>{data.description}</p>
-                                <div className="ingredients">                               
-                                    {
-                                        data.ingredients &&  
-                                        data.ingredients.map((ingredient, index) =>(
-                                            <IngredientDetails
-                                                key={String(index)}
-                                                value={ingredient.name}                                          
-                                            />
-                                        ))
-                                    }
-                                </div>
+                <Content> 
+                    {
+                        loading ? <div className="loading"><LoadingSpinner/></div>
+                        :
+                        data &&(                      
+                            <>
+                                <ButtonText 
+                                    icon={IoIosArrowBack}
+                                    title="Voltar"
+                                    onClick={handleBack} 
+                                />
+                                <div>
+                                    <img
+                                        src={fileImgDish}
+                                        alt="Imagem de comida"
+                                        className="imgDish"
+                                    />
+                                    <DishInformation className='dishInformation'>
+                                        <h1>{data.name}</h1>
+                                        <p>{data.description}</p>
+                                        <div className="ingredients">                               
+                                            {
+                                                data.ingredients &&  
+                                                data.ingredients.map((ingredient, index) =>(
+                                                    <IngredientDetails
+                                                        key={String(index)}
+                                                        value={ingredient.name}                                          
+                                                    />
+                                                ))
+                                            }
+                                        </div>
 
-                                <div className="buttons">
-                                    <div >
-                                        <button onClick={handleToDecrease}>
-                                            <img src={iconToDecrease} alt="Icone de diminuir" />
-                                        </button>
-                                        <span>{count < 10 ? `0${count}` : count}</span>
-                                        <button onClick={handleAdd}>
-                                            <img src={iconToAdd} alt="Icone de adicionar" />
-                                        </button>
-                                    </div>
-                                    <div>
-                                        <Button 
-                                            className="buttonDish"
-                                            title= { `incluir ∙ R$ ${countPriceD.toString().slice(0, 4)}`}	
-                                            onClick={() => addToCart(data)}
-                                        />
-                                    </div>
-                                </div>
-                            </DishInformation>
-                        </div>          
-                    </Content>
-                    )
-                }
+                                        <div className="buttons">
+                                            <div >
+                                                <button onClick={handleToDecrease}>
+                                                    <img src={iconToDecrease} alt="Icone de diminuir" />
+                                                </button>
+                                                <span>{count < 10 ? `0${count}` : count}</span>
+                                                <button onClick={handleAdd}>
+                                                    <img src={iconToAdd} alt="Icone de adicionar" />
+                                                </button>
+                                            </div>
+                                            <div>
+                                                <Button 
+                                                    className="buttonDish"
+                                                    title= { `incluir ∙ R$ ${countPriceD.toString().slice(0, 4)}`}	
+                                                    onClick={() => addToCart(data)}
+                                                />
+                                            </div>
+                                        </div>
+                                    </DishInformation>
+                                </div>  
+                            </>        
+                        )
+                    }
+                </Content>
             </Container>
         </LayoutClient>
     )

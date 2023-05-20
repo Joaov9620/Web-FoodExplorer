@@ -1,8 +1,14 @@
 import styled from "styled-components";
 
 export const Content = styled.div`
-    padding: 0 28px 100px; 
-    height: calc(100vh - 70px);
+    padding: 0 28px 0; 
+    min-height: 100vh;
+
+    >div:first-child{
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+    }
 
 
     >button{
