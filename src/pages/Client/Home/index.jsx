@@ -3,17 +3,16 @@ import { Container } from '../../../styles/global';
 
 import { LayoutClient } from '../../../components/LayoutClient';
 import { CardClient } from '../../../components/CardClient';
-import {Slider} from '../../../components/Slider';
+import { Slider } from '../../../components/Slider';
 
 import imgDemonstrative from '../../../assets/img/pngegg 1.png';
 
 import {api} from '../../../services/api';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../../hooks/auth';
 import { useHeader } from '../../../hooks/HeaderContext';
-
 
 export function Home(){
     const navigate = useNavigate();

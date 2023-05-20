@@ -3,6 +3,7 @@ import {Container,Form} from './styles';
 import {Brand} from '../../../components/Brand'
 import {Input} from '../../../components/Input'
 import {Button} from '../../../components/Button'
+import { LoadingSpinner } from '../../../components/LoadingSpinner';
 
 import { useAuth } from '../../../hooks/auth';
 
@@ -12,11 +13,18 @@ import { useState } from 'react';
 export function SignIn(){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [loading, setLoading] = useState(false);
+
 
     const {signIn} = useAuth();
 
     function handleSignIn(){
-        signIn({email,password});
+        setLoading(true);
+
+        signIn({ email, password })
+        .finally(() => {
+        setLoading(false);
+        });
     }
 
     return(
@@ -46,8 +54,11 @@ export function SignIn(){
                     />
                 </label>
                 
-                <Button title='Entrar' onClick={handleSignIn}/>
-
+                {loading ? (
+                <LoadingSpinner />
+                ) : (
+                <Button title="Entrar" onClick={handleSignIn} />
+                )}
                 <Link to="/signUp">
                     Criar uma conta
                 </Link>

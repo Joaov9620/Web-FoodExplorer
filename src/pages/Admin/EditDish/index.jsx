@@ -9,6 +9,7 @@ import { Input } from '../../../components/Input';
 import { Button } from '../../../components/Button';
 import { TextArea } from '../../../components/TextArea';
 import { IngredientItem } from '../../../components/IngredientItem';
+import { LoadingSpinner } from '../../../components/LoadingSpinner';
 
 import { HiOutlineArrowUpTray } from "react-icons/hi2";
 import { IoIosArrowBack } from "react-icons/io";
@@ -16,12 +17,14 @@ import { IoIosArrowBack } from "react-icons/io";
 import { useState, useEffect } from 'react';
 import { useParams ,useNavigate } from 'react-router-dom';
 
+
 import { api } from "../../../services/api";
 
 export function EditDish() {
   const navigate  = useNavigate();
   const params = useParams();
 
+  const [loading, setLoading] = useState(false);
   const [data, setData] = useState("");
 
   const [selectedFile, setSelectedFile] = useState(null);
@@ -57,7 +60,6 @@ export function EditDish() {
 
   async function handleDeletedDish(){
     await api.delete(`/dish/${params.id}`);	
-    // await api.delete(`/dish/fileDish/${params.id}`);	
     alert("Prato excluído com sucesso!")
     navigate("/");
   }

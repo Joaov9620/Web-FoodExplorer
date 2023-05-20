@@ -3,6 +3,7 @@ import {Container,Form} from './styles';
 import {Brand} from '../../../components/Brand'
 import {Input} from '../../../components/Input'
 import {Button} from '../../../components/Button'
+import { LoadingSpinner } from '../../../components/LoadingSpinner';
 
 import {api} from '../../../services/api';
 
@@ -15,12 +16,14 @@ export function SignUp(){
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [loading, setLoading] = useState(false);
     
     function handleSignUp(){
         if(!name || !email || !password){
             return alert("Preencha todos os campos!");
         }
 
+        setLoading(true);
         let type = 'client';
 
         api.post('/users',{name, email, password, type})
@@ -34,7 +37,10 @@ export function SignUp(){
             }else{
                 alert("Não foi possível criar conta!")
             }
-        })
+            setLoading(false);
+        }).finally(() => {
+            setLoading(false);
+        });
 
     }
 
@@ -74,8 +80,11 @@ export function SignUp(){
                         onChange = {e => setPassword(e.target.value)}
                     />
                 </label>
-
-                <Button title='Criar conta' onClick={handleSignUp}/>
+                {loading ? (
+                <LoadingSpinner />
+                ) : (
+                <Button title="Criar conta" onClick={handleSignUp} />
+                )}
 
                 <Link to="/" className='pageHome'>
                     Já tenho uma conta

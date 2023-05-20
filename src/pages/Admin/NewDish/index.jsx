@@ -9,6 +9,7 @@ import { Input } from '../../../components/Input';
 import { Button } from '../../../components/Button';
 import { TextArea } from '../../../components/TextArea';
 import { IngredientItem } from '../../../components/IngredientItem';
+import { LoadingSpinner } from '../../../components/LoadingSpinner';
 
 import { HiOutlineArrowUpTray } from "react-icons/hi2";
 import { IoIosArrowBack } from "react-icons/io";
@@ -28,7 +29,7 @@ export function NewDish() {
   const [ingredients, setIngredients] = useState([]);
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
-  const [isUploadingImg, setIsUploadingImg] = useState(false);
+  const [loading, setLoading] = useState(false);
 
 
   const handleFileInput = (event) => {
@@ -69,7 +70,7 @@ export function NewDish() {
     await validarCampos();  
 
     try {
-      setIsUploadingImg(true);
+      setLoading(true);
       const formData = new FormData();
       formData.append('fileDish', selectedFile);
       formData.append('name', name);
@@ -90,6 +91,7 @@ export function NewDish() {
       }else{
         alert("Erro ai criar o prato!")
       }
+      setLoading(false);
     }
   }
 
@@ -191,7 +193,11 @@ export function NewDish() {
             </Group03>
 
             <Group04 className='group04 groups'>
-                <Button title="Adicionar prato" onClick={handleNewDish} Loading={isUploadingImg}/>
+              {loading ? (
+              <LoadingSpinner />
+              ) : (
+              <Button title="Adicionar prato" onClick={handleNewDish} />
+              )}
             </Group04>
           </Section>
         </Content>
