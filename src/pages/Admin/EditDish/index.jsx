@@ -89,7 +89,7 @@ export function EditDish() {
         description
       })
     }catch{
-      console.log('Error ao editar o prato');
+      alert('Error ao editar o prato');
     }
 
     if(selectedFile){

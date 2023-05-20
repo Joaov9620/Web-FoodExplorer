@@ -10,7 +10,6 @@ export function Card({data = {},handleDetails, ...rest}){
     const navigate = useNavigate();
 
     const tipo  = data.price.typeof;
-    console.log(tipo)
 
     function handleEditDish(id){
         navigate(`/editDish/${id}`);
