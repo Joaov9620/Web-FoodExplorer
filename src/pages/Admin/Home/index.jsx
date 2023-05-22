@@ -44,9 +44,9 @@ export function Home(){
             const response = await api.get("/dish");
             const dishData = (response.data);
 
-            setDish(dishData);
-            setLoading(false);
+            setDish(dishData); 
         }
+        setLoading(false);
         fetchDish(); 
     },[]);
 
@@ -54,9 +54,9 @@ export function Home(){
         async function fetchNotes(){
             const response = await api.get(`/dish?name=${searchValue}`);
             const dishData = response.data;
-            setDish(dishData);    
-            setLoading(false);
+            setDish(dishData);       
         }
+        setLoading(false);
         fetchNotes();
     }, [searchValue]);
     

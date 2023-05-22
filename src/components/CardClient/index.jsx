@@ -42,7 +42,7 @@ export function CardClient({data = {}, handleDetails, ...rest}){
     useEffect(() => {
         localStorage.setItem("dishSelect", JSON.stringify(cartItems));
     }, [cartItems]);
-
+    // ? data.price.toFixed(2) : '0,00'
 
     return(
         <Container {...rest}>
@@ -60,7 +60,7 @@ export function CardClient({data = {}, handleDetails, ...rest}){
             }
             </h1>
             <span className='descriptionDish'>{data.description ? data.description.slice(0,20)+'...' : 'Sem descrição'}</span>
-            <h4>R$ {data.price ? data.price.toFixed(2) : '0,00'}</h4>
+            <h4>R$ {data.price }</h4>
             <div className='buttonsCard'>
                 <div>
                     <button onClick={handleToDecrease}>

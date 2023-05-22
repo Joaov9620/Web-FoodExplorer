@@ -48,22 +48,21 @@ export function Home(){
             const response = await api.get('/favoriteDish', { params: { user_id: user.id } });
             const dishData = (response.data);
 
-            setDish(dishData);
-            setLoading(false);
+            setDish(dishData);   
         }
         fetchDish();
+        setLoading(false);
     },[]);
 
     useEffect(() => {
         async function fetchNotes(){
             const response = await api.get(`/favoriteDish?user_id=${user.id}&name=${searchValue}`);
             const dishData = (response.data);
-            setDish(dishData);   
-            setLoading(false); 
+            setDish(dishData);     
         }
         fetchNotes();
+        setLoading(false); 
     }, [searchValue]);
-
 
     return (
         <LayoutClient>

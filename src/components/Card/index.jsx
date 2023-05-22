@@ -9,8 +9,6 @@ import { useNavigate } from 'react-router-dom';
 export function Card({data = {},handleDetails, ...rest}){
     const navigate = useNavigate();
 
-    const tipo  = data.price.typeof;
-
     function handleEditDish(id){
         navigate(`/editDish/${id}`);
     }
