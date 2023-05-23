@@ -6,9 +6,9 @@ import { ButtonText } from "../../../components/ButtonText";
 import { Button } from "../../../components/Button";
 import { IngredientDetails } from "../../../components/IngredientDetails";
 import { LoadingSpinner } from '../../../components/LoadingSpinner';
+import imgDishPlaceholder from '../../../assets/img/dishImg.jpg';
 
 import { IoIosArrowBack } from "react-icons/io";
-import img from '../../../assets/img/Mask group.png'
 
 import { useState, useEffect } from 'react';
 import { useParams ,useNavigate } from 'react-router-dom';
@@ -19,7 +19,9 @@ import { api } from "../../../services/api";
 export function Details(){
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [img, setImg] = useState(null);
 
+    const fileImgDish = img? `${api.defaults.baseURL}/files/${img}` :imgDishPlaceholder;
     const navigate  = useNavigate();
     const params = useParams();
 
@@ -35,8 +37,9 @@ export function Details(){
         async function fetchDish(){
           const response = await api.get(`/dish/${params.id}`);
           setData(response.data);
-          setLoading(false);
+          setImg(response.data.img);
         }
+        setLoading(false);
         fetchDish();
     }, []);
 
@@ -56,7 +59,7 @@ export function Details(){
                                 />
                                 <div>
                                     <img
-                                        src={img}
+                                        src={fileImgDish}
                                         alt="Imagem de comida"
                                     />
                                     <DishInformation className='dishInformation'>

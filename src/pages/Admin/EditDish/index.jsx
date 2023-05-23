@@ -81,7 +81,7 @@ export function EditDish() {
     if(ingredientItem){
       return alert("Adicione o ingrediente que está no campo ou remova para prosseguir!")
     }
-    
+    setLoading(true);
     try{
       await api.put(`/dish/${params.id}`,{
         name,
@@ -92,6 +92,7 @@ export function EditDish() {
       })
     }catch{
       alert('Error ao editar o prato');
+      setLoading(false);
     }
 
     if(selectedFile){

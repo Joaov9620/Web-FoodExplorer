@@ -64,11 +64,10 @@ export function NewDish() {
     if(ingredientItem){
       return alert("Adicione o ingrediente que está no campo ou remova para prosseguir!")
     }
+    handleNewDish()
   }
 
   async function handleNewDish(){  
-    await validarCampos();  
-
     try {
       setLoading(true);
       const formData = new FormData();
@@ -196,7 +195,7 @@ export function NewDish() {
               {loading ? (
               <LoadingSpinner />
               ) : (
-              <Button title="Adicionar prato" onClick={handleNewDish} />
+              <Button title="Adicionar prato" onClick={validarCampos} />
               )}
             </Group04>
           </Section>

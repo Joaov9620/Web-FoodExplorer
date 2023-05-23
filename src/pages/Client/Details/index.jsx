@@ -56,8 +56,8 @@ export function Details(){
           setCountPrice(response.data.price);
           setPrice(response.data.price);
           setImg(response.data.img);
-          setLoading(false);
         }      
+        setLoading(false);
         fetchDish();
     }, []);
 
