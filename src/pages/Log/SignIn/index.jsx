@@ -20,11 +20,12 @@ export function SignIn(){
 
     function handleSignIn(){
         setLoading(true);
+        try{
 
-        signIn({ email, password })
-        .finally(() => {
+            signIn({ email, password })
+        }catch{
         setLoading(false);
-        });
+        };
     }
 
     return(
