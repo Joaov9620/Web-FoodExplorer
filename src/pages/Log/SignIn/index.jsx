@@ -18,13 +18,14 @@ export function SignIn(){
 
     const {signIn} = useAuth();
 
-    function handleSignIn(){
-        try{
-            setLoading(true);
-            signIn({ email, password })
-        }catch{
-            setLoading(false);
-        };
+    async function handleSignIn() {
+        setLoading(true);
+        try {
+          await signIn({ email, password });
+          setLoading(false); // Atualiza o estado de loading para "false" após o login ter sucesso
+        } catch {
+          setLoading(false); // Atualiza o estado de loading para "false" em caso de erro
+        }
     }
 
     return(
