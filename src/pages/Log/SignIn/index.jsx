@@ -19,12 +19,11 @@ export function SignIn(){
     const {signIn} = useAuth();
 
     function handleSignIn(){
-        setLoading(true);
         try{
-
+            setLoading(true);
             signIn({ email, password })
         }catch{
-        setLoading(false);
+            setLoading(false);
         };
     }
 
