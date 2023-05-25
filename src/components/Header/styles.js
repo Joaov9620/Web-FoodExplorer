@@ -4,6 +4,8 @@ export const HeaderBody = styled.header`
     width: 100%;
     background: #00111A;
     height: 114px;
+    /* position: fixed;
+    z-index: 2; */
 
     .newDish, .ordersDesktop{
         display: none;
@@ -25,10 +27,6 @@ export const HeaderBody = styled.header`
         .menu{
             padding: 28px 24px;
         }
-
-        /* .searchMobile2{
-            display: none;
-        } */
 
         .logoHeader{
             flex-direction: column;

@@ -9,7 +9,6 @@ import { Input } from '../../../components/Input';
 import { Button } from '../../../components/Button';
 import { TextArea } from '../../../components/TextArea';
 import { IngredientItem } from '../../../components/IngredientItem';
-import { LoadingSpinner } from '../../../components/LoadingSpinner';
 
 import { HiOutlineArrowUpTray } from "react-icons/hi2";
 import { IoIosArrowBack } from "react-icons/io";
@@ -24,7 +23,8 @@ export function EditDish() {
   const navigate  = useNavigate();
   const params = useParams();
 
-  const [loading, setLoading] = useState(false);
+  const [loadingDelete, setLoadingDelete] = useState(false);
+  const [loadingSave, setLoadingSave] = useState(false);  
   const [data, setData] = useState("");
 
   const [selectedFile, setSelectedFile] = useState(null);
@@ -59,9 +59,15 @@ export function EditDish() {
   }
 
   async function handleDeletedDish(){
-    await api.delete(`/dish/${params.id}`);	
-    alert("Prato excluído com sucesso!")
-    navigate("/");
+    try{
+      setLoadingDelete(true);
+      await api.delete(`/dish/${params.id}`);	
+      alert("Prato excluído com sucesso!")
+      navigate("/");
+    }catch{
+      alert('Error ao excluir o prato');
+      setLoadingDelete(false);
+    }
   }
 
   function handleAddIngredient(){
@@ -81,7 +87,7 @@ export function EditDish() {
     if(ingredientItem){
       return alert("Adicione o ingrediente que está no campo ou remova para prosseguir!")
     }
-    setLoading(true);
+    setLoadingSave(true);
     try{
       await api.put(`/dish/${params.id}`,{
         name,
@@ -92,7 +98,7 @@ export function EditDish() {
       })
     }catch{
       alert('Error ao editar o prato');
-      setLoading(false);
+      setLoadingSave(false);
     }
 
     if(selectedFile){
@@ -204,8 +210,8 @@ export function EditDish() {
                 </Group03>
 
                 <Group04 className='group04 groups'>
-                    <Button title="Excluir prato" onClick={handleDeletedDish}/>
-                    <Button title="Salvar alterações" onClick={handleEditDish}/>
+                    <Button title="Excluir prato" onClick={handleDeletedDish} loading={loadingDelete}/>
+                    <Button title="Salvar alterações" onClick={handleEditDish} loading={loadingSave}/>
                 </Group04>
               </Section>
             </Content>

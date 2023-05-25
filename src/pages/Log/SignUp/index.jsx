@@ -23,6 +23,10 @@ export function SignUp(){
             return alert("Preencha todos os campos!");
         }
 
+        if (password.length < 6){
+            return alert('A senha deve ter pelo menos 6 caracteres!');
+        }
+
         setLoading(true);
         let type = 'client';
 
@@ -41,7 +45,14 @@ export function SignUp(){
         }).finally(() => {
             setLoading(false);
         });
+    }
 
+    function capitalizeFirstLetter(text) {
+        const words = text.split(' ');
+        const capitalizedWords = words.map((word) => {
+          return word.charAt(0).toUpperCase() + word.slice(1);
+        });
+        return capitalizedWords.join(' ');
     }
 
     return(
@@ -58,7 +69,7 @@ export function SignUp(){
                     <Input
                         placeholder="Exemplo: Maria da Silva"
                         type="text"
-                        onChange = {e => setName(e.target.value)}
+                        onChange = {e => setName(capitalizeFirstLetter(e.target.value))}
                     />
                 </label>
 

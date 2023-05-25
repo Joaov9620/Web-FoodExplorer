@@ -9,7 +9,6 @@ import { Input } from '../../../components/Input';
 import { Button } from '../../../components/Button';
 import { TextArea } from '../../../components/TextArea';
 import { IngredientItem } from '../../../components/IngredientItem';
-import { LoadingSpinner } from '../../../components/LoadingSpinner';
 
 import { HiOutlineArrowUpTray } from "react-icons/hi2";
 import { IoIosArrowBack } from "react-icons/io";
@@ -191,12 +190,8 @@ export function NewDish() {
               </div>
             </Group03>
 
-            <Group04 className='group04 groups'>
-              {loading ? (
-              <LoadingSpinner />
-              ) : (
-              <Button title="Adicionar prato" onClick={validarCampos} />
-              )}
+            <Group04 className='group04 groups'>             
+              <Button title="Adicionar prato" onClick={validarCampos} loading={loading} />           
             </Group04>
           </Section>
         </Content>

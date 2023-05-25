@@ -29,9 +29,7 @@ function Header(){
     const {headerSearchValue, setSearchValue}  = useHeader();
     const [valueSearch, setValueSearch] = useState(headerSearchValue);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(true);
-    const [isHeaderVisible, setIsHeaderVisible] = useState(true);
-    const [isHeaderFixed, setIsHeaderFixed] = useState(false);
-   
+
     function handleChange(event) {
         if(window.location.pathname === "/"){
             const value = event.target.value;
@@ -53,39 +51,6 @@ function Header(){
     function handleMobileMenuClick() {
       setIsMobileMenuOpen(!isMobileMenuOpen);
     }
-
-    useEffect(() => {
-        let timeoutId;
-        let prevScrollPosition = window.pageYOffset;
-      
-        function handleScroll() {
-          const currentScrollPosition = window.pageYOffset;
-          
-          if (currentScrollPosition > prevScrollPosition && currentScrollPosition > 0) {
-            // usuário rolando para baixo, esconde o menu
-            setIsHeaderVisible(false);
-          } else {
-            // usuário rolando para cima, mostra o menu
-            setIsHeaderVisible(true);
-            clearTimeout(timeoutId);
-            
-            timeoutId = setTimeout(() => {
-              setIsHeaderFixed(currentScrollPosition > 0);
-            }, 100); // reduzido o tempo de atraso para 100 milissegundos
-          }
-      
-          prevScrollPosition = currentScrollPosition;
-        }  
-      
-        prevScrollPosition = window.pageYOffset; // adicionado para definir prevScrollPosition inicial
-      
-        window.addEventListener('scroll', handleScroll);
-        
-        return () => {
-          window.removeEventListener('scroll', handleScroll);
-          clearTimeout(timeoutId);
-        };
-    }, []); //rever esse código para entender
 
     useEffect(() => {
         setSearchValue('');
@@ -118,14 +83,7 @@ function Header(){
                     </div>
                     <Footer/>
             </MenuMobile>
-            <HeaderBody 
-            style={{ 
-                position: isHeaderFixed ? 'fixed' : 'static', 
-                top: 0, left: 0, right: 0, zIndex: 2,
-                opacity: isHeaderVisible ? 1 : 0,
-                transition: 'opacity 0.3s ease-in-out'
-              }}
-            >
+            <HeaderBody>
                 <Container>
                     <MenuDesktop className="menu">
                         <div className='buttonMenuDesktop'>
