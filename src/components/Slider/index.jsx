@@ -12,10 +12,6 @@ export function Slider({ title, data, handleDetails, Card }) {
     return (
       <Section title={title}>
         <div className='sliderContainer'>
-          <div className='cardColor' style={{display: 'none'}}>
-            <div></div>
-            <div></div>
-          </div>
           <Swiper
             spaceBetween={30}
             loop={true}

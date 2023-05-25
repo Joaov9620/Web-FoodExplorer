@@ -16,24 +16,7 @@ export const Content = styled.div`
             font-size: 40px;
         }
     }
-    .cardColor{
-        display: flex;
-        justify-content: space-between;
-        height: 448px;
-        /* position: absolute; */
-        z-index: 2;
-        width: 1122px;
-
-        div{
-            /* position: absolute; */
-            width: 278px;
-            left: 276px;
-            top: 0px;
-            background: linear-gradient(90deg, rgba(0, 10, 15, 0.272541) 0%, #000A0F 100%);
-            /* background-color: #00131C; */
-            transform: matrix(-1, 0, 0, 1, 0, 0);
-        }
-    }
+   
 
     @media(min-width:664px){
         .groupHeader{

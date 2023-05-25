@@ -23,7 +23,7 @@ export function Card({data = {},handleDetails, ...rest}){
             <img className='imgDish' src={fileImgDish} alt="Imagem demonstrtivo"/>
             <h1 onClick={() => handleDetails(data.id)}>
                 {data.name.length > 10 ? 
-                    (<p>{data.name.slice(0, 9) +'...'} &gt;</p>) 
+                    (<p>{data.name.slice(0, 8) +'...'} &gt;</p>) 
                     : 
                     (<p>{data.name.slice(0, 20)+'...'} &gt;</p>)
                 }
