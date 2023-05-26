@@ -60,9 +60,16 @@ $ npm install
 
 ## 🎬 Previews
 
-Aqui estão algumas capturas de tela que demonstram a aparência do Delivery Online:
+#### 🔒 Login
+
+![Login](https://i.imgur.com/hyqqQ5G.gif)
+
+### 🧑‍🔧 Admin
 
  #### Tela inicial
 
-
 ![Home](https://i.imgur.com/kUjfrST.gif)
+
+#### Detalhes do prato
+
+![Home](https://i.imgur.com/yQWWt4b.gif)
