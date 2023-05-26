@@ -92,6 +92,9 @@ $ npm install
 
 #### Carrinho
 
-![Cart](#### Detalhes do prato
+![Cart](blob:https://imgur.com/5b1533ef-d0bb-466d-a546-e27812d36474)
 
-![Home](https://i.imgur.com/vvyIBP7.png))
+
+#### Pedidos
+ - Obs: Apenas a tela foi feita!
+![Orders](https://i.imgur.com/eQuTezu.png)
