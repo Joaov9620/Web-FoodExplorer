@@ -6,8 +6,6 @@
 O Delivery Online é uma plataforma de delivery de alimentos online que permite aos usuários fazer pedidos de comida de forma prática e conveniente. O projeto é composto por um backend e um frontend, onde o backend é responsável pelo processamento e armazenamento de dados, enquanto o frontend lida com a parte visual e integração com o backend.
 
 ## ⛏️ Ferramentas utilizadas
-- [NodeJs](https://nodejs.org/en)
-- [Express](https://expressjs.com/en/5x/api.html)
 - [ReactJs](https://react.dev/)
 - [StyledComponent](https://styled-components.com/)
 
@@ -28,14 +26,13 @@ $ npm install
 
 ###  Configure as variáveis de ambient
 - Crie um arquivo `.env` na raiz do projeto
-- Defina as variáveis de ambiente necessárias, como a conexão com o banco de dados e as chaves de API, use o `.env.example` como base.
+- Defina as variáveis de ambiente necessárias, use o `.env.example` como base.
 
 ## 🔧 Instruções de execução
-1.  Execute o servidor backend: `npm run dev`
 
-2.  Execute o servidor frontend: `npm run dev`
+1.  Execute o servidor frontend: `npm run dev`
 
-3.  Acesse a aplicação em seu navegador com o local host do front como por exemplo:
+2.  Acesse a aplicação em seu navegador com o local host do front como por exemplo:
 ` http://127.0.0.1:5173/`
 
 ## 🔒 Login
@@ -81,3 +78,20 @@ $ npm install
 #### Editar prato
 
 ![EditDish](https://i.imgur.com/7p43Fy3.png)
+
+
+### 👦 Usuário
+
+ #### Tela inicial
+
+![Home](https://i.imgur.com/iE1rAUH.gif)
+
+ #### Detalhes do prato
+
+![Details](https://i.imgur.com/vvyIBP7.png)
+
+#### Carrinho
+
+![Cart](#### Detalhes do prato
+
+![Home](https://i.imgur.com/vvyIBP7.png))
