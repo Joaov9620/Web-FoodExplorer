@@ -40,7 +40,7 @@ $ npm install
 -   Para acessar a aplicação, é necessário fazer login. Caso não possua uma conta, você pode criar uma.
 -   Para acessar a área de administração, utilize as seguintes credenciais:
     -   Login: admin
-    -   Senha: admin
+    -   Senha: 123456
 
 ## 🏷️ Recursos
 
