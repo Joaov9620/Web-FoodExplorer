@@ -72,4 +72,12 @@ $ npm install
 
 #### Detalhes do prato
 
-![Home](https://i.imgur.com/yQWWt4b.gif)
+![Details](https://i.imgur.com/yQWWt4b.gif)
+
+#### Novo prato
+
+![NewDish](https://i.imgur.com/giJ8eVi.png)
+
+#### Editar prato
+
+![EditDish](https://i.imgur.com/7p43Fy3.png)
