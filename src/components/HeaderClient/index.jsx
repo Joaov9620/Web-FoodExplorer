@@ -57,37 +57,6 @@ function Header(){
     }
 
     useEffect(() => {
-        let timeoutId;
-        let prevScrollPosition = window.pageYOffset;
-    
-        function handleScroll() {
-          const currentScrollPosition = window.pageYOffset;
-          
-          if (currentScrollPosition > prevScrollPosition && currentScrollPosition > 0) {
-            // usuário rolando para baixo, esconde o menu
-            setIsHeaderVisible(false);
-          } else {
-            // usuário rolando para cima, mostra o menu
-            setIsHeaderVisible(true);
-            clearTimeout(timeoutId);
-            
-            timeoutId = setTimeout(() => {
-              setIsHeaderFixed(currentScrollPosition > 0);
-            }, 500);
-          }
-    
-          prevScrollPosition = currentScrollPosition;
-        }  
-
-        window.addEventListener('scroll', handleScroll);
-        
-        return () => {
-          window.removeEventListener('scroll', handleScroll);
-          clearTimeout(timeoutId);
-        };
-    }, []); //rever esse código para entender
-
-    useEffect(() => {
         setSearchValue('');
     }, [location]);
 
@@ -117,7 +86,7 @@ function Header(){
                 <Footer/>
             </MenuMobile>
 
-            <HeaderBody style={{position: isHeaderFixed ? 'fixed' : 'static', top: 0, left: 0, right: 0, zIndex: 3}}>
+            <HeaderBody>
                 <Container>                     
                     
                     <MenuDesktop className="menu">
