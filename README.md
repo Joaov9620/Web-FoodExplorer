@@ -92,7 +92,7 @@ $ npm install
 
 #### Carrinho
 
-![Cart](blob:https://imgur.com/5b1533ef-d0bb-466d-a546-e27812d36474)
+![Cart](https://i.imgur.com/3ufEWwO.png)
 
 
 #### Pedidos
