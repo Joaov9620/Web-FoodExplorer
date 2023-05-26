@@ -96,12 +96,12 @@ export function Home(){
 
                         {
                             (desserts.length > 0) &&
-                            <Slider title='Refeições' data={desserts} handleDetails={handleDetails} Card={CardClient}/>
+                            <Slider title='Sobremesas' data={desserts} handleDetails={handleDetails} Card={CardClient}/>
                         }
                               
                         {
                             (drinks.length > 0) &&
-                            <Slider title='Refeições' data={drinks} handleDetails={handleDetails} Card={CardClient}/>
+                            <Slider title='Bebidas' data={drinks} handleDetails={handleDetails} Card={CardClient}/>
                         }                              
 
                     </Content>
